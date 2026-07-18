@@ -35,6 +35,25 @@ function StepBody({ step }: { step: CalculationStep }) {
       )
     case 'reduction':
       return <ReductionChain value={step.output.value} />
+    case 'grid-analysis':
+      return (
+        <ul className="grid grid-cols-3 gap-1.5 sm:grid-cols-9" aria-label="Grade de dígitos do nome">
+          {step.output.tally.map((entry) => {
+            const highlighted = step.output.highlighted.includes(entry.digit)
+            return (
+              <li
+                key={entry.digit}
+                className={`flex flex-col items-center rounded border px-2 py-1 ${
+                  highlighted ? 'border-amber-400 bg-amber-100 font-semibold' : 'border-slate-200 bg-white text-slate-500'
+                }`}
+              >
+                <span className="text-base">{entry.digit}</span>
+                <span className="text-xs">{entry.count}×</span>
+              </li>
+            )
+          })}
+        </ul>
+      )
     case 'master-check':
       return (
         <p className="text-sm">

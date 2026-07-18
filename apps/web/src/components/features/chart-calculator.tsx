@@ -11,7 +11,15 @@ import { NumberResultCard } from './number-result-card'
 import { PythagoreanTable } from './pythagorean-table'
 
 const LOCALE = 'pt-BR'
-const NAME_NUMBERS: ReadonlyArray<NumberKind> = ['expression', 'motivation', 'impression', 'key-number']
+const NAME_NUMBERS: ReadonlyArray<NumberKind> = [
+  'expression',
+  'motivation',
+  'impression',
+  'key-number',
+  'karmic-lessons',
+  'hidden-tendencies',
+  'subconscious',
+]
 const DATE_NUMBERS: ReadonlyArray<NumberKind> = ['life-path', 'psychic', 'mission']
 
 function errorMessage(error: CalculateChartError): string {

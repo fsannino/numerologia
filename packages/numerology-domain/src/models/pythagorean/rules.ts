@@ -93,6 +93,30 @@ export const PYTHAGOREAN_RULES = {
     ),
     source: text('Tradição numerológica moderna (também chamada "Número da Realização").', 'Modern numerological tradition (also called "Maturity Number").'),
   },
+  karmicLessonsFromMissingDigits: {
+    id: 'pythagorean/karmic-lessons',
+    rule: text(
+      'As Lições Cármicas são os dígitos de 1 a 9 que NÃO aparecem entre os valores das letras do nome — apontam qualidades a desenvolver.',
+      'Karmic Lessons are the digits 1–9 that do NOT appear among the letter values of the name — pointing to qualities to develop.',
+    ),
+    source: text('Juno Jordan, "Numerology: The Romance in Your Name" (1965).', 'Juno Jordan, "Numerology: The Romance in Your Name" (1965).'),
+  },
+  hiddenTendenciesFromRepetition: {
+    id: 'pythagorean/hidden-tendencies',
+    rule: text(
+      'As Tendências Ocultas são os dígitos que se repetem três ou mais vezes entre os valores das letras do nome.',
+      'Hidden Tendencies are the digits repeated three or more times among the letter values of the name.',
+    ),
+    source: text('Tradição numerológica moderna (também "Hidden Passion").', 'Modern numerological tradition (also "Hidden Passion").'),
+  },
+  subconsciousFromDistinctDigits: {
+    id: 'pythagorean/subconscious',
+    rule: text(
+      'O número do Subconsciente é a quantidade de dígitos distintos (1–9) presentes no nome — equivalente a 9 menos o número de Lições Cármicas.',
+      'The Subconscious number is the count of distinct digits (1–9) present in the name — equivalent to 9 minus the number of Karmic Lessons.',
+    ),
+    source: text('Tradição numerológica moderna (Balliett/Jordan).', 'Modern numerological tradition (Balliett/Jordan).'),
+  },
   karmicDebts: {
     id: 'pythagorean/karmic-debts',
     rule: text(

@@ -59,7 +59,7 @@ describe('pythagoreanModel', () => {
 
   it('declara metadados, sujeitos e números suportados', () => {
     expect(pythagoreanModel.supportedSubjects.has('person')).toBe(true)
-    expect(pythagoreanModel.supportedNumbers.size).toBe(7)
+    expect(pythagoreanModel.supportedNumbers.size).toBe(10)
     expect(pythagoreanModel.metadata.variantDimensions.map((dimension) => dimension.dimension)).toEqual([
       'name-reduction', 'y-classification', 'life-path-reduction',
     ])

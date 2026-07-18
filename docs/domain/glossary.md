@@ -30,5 +30,12 @@ Termos do domínio numerológico usados no código. O nome no código = o nome q
 | `LifePath` (Caminho de Vida / Destino) | Derivado da data de nascimento (Fase 2). |
 | Variante `reduce-words-then-sum` | Reduz cada palavra do nome antes de somar (default — ADR-0003). |
 | Variante `sum-all-then-reduce` | Soma todas as letras e reduz uma única vez. |
+| `KarmicLessons` (Lições Cármicas) | Dígitos 1–9 ausentes entre os valores das letras do nome. |
+| `HiddenTendencies` (Tendências Ocultas) | Dígitos repetidos 3+ vezes na grade do nome. |
+| `Subconscious` (Subconsciente) | Quantidade de dígitos distintos presentes (= 9 − lições). |
+| `Psychic` (Psíquico) | Redução do dia do nascimento, preservando mestres. |
+| `Mission` (Missão) | Soma dos valores reduzidos de Expressão e Destino. |
+| Variante `y-classification` | Y por contexto (default), sempre vogal ou sempre consoante (ADR-0004). |
+| Variante `life-path-reduction` | Destino por partes reduzidas (default) ou soma de todos os dígitos (ADR-0005). |
 
 O glossário cresce uma seção por escola a cada fase (caldaica, gematria, Lo Shu, védica...), com fonte histórica em `docs/domain/models-reference.md`.

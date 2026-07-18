@@ -13,6 +13,8 @@ import type { NameNumberKind, NameNumberVariants, NameReductionVariant } from '.
 import { DEFAULT_NAME_REDUCTION, NAME_REDUCTION_DIMENSION, calculateNameNumber } from './name-numbers'
 import type { YClassificationVariant } from './letter-classification'
 import { DEFAULT_Y_CLASSIFICATION } from './letter-classification'
+import type { NameGridNumberKind } from './name-grid'
+import { calculateNameGridNumber } from './name-grid'
 import type { LifePathVariant } from './date-numbers'
 import {
   DEFAULT_LIFE_PATH_VARIANT,
@@ -33,9 +35,13 @@ const SUPPORTED_NUMBERS: ReadonlySet<NumberKind> = new Set([
   'life-path',
   'psychic',
   'mission',
+  'karmic-lessons',
+  'hidden-tendencies',
+  'subconscious',
 ])
 
 const NAME_NUMBER_KINDS: ReadonlySet<NumberKind> = new Set(['expression', 'motivation', 'impression', 'key-number'])
+const NAME_GRID_KINDS: ReadonlySet<NumberKind> = new Set(['karmic-lessons', 'hidden-tendencies', 'subconscious'])
 
 const VARIANT_DIMENSIONS: ReadonlyArray<VariantDimension> = [
   {
@@ -151,6 +157,9 @@ function calculateOne(
   }
   if (NAME_NUMBER_KINDS.has(number)) {
     return ok(calculateNameNumber(subject.birthName, number as NameNumberKind, nameVariants))
+  }
+  if (NAME_GRID_KINDS.has(number)) {
+    return ok(calculateNameGridNumber(subject.birthName, number as NameGridNumberKind))
   }
   const birthDate = subject.birthDate
   if (birthDate === undefined) {

@@ -33,6 +33,7 @@ export { personSubject } from './entities/person-subject'
 export type {
   CalculationStep,
   CalculationTrace,
+  DigitTallyEntry,
   DivergenceNote,
   LetterMappingEntry,
   RuleReference,
@@ -64,6 +65,8 @@ export {
   classifyLetter,
   lettersWithRole,
 } from './models/pythagorean/letter-classification'
+export type { NameGridNumberKind } from './models/pythagorean/name-grid'
+export { calculateNameGridNumber } from './models/pythagorean/name-grid'
 export type { LifePathVariant } from './models/pythagorean/date-numbers'
 export {
   DEFAULT_LIFE_PATH_VARIANT,

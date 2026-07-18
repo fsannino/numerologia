@@ -13,11 +13,24 @@ const NUMBER_LABELS: Record<string, { title: string; hint: string }> = {
   'life-path': { title: 'Destino (Caminho de Vida)', hint: 'data de nascimento completa' },
   psychic: { title: 'Psíquico', hint: 'dia do nascimento' },
   mission: { title: 'Missão', hint: 'Expressão + Destino' },
+  'karmic-lessons': { title: 'Lições Cármicas', hint: 'dígitos ausentes na grade do nome' },
+  'hidden-tendencies': { title: 'Tendências Ocultas', hint: 'dígitos repetidos 3+ vezes' },
+  subconscious: { title: 'Subconsciente', hint: 'dígitos distintos presentes' },
+}
+
+/** Para números de grade, os dígitos destacados aparecem no próprio card. */
+function highlightedDigitsOf(trace: CalculationTrace): ReadonlyArray<number> | null {
+  if (trace.resultId !== 'karmic-lessons' && trace.resultId !== 'hidden-tendencies') {
+    return null
+  }
+  const grid = trace.steps.find((step) => step.kind === 'grid-analysis')
+  return grid?.kind === 'grid-analysis' ? grid.output.highlighted : null
 }
 
 /** Um número do mapa, com valor, flags e o traço completo expansível. */
 export function NumberResultCard({ trace }: { trace: CalculationTrace }) {
   const label = NUMBER_LABELS[trace.resultId] ?? { title: trace.resultId, hint: '' }
+  const highlightedDigits = highlightedDigitsOf(trace)
   return (
     <article className="rounded-xl border border-indigo-200 bg-white shadow-sm" aria-label={label.title}>
       <div className="flex items-center gap-4 p-4">
@@ -28,6 +41,11 @@ export function NumberResultCard({ trace }: { trace: CalculationTrace }) {
           <h3 className="font-semibold text-indigo-950">{label.title}</h3>
           <p className="text-xs text-slate-500">{label.hint}</p>
           <div className="flex flex-wrap gap-1.5 text-xs">
+            {highlightedDigits !== null && (
+              <span className="rounded-full bg-amber-100 px-2 py-0.5 font-medium text-amber-900">
+                {highlightedDigits.length > 0 ? `Dígitos: ${highlightedDigits.join(', ')}` : 'Nenhum dígito destacado'}
+              </span>
+            )}
             {trace.finalValue.isMaster && (
               <span className="rounded-full bg-violet-200 px-2 py-0.5 font-medium text-violet-900">✦ Mestre</span>
             )}

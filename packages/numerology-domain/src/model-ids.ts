@@ -14,6 +14,9 @@ export type NumberKind =
   | 'life-path'
   | 'psychic'
   | 'mission'
+  | 'karmic-lessons'
+  | 'hidden-tendencies'
+  | 'subconscious'
 
 export type SubjectKind =
   | 'person'

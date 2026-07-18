@@ -14,6 +14,12 @@ export type LetterMappingEntry = {
   readonly value: number
 }
 
+/** Contagem de um dígito (1–9) na grade do nome (ADR-0006). */
+export type DigitTallyEntry = {
+  readonly digit: number
+  readonly count: number
+}
+
 /** União discriminada por `kind`: dá render type-safe sem casts na UI. */
 export type CalculationStep =
   | {
@@ -57,6 +63,18 @@ export type CalculationStep =
       readonly input: { readonly candidate: number }
       readonly output: { readonly isMaster: boolean }
       readonly visual: 'text'
+    }
+  | {
+      readonly kind: 'grid-analysis'
+      readonly title: LocalizedText
+      readonly explanation: LocalizedText
+      readonly input: { readonly letterValues: ReadonlyArray<number> }
+      readonly output: {
+        readonly tally: ReadonlyArray<DigitTallyEntry>
+        /** Dígitos que este número destaca: ausentes (lições) ou repetidos (tendências). */
+        readonly highlighted: ReadonlyArray<number>
+      }
+      readonly visual: 'digit-grid'
     }
   | {
       readonly kind: 'karmic-check'
