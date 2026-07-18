@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Pre-commit: bloqueia segredos antes de entrarem no histórico (R12).
+# Instalação: pnpm hooks:install  (roda: git config core.hooksPath .githooks)
+set -euo pipefail
+
+if command -v gitleaks >/dev/null 2>&1; then
+  gitleaks protect --staged --redact
+else
+  echo "[pre-commit] AVISO: gitleaks não instalado — varredura de segredos pulada localmente." >&2
+  echo "[pre-commit] O CI executa gitleaks de qualquer forma; instale-o para feedback antecipado: https://github.com/gitleaks/gitleaks#installing" >&2
+fi
