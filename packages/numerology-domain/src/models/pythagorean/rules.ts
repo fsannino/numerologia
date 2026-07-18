@@ -37,6 +37,62 @@ export const PYTHAGOREAN_RULES = {
     ),
     source: text('Convenção consolidada na numerologia moderna (Balliett/Jordan).', 'Convention consolidated in modern numerology (Balliett/Jordan).'),
   },
+  motivationUsesVowels: {
+    id: 'pythagorean/motivation-vowels',
+    rule: text(
+      'O número de Motivação (Alma) soma apenas as VOGAIS do nome completo de nascimento.',
+      'The Motivation (Soul Urge) number sums only the VOWELS of the full birth name.',
+    ),
+    source: text('Juno Jordan, "Numerology: The Romance in Your Name" (1965).', 'Juno Jordan, "Numerology: The Romance in Your Name" (1965).'),
+  },
+  impressionUsesConsonants: {
+    id: 'pythagorean/impression-consonants',
+    rule: text(
+      'O número de Impressão (Personalidade) soma apenas as CONSOANTES do nome completo de nascimento.',
+      'The Impression (Personality) number sums only the CONSONANTS of the full birth name.',
+    ),
+    source: text('Juno Jordan, "Numerology: The Romance in Your Name" (1965).', 'Juno Jordan, "Numerology: The Romance in Your Name" (1965).'),
+  },
+  keyNumberUsesFirstName: {
+    id: 'pythagorean/key-number-first-name',
+    rule: text(
+      'O Número Chave soma todas as letras apenas do PRIMEIRO nome.',
+      'The Key Number sums all letters of the FIRST name only.',
+    ),
+    source: text('Tradição numerológica moderna (Balliett/Jordan).', 'Modern numerological tradition (Balliett/Jordan).'),
+  },
+  yClassification: {
+    id: 'pythagorean/y-classification',
+    rule: text(
+      'As escolas divergem sobre o Y: vogal, consoante, ou vogal apenas quando não há vogal plena vizinha. A classificação é uma variante explícita e fica registrada no traço (ADR-0004).',
+      'Schools diverge on Y: vowel, consonant, or vowel only when no plain vowel is adjacent. The classification is an explicit variant recorded in the trace (ADR-0004).',
+    ),
+    source: text('Divergência documentada entre manuais modernos; não há regra única.', 'Divergence documented across modern manuals; there is no single rule.'),
+  },
+  lifePathFromBirthDate: {
+    id: 'pythagorean/life-path',
+    rule: text(
+      'O Destino (Caminho de Vida) deriva da data de nascimento completa: dia, mês e ano.',
+      'The Life Path derives from the full birth date: day, month and year.',
+    ),
+    source: text('Juno Jordan, "Numerology: The Romance in Your Name" (1965).', 'Juno Jordan, "Numerology: The Romance in Your Name" (1965).'),
+  },
+  psychicFromDay: {
+    id: 'pythagorean/psychic-day',
+    rule: text(
+      'O Número Psíquico é a redução do DIA do nascimento, preservando mestres.',
+      'The Psychic Number is the reduction of the birth DAY, preserving masters.',
+    ),
+    source: text('Uso difundido nas escolas modernas, com origem na tradição védica.', 'Widespread in modern schools, originating in the Vedic tradition.'),
+  },
+  missionFromExpressionAndLifePath: {
+    id: 'pythagorean/mission',
+    rule: text(
+      'A Missão soma os valores reduzidos da Expressão e do Destino, e reduz o total preservando mestres.',
+      'The Mission sums the reduced values of Expression and Life Path, then reduces the total preserving masters.',
+    ),
+    source: text('Tradição numerológica moderna (também chamada "Número da Realização").', 'Modern numerological tradition (also called "Maturity Number").'),
+  },
   karmicDebts: {
     id: 'pythagorean/karmic-debts',
     rule: text(

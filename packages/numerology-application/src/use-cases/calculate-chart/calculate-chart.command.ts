@@ -8,6 +8,8 @@ export type CalculateChartCommand = {
   readonly subject: {
     readonly kind: 'person'
     readonly fullName: string
+    /** ISO `YYYY-MM-DD`; opcional — exigida apenas para números derivados de data. */
+    readonly birthDate?: string
   }
   readonly models: ReadonlyArray<ModelId>
   readonly numbers: ReadonlyArray<NumberKind>

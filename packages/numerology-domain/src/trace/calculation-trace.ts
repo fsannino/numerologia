@@ -20,8 +20,10 @@ export type CalculationStep =
       readonly kind: 'filter'
       readonly title: LocalizedText
       readonly explanation: LocalizedText
-      readonly input: { readonly originalName: string }
-      readonly output: { readonly words: ReadonlyArray<string> }
+      /** Fonte do filtro: o nome original (normalização) ou uma palavra (vogais/consoantes). */
+      readonly input: { readonly source: string }
+      /** O que sobrou após o filtro: palavras de cálculo ou letras mantidas. */
+      readonly output: { readonly kept: ReadonlyArray<string> }
       readonly visual: 'text'
     }
   | {

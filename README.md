@@ -2,7 +2,7 @@
 
 Sistema de numerologia onde **todo número exibido mostra o passo a passo que o produziu**: a tabela usada, a soma, a cadeia de redução, a regra da escola e as divergências entre métodos. Ferramenta de estudo e autoconhecimento com honestidade epistêmica embutida na interface.
 
-**Estado atual: Fatia 1 (tracer bullet)** — Pessoa + escola Pitagórica + número de Expressão, end-to-end na web, com cálculo 100% no dispositivo (device-first: nenhum dado pessoal chega a servidor).
+**Estado atual: Fatia 2a+2b** — mapa pitagórico pessoal com 7 números (Expressão, Motivação, Impressão, Chave, Destino, Psíquico, Missão), variantes explícitas de método (redução do nome, classificação do Y, redução do Destino), end-to-end na web, com cálculo 100% no dispositivo (device-first: nenhum dado pessoal chega a servidor).
 
 ## Rodando
 

@@ -24,6 +24,8 @@ export type {
 export { normalizeName } from './value-objects/name-normalization-policy'
 export type { BirthNameError } from './value-objects/birth-name'
 export { BirthName } from './value-objects/birth-name'
+export type { LocalDateError } from './value-objects/local-date'
+export { LocalDate, daysInMonth } from './value-objects/local-date'
 
 export type { PersonSubject, Subject } from './entities/person-subject'
 export { personSubject } from './entities/person-subject'
@@ -45,14 +47,33 @@ export type {
   VariantOption,
 } from './ports/numerology-model'
 
-export type { ExpressionVariant } from './models/pythagorean/expression'
+export type {
+  NameNumberKind,
+  NameNumberVariants,
+  NameReductionVariant,
+} from './models/pythagorean/name-numbers'
 export {
-  DEFAULT_EXPRESSION_VARIANT,
-  EXPRESSION_REDUCTION_DIMENSION,
+  DEFAULT_NAME_REDUCTION,
+  NAME_REDUCTION_DIMENSION,
   calculateExpression,
-} from './models/pythagorean/expression'
+  calculateNameNumber,
+} from './models/pythagorean/name-numbers'
+export type { LetterRole, YClassificationVariant } from './models/pythagorean/letter-classification'
+export {
+  DEFAULT_Y_CLASSIFICATION,
+  classifyLetter,
+  lettersWithRole,
+} from './models/pythagorean/letter-classification'
+export type { LifePathVariant } from './models/pythagorean/date-numbers'
+export {
+  DEFAULT_LIFE_PATH_VARIANT,
+  LIFE_PATH_REDUCTION_DIMENSION,
+  calculateLifePath,
+  calculateMission,
+  calculatePsychic,
+} from './models/pythagorean/date-numbers'
 export { PYTHAGOREAN_LETTER_VALUES } from './models/pythagorean/letter-table'
-export { pythagoreanModel } from './models/pythagorean/pythagorean-model'
+export { Y_CLASSIFICATION_DIMENSION, pythagoreanModel } from './models/pythagorean/pythagorean-model'
 
 export type { UnknownModelError } from './models/registry'
 export { getModel, listModels } from './models/registry'

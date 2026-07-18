@@ -16,8 +16,13 @@ Cada fatia é end-to-end (UI → aplicação → domínio → volta) e entrega v
 
 **Critério de aceite:** digitar um nome e ver o valor final *e* cada passo que o produziu, sem nenhuma chamada de rede com dado pessoal.
 
-## Fatia 2 — Núcleo pessoal
-Todos os números pitagóricos (Motivação, Impressão, Chave, Destino, Psíquico, Missão, grades cármicas, ciclos/pináculos/desafios, Ano/Mês/Dia Pessoal); variante Y-vogal explícita; Supabase Auth; fluxo efêmero convidado; `usage_counters` (trial de 3 leituras **pós-cadastro** — ver avaliação, risco 2); entitlements; i18n pt-BR/es/en.
+## Fatia 2 — Núcleo pessoal (em andamento)
+- **2a — Números do nome ✅**: Motivação (vogais), Impressão (consoantes), Número Chave; variante explícita do Y (`y-classification`, ADR-0004); dimensão `name-reduction` generalizada; teste de consistência cruzada (vogais + consoantes = total).
+- **2b — Números da data ✅**: `LocalDate` puro sem timezone (ADR-0005), Destino com variante `life-path-reduction`, Psíquico, Missão; data opcional com erro explícito `missing-birth-date`.
+- **2c — Grade do nome (pendente)**: Lições Cármicas, Dívidas ocultas, Tendências Ocultas, Subconsciente.
+- **2d — i18n (pendente)**: UI pt-BR/es/en (o domínio já emite `LocalizedText`).
+- **2e — Auth + efêmero + `usage_counters` + entitlements (pendente — aguarda projeto Supabase)**. Trial de 3 leituras pós-cadastro (ver avaliação, risco 2).
+- Ciclos/Pináculos/Desafios e Ano/Mês/Dia Pessoal ficam para complemento da 2c.
 
 ## Fatia 3 — Pluralidade
 Engine Caldeu (número composto como saída de primeira classe); seleção múltipla de modelos; matriz comparativa com explicação automática de divergência.

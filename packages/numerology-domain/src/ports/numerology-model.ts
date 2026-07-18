@@ -36,6 +36,7 @@ export type CalculationError =
   | { readonly code: 'unsupported-number'; readonly number: NumberKind; readonly model: ModelId }
   | { readonly code: 'unsupported-subject'; readonly subject: SubjectKind; readonly model: ModelId }
   | { readonly code: 'unknown-variant'; readonly dimension: string; readonly option: string }
+  | { readonly code: 'missing-birth-date'; readonly number: NumberKind }
 
 /**
  * Port de escola numerológica (§4.3). Adicionar uma escola = criar um

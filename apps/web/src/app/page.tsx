@@ -1,4 +1,4 @@
-import { ExpressionCalculator } from '@/components/features/expression-calculator'
+import { ChartCalculator } from '@/components/features/chart-calculator'
 
 export default function HomePage() {
   return (
@@ -15,7 +15,7 @@ export default function HomePage() {
         </p>
       </header>
 
-      <ExpressionCalculator />
+      <ChartCalculator />
 
       <footer className="border-t border-slate-200 pt-4 text-xs leading-relaxed text-slate-500">
         <p>

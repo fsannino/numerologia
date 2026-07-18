@@ -4,10 +4,11 @@ import type {
   BirthNameError,
   CalculationError,
   CalculationTrace,
+  LocalDateError,
   ModelId,
   UnknownModelError,
 } from '@numerus/numerology-domain'
-import { BirthName, getModel, personSubject } from '@numerus/numerology-domain'
+import { BirthName, LocalDate, getModel, personSubject } from '@numerus/numerology-domain'
 import type { CalculateChartCommand } from './calculate-chart.command'
 
 export type ChartModelResult = {
@@ -22,6 +23,7 @@ export type Chart = {
 
 export type CalculateChartError =
   | { readonly code: 'invalid-name'; readonly cause: BirthNameError }
+  | { readonly code: 'invalid-birth-date'; readonly cause: LocalDateError }
   | UnknownModelError
   | CalculationError
 
@@ -34,7 +36,15 @@ export function calculateChart(command: CalculateChartCommand): Result<Chart, Ca
   if (!birthName.ok) {
     return err({ code: 'invalid-name', cause: birthName.error })
   }
-  const subject = personSubject(birthName.value)
+  let birthDate: LocalDate | undefined
+  if (command.subject.birthDate !== undefined && command.subject.birthDate !== '') {
+    const parsed = LocalDate.fromISO(command.subject.birthDate)
+    if (!parsed.ok) {
+      return err({ code: 'invalid-birth-date', cause: parsed.error })
+    }
+    birthDate = parsed.value
+  }
+  const subject = personSubject(birthName.value, birthDate)
 
   const results: ChartModelResult[] = []
   for (const modelId of command.models) {

@@ -9,8 +9,8 @@ function StepBody({ step }: { step: CalculationStep }) {
     case 'filter':
       return (
         <p className="font-mono text-sm">
-          &quot;{step.input.originalName}&quot; <span className="text-slate-400">→</span>{' '}
-          {step.output.words.join(' · ')}
+          &quot;{step.input.source}&quot; <span className="text-slate-400">→</span>{' '}
+          {step.output.kept.length > 0 ? step.output.kept.join(' · ') : <em>nenhuma letra</em>}
         </p>
       )
     case 'letter-mapping':
