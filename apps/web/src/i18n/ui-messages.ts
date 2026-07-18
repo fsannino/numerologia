@@ -66,7 +66,7 @@ export type UiMessages = {
     readonly divergenceCause: string
     readonly convergenceNote: string
   }
-  readonly modes: { readonly chart: string; readonly signature: string; readonly synastry: string; readonly company: string }
+  readonly modes: { readonly chart: string; readonly signature: string; readonly synastry: string; readonly company: string; readonly marriage: string }
   readonly signature: {
     readonly intro: string
     readonly registrationLabel: string
@@ -98,6 +98,13 @@ export type UiMessages = {
     readonly corporateTitle: string
     readonly brandTitle: string
     readonly harmonyTitle: string
+  }
+  readonly marriage: {
+    readonly intro: string
+    readonly weddingDateLabel: string
+    readonly build: string
+    readonly unionOfMarriageTitle: string
+    readonly coupleTitle: string
   }
   readonly numberLabels: Readonly<Record<string, NumberLabel>>
   readonly footer: string
@@ -168,7 +175,7 @@ const PT: UiMessages = {
     divergenceCause: 'Onde os valores divergem, a causa é a tabela de letras: 1–9 pela posição alfabética (pitagórica) × 1–8 por afinidade fonética, sem o 9 (caldaica) — e a caldaica não preserva números mestres na redução.',
     convergenceNote: 'Quando escolas independentes apontam o mesmo número, isso é convergência de método — não evidência.',
   },
-  modes: { chart: 'Mapa completo', signature: 'Assinatura / delta', synastry: 'Casal / sinastria', company: 'Empresa' },
+  modes: { chart: 'Mapa completo', signature: 'Assinatura / delta', synastry: 'Casal / sinastria', company: 'Empresa', marriage: 'Casamento' },
   signature: {
     intro: 'Compare o nome de registro com o nome que você usa no dia a dia e veja o que muda quando você assina de outra forma.',
     registrationLabel: 'Nome de registro',
@@ -201,6 +208,13 @@ const PT: UiMessages = {
     brandTitle: 'Marca (nome fantasia)',
     harmonyTitle: 'Harmonia e afinidade',
   },
+  marriage: {
+    intro: 'O casal e a data do casamento produzem o número regente da união e o Ano Pessoal do casamento. Vocabulário para reflexão sobre a união — não um veredito.',
+    weddingDateLabel: 'Data do casamento',
+    build: 'Calcular união formal',
+    unionOfMarriageTitle: 'Números da união formal (data do casamento)',
+    coupleTitle: 'Números da união do casal',
+  },
   numberLabels: {
     expression: { title: 'Expressão', hint: 'todas as letras do nome' },
     motivation: { title: 'Motivação (Alma)', hint: 'somente as vogais' },
@@ -226,6 +240,8 @@ const PT: UiMessages = {
     'union-key': { title: 'Chave da União', hint: 'dos dois Números Chave' },
     'brand-harmony': { title: 'Harmonia da Marca', hint: 'razão social + nome fantasia' },
     'founder-affinity': { title: 'Afinidade com o Sócio', hint: 'razão social + sócio' },
+    'marriage-governing': { title: 'Número Regente da União', hint: 'Caminho de Vida da data do casamento' },
+    'marriage-personal-year': { title: 'Ano Pessoal do Casamento', hint: 'ciclo atual da união' },
   },
   footer:
     'O Numerus é uma ferramenta de estudo, autoconhecimento e entretenimento cultural. Não substitui aconselhamento médico, psicológico, jurídico ou financeiro. O sistema de conversão de nomes praticado hoje foi estruturado no fim do séc. XIX / início do XX (L. Dow Balliett, Juno Jordan), reivindicando a herança pitagórica — cada escola exibe sua origem histórica real.',
@@ -296,7 +312,7 @@ const EN: UiMessages = {
     divergenceCause: 'Where values diverge, the cause is the letter table: 1–9 by alphabetical position (Pythagorean) × 1–8 by phonetic affinity, without 9 (Chaldean) — and the Chaldean school does not preserve master numbers when reducing.',
     convergenceNote: 'When independent schools point to the same number, that is convergence of method — not evidence.',
   },
-  modes: { chart: 'Full chart', signature: 'Signature / delta', synastry: 'Couple / synastry', company: 'Company' },
+  modes: { chart: 'Full chart', signature: 'Signature / delta', synastry: 'Couple / synastry', company: 'Company', marriage: 'Marriage' },
   signature: {
     intro: 'Compare your registration name with the name you use day to day and see what changes when you sign differently.',
     registrationLabel: 'Registration name',
@@ -329,6 +345,13 @@ const EN: UiMessages = {
     brandTitle: 'Brand (trade name)',
     harmonyTitle: 'Harmony and affinity',
   },
+  marriage: {
+    intro: 'The couple and the wedding date produce the union governing number and the marriage Personal Year. Vocabulary for reflecting on the union — not a verdict.',
+    weddingDateLabel: 'Wedding date',
+    build: 'Calculate formal union',
+    unionOfMarriageTitle: 'Formal union numbers (wedding date)',
+    coupleTitle: "Couple's union numbers",
+  },
   numberLabels: {
     expression: { title: 'Expression', hint: 'every letter of the name' },
     motivation: { title: 'Motivation (Soul Urge)', hint: 'vowels only' },
@@ -354,6 +377,8 @@ const EN: UiMessages = {
     'union-key': { title: 'Union Key', hint: 'from both Key Numbers' },
     'brand-harmony': { title: 'Brand Harmony', hint: 'legal name + trade name' },
     'founder-affinity': { title: 'Founder Affinity', hint: 'legal name + founder' },
+    'marriage-governing': { title: 'Union Governing Number', hint: 'Life Path of the wedding date' },
+    'marriage-personal-year': { title: 'Marriage Personal Year', hint: "the union's current cycle" },
   },
   footer:
     'Numerus is a tool for study, self-knowledge and cultural entertainment. It does not replace medical, psychological, legal or financial advice. The name-conversion system as practiced today was structured in the late 19th / early 20th century (L. Dow Balliett, Juno Jordan), claiming the Pythagorean heritage — each school displays its real historical origin.',
@@ -424,7 +449,7 @@ const ES: UiMessages = {
     divergenceCause: 'Donde los valores divergen, la causa es la tabla de letras: 1–9 por posición alfabética (pitagórica) × 1–8 por afinidad fonética, sin el 9 (caldea) — y la escuela caldea no preserva números maestros al reducir.',
     convergenceNote: 'Cuando escuelas independientes señalan el mismo número, eso es convergencia de método — no evidencia.',
   },
-  modes: { chart: 'Carta completa', signature: 'Firma / delta', synastry: 'Pareja / sinastría', company: 'Empresa' },
+  modes: { chart: 'Carta completa', signature: 'Firma / delta', synastry: 'Pareja / sinastría', company: 'Empresa', marriage: 'Matrimonio' },
   signature: {
     intro: 'Compara tu nombre de registro con el nombre que usas a diario y ve qué cambia cuando firmas de otra forma.',
     registrationLabel: 'Nombre de registro',
@@ -457,6 +482,13 @@ const ES: UiMessages = {
     brandTitle: 'Marca (nombre comercial)',
     harmonyTitle: 'Armonía y afinidad',
   },
+  marriage: {
+    intro: 'La pareja y la fecha de la boda producen el número regente de la unión y el Año Personal del matrimonio. Vocabulario para reflexionar sobre la unión — no un veredicto.',
+    weddingDateLabel: 'Fecha de la boda',
+    build: 'Calcular unión formal',
+    unionOfMarriageTitle: 'Números de la unión formal (fecha de la boda)',
+    coupleTitle: 'Números de la unión de la pareja',
+  },
   numberLabels: {
     expression: { title: 'Expresión', hint: 'todas las letras del nombre' },
     motivation: { title: 'Motivación (Alma)', hint: 'solo las vocales' },
@@ -482,6 +514,8 @@ const ES: UiMessages = {
     'union-key': { title: 'Clave de la Unión', hint: 'de ambos Números Clave' },
     'brand-harmony': { title: 'Armonía de la Marca', hint: 'razón social + nombre comercial' },
     'founder-affinity': { title: 'Afinidad con el Socio', hint: 'razón social + socio' },
+    'marriage-governing': { title: 'Número Regente de la Unión', hint: 'Camino de Vida de la fecha de la boda' },
+    'marriage-personal-year': { title: 'Año Personal del Matrimonio', hint: 'ciclo actual de la unión' },
   },
   footer:
     'Numerus es una herramienta de estudio, autoconocimiento y entretenimiento cultural. No sustituye el consejo médico, psicológico, jurídico ni financiero. El sistema de conversión de nombres tal como se practica hoy fue estructurado a finales del s. XIX / inicios del XX (L. Dow Balliett, Juno Jordan), reivindicando la herencia pitagórica — cada escuela muestra su origen histórico real.',

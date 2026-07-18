@@ -9,10 +9,11 @@ import { ChartCalculator } from '@/components/features/chart-calculator'
 import { SignatureComparator } from '@/components/features/signature-comparator'
 import { SynastryCalculator } from '@/components/features/synastry-calculator'
 import { CompanyCalculator } from '@/components/features/company-calculator'
+import { MarriageCalculator } from '@/components/features/marriage-calculator'
 
 const LOCALE_SHORT_NAMES: Readonly<Record<Locale, string>> = { 'pt-BR': 'PT', en: 'EN', es: 'ES' }
 
-type Mode = 'chart' | 'signature' | 'synastry' | 'company'
+type Mode = 'chart' | 'signature' | 'synastry' | 'company' | 'marriage'
 
 function Shell() {
   const { locale, setLocale } = useLocale()
@@ -48,7 +49,7 @@ function Shell() {
       </header>
 
       <nav aria-label={t.modes.chart} className="flex gap-2 border-b border-slate-200">
-        {(['chart', 'signature', 'synastry', 'company'] as const).map((option) => (
+        {(['chart', 'signature', 'synastry', 'company', 'marriage'] as const).map((option) => (
           <button
             key={option}
             type="button"
@@ -69,6 +70,7 @@ function Shell() {
       {mode === 'signature' && <SignatureComparator />}
       {mode === 'synastry' && <SynastryCalculator />}
       {mode === 'company' && <CompanyCalculator />}
+      {mode === 'marriage' && <MarriageCalculator />}
 
       <footer className="border-t border-slate-200 pt-4 text-xs leading-relaxed text-slate-500">
         <p>{t.footer}</p>

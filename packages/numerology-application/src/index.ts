@@ -31,3 +31,10 @@ export type {
   CompanyModelResult,
 } from './use-cases/calculate-company-chart/calculate-company-chart.handler'
 export { calculateCompanyChart } from './use-cases/calculate-company-chart/calculate-company-chart.handler'
+
+export type { CalculateMarriageChartCommand } from './use-cases/calculate-marriage-chart/calculate-marriage-chart.command'
+export type {
+  CalculateMarriageChartError,
+  MarriageChart,
+} from './use-cases/calculate-marriage-chart/calculate-marriage-chart.handler'
+export { calculateMarriageChart } from './use-cases/calculate-marriage-chart/calculate-marriage-chart.handler'

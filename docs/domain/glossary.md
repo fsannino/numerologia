@@ -73,6 +73,15 @@ Regra epistêmica dura (§9): os números da união são vocabulário para refle
 | `founder-affinity` / Afinidade com o Sócio | Combina a Expressão da razão social e a de um sócio. |
 | Destino corporativo | Caminho de Vida da data de constituição. |
 
+## Casamento (união formal)
+
+| Termo (código) | Definição |
+|---|---|
+| `marriage-governing` / Número Regente | Caminho de Vida da data do casamento — a vibração de destino da união formal (§2.3, item 3). |
+| `marriage-personal-year` / Ano Pessoal do Casamento | Ano Pessoal calculado tratando a data do casamento como o "nascimento" da união. |
+
+O casamento reusa a sinastria (números da união do casal) + os números da data do casamento (independentes de escola).
+
 `combineReducedValues` é o primitivo de domínio compartilhado por sinastria e empresa (soma de valores reduzidos + redução preservando mestres).
 
 O glossário cresce uma seção por escola a cada fase (caldaica, gematria, Lo Shu, védica...), com fonte histórica em `docs/domain/models-reference.md`.
