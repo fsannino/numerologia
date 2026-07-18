@@ -2,6 +2,10 @@ import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import './globals.css'
 
+// Render dinâmico: necessário para o CSP com nonce por requisição aplicado
+// pelo middleware alcançar os scripts injetados pelo Next (spec §5).
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'Numerus — numerologia transparente',
   description:

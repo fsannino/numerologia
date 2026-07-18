@@ -4,6 +4,10 @@ export type KarmicDebtNumber = 13 | 14 | 16 | 19
 export const MASTER_NUMBERS: ReadonlySet<number> = new Set([11, 22, 33])
 export const KARMIC_DEBT_NUMBERS: ReadonlySet<number> = new Set([13, 14, 16, 19])
 
+/** Maior raiz numerológica simples: reduções convergem para 1–9 (ou um mestre). */
+const NUMEROLOGICAL_ROOT_MAX = 9
+const DECIMAL_BASE = 10
+
 /**
  * Cadeia de redução com cada etapa explícita: 62 → 8 vira [62, 8].
  * O primeiro elemento é sempre o valor bruto; o último, o reduzido.
@@ -35,8 +39,8 @@ export function sumDigits(value: number): number {
   let remaining = Math.abs(Math.trunc(value))
   let total = 0
   while (remaining > 0) {
-    total += remaining % 10
-    remaining = Math.trunc(remaining / 10)
+    total += remaining % DECIMAL_BASE
+    remaining = Math.trunc(remaining / DECIMAL_BASE)
   }
   return total
 }
@@ -55,7 +59,7 @@ export function reduceToValue(
   }
   const chain: number[] = [raw]
   let current = raw
-  while (current > 9 && !(options.preserveMasters && isMasterNumber(current))) {
+  while (current > NUMEROLOGICAL_ROOT_MAX && !(options.preserveMasters && isMasterNumber(current))) {
     current = sumDigits(current)
     chain.push(current)
   }

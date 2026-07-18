@@ -11,7 +11,7 @@ Escopo atual: aplicação web estática com cálculo 100% no cliente. **Nenhum d
 
 | Ameaça | Mitigação |
 |---|---|
-| Exfiltração do nome via dependência comprometida (supply chain) | Sem chamada de rede no fluxo de cálculo; dependências mínimas e auditadas no CI (`pnpm audit`); CSP sem `unsafe-inline` planejada ao existir deploy. |
+| Exfiltração do nome via dependência comprometida (supply chain) | Sem chamada de rede no fluxo de cálculo; dependências mínimas e auditadas no CI (`pnpm audit` + gitleaks); **CSP com nonce por requisição** (`connect-src 'self'`, sem `unsafe-inline` em scripts) aplicada por middleware, mais `nosniff`, `frame-ancestors 'none'`, Referrer-Policy, Permissions-Policy e HSTS. |
 | Dado pessoal em logs/telemetria | Não há telemetria nesta fatia. Regra permanente: nunca logar nome/data (pino.redact quando houver backend). |
 | Resultado incorreto silencioso | Traço obrigatório (não existe número sem passos), fixtures conferidas manualmente, testes de propriedade, versão do engine gravada no traço. |
 | Caractere não suportado descartado em silêncio | Erro explícito `unsupported-character` (ADR-0002). |
