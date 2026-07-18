@@ -19,7 +19,7 @@ Cada fatia é end-to-end (UI → aplicação → domínio → volta) e entrega v
 ## Fatia 2 — Núcleo pessoal (em andamento)
 - **2a — Números do nome ✅**: Motivação (vogais), Impressão (consoantes), Número Chave; variante explícita do Y (`y-classification`, ADR-0004); dimensão `name-reduction` generalizada; teste de consistência cruzada (vogais + consoantes = total).
 - **2b — Números da data ✅**: `LocalDate` puro sem timezone (ADR-0005), Destino com variante `life-path-reduction`, Psíquico, Missão; data opcional com erro explícito `missing-birth-date`.
-- **2c — Grade do nome ✅ (parcial)**: Lições Cármicas, Tendências Ocultas e Subconsciente via passo `grid-analysis` (ADR-0006); dívidas ocultas já cobertas pelos `karmic-check` dos números. **Pendente**: Ciclos de Vida, Pináculos, Desafios e Ano/Mês/Dia Pessoal.
+- **2c — Grade do nome e números de tempo ✅**: Lições Cármicas, Tendências Ocultas e Subconsciente via passo `grid-analysis` (ADR-0006); Ciclos de Vida, Pináculos, Desafios e Ano/Mês/Dia Pessoal via passo `timeline` com data de referência explícita (ADR-0007).
 - **2d — i18n (pendente)**: UI pt-BR/es/en (o domínio já emite `LocalizedText`).
 - **2e — Auth + efêmero + `usage_counters` + entitlements (pendente — aguarda projeto Supabase)**. Trial de 3 leituras pós-cadastro (ver avaliação, risco 2).
 - Ciclos/Pináculos/Desafios e Ano/Mês/Dia Pessoal ficam para complemento da 2c.

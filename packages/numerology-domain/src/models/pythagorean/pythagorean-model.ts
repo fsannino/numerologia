@@ -15,6 +15,13 @@ import type { YClassificationVariant } from './letter-classification'
 import { DEFAULT_Y_CLASSIFICATION } from './letter-classification'
 import type { NameGridNumberKind } from './name-grid'
 import { calculateNameGridNumber } from './name-grid'
+import {
+  calculateChallenges,
+  calculateLifeCycles,
+  calculatePersonalTime,
+  calculatePinnacles,
+} from './time-numbers'
+import type { LocalDate } from '../../value-objects/local-date'
 import type { LifePathVariant } from './date-numbers'
 import {
   DEFAULT_LIFE_PATH_VARIANT,
@@ -38,10 +45,24 @@ const SUPPORTED_NUMBERS: ReadonlySet<NumberKind> = new Set([
   'karmic-lessons',
   'hidden-tendencies',
   'subconscious',
+  'life-cycles',
+  'pinnacles',
+  'challenges',
+  'personal-year',
+  'personal-month',
+  'personal-day',
 ])
 
 const NAME_NUMBER_KINDS: ReadonlySet<NumberKind> = new Set(['expression', 'motivation', 'impression', 'key-number'])
 const NAME_GRID_KINDS: ReadonlySet<NumberKind> = new Set(['karmic-lessons', 'hidden-tendencies', 'subconscious'])
+const TIME_KINDS: ReadonlySet<NumberKind> = new Set([
+  'life-cycles',
+  'pinnacles',
+  'challenges',
+  'personal-year',
+  'personal-month',
+  'personal-day',
+])
 
 const VARIANT_DIMENSIONS: ReadonlyArray<VariantDimension> = [
   {
@@ -150,6 +171,7 @@ function calculateOne(
   subject: Subject,
   number: NumberKind,
   variants: ResolvedVariants,
+  referenceDate: LocalDate | undefined,
 ): Result<CalculationTrace, CalculationError> {
   const nameVariants: NameNumberVariants = {
     reduction: variants.nameReduction,
@@ -164,6 +186,23 @@ function calculateOne(
   const birthDate = subject.birthDate
   if (birthDate === undefined) {
     return err({ code: 'missing-birth-date', number })
+  }
+  if (TIME_KINDS.has(number)) {
+    if (referenceDate === undefined) {
+      return err({ code: 'missing-reference-date', number })
+    }
+    switch (number) {
+      case 'life-cycles':
+        return calculateLifeCycles(birthDate, referenceDate, variants.lifePath)
+      case 'pinnacles':
+        return calculatePinnacles(birthDate, referenceDate, variants.lifePath)
+      case 'challenges':
+        return calculateChallenges(birthDate, referenceDate, variants.lifePath)
+      case 'personal-year':
+      case 'personal-month':
+      case 'personal-day':
+        return calculatePersonalTime(number, birthDate, referenceDate)
+    }
   }
   switch (number) {
     case 'life-path':
@@ -217,7 +256,7 @@ export const pythagoreanModel: NumerologyModel = {
     }
     const traces: CalculationTrace[] = []
     for (const number of request.numbers) {
-      const trace = calculateOne(subject, number, variants.value)
+      const trace = calculateOne(subject, number, variants.value, request.referenceDate)
       if (!trace.ok) {
         return trace
       }

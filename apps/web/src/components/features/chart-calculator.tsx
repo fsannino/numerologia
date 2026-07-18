@@ -20,7 +20,24 @@ const NAME_NUMBERS: ReadonlyArray<NumberKind> = [
   'hidden-tendencies',
   'subconscious',
 ]
-const DATE_NUMBERS: ReadonlyArray<NumberKind> = ['life-path', 'psychic', 'mission']
+const DATE_NUMBERS: ReadonlyArray<NumberKind> = [
+  'life-path',
+  'psychic',
+  'mission',
+  'life-cycles',
+  'pinnacles',
+  'challenges',
+  'personal-year',
+  'personal-month',
+  'personal-day',
+]
+
+/** "Hoje" calculado na UI — o domínio nunca lê o relógio (ADR-0007). */
+function todayISO(): string {
+  const now = new Date()
+  const pad = (value: number) => String(value).padStart(2, '0')
+  return `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`
+}
 
 function errorMessage(error: CalculateChartError): string {
   switch (error.code) {
@@ -34,7 +51,13 @@ function errorMessage(error: CalculateChartError): string {
     case 'invalid-birth-date':
       return 'A data de nascimento é inválida — confira dia, mês e ano.'
     case 'missing-birth-date':
-      return 'Informe a data de nascimento para calcular Destino, Psíquico e Missão.'
+      return 'Informe a data de nascimento para calcular os números derivados da data.'
+    case 'invalid-reference-date':
+      return 'A data de referência é inválida — confira dia, mês e ano.'
+    case 'missing-reference-date':
+      return 'Informe a data de referência para calcular os números de tempo.'
+    case 'reference-before-birth-date':
+      return 'A data de referência não pode ser anterior ao nascimento.'
     case 'unknown-model':
       return `Escola ainda não disponível: ${error.model}.`
     case 'unsupported-number':
@@ -49,8 +72,10 @@ function errorMessage(error: CalculateChartError): string {
 export function ChartCalculator() {
   const nameInputId = useId()
   const dateInputId = useId()
+  const referenceInputId = useId()
   const [fullName, setFullName] = useState('')
   const [birthDate, setBirthDate] = useState('')
+  const [referenceDate, setReferenceDate] = useState(todayISO)
   const [variantSelections, setVariantSelections] = useState<Record<string, string>>({})
   const [chart, setChart] = useState<Chart | null>(null)
   const [error, setError] = useState<string | null>(null)
@@ -63,6 +88,7 @@ export function ChartCalculator() {
       models: ['pythagorean'],
       numbers,
       variantSelections,
+      ...(referenceDate !== '' ? { referenceDate } : {}),
     })
     if (!result.ok) {
       setChart(null)
@@ -115,8 +141,25 @@ export function ChartCalculator() {
             className="w-fit rounded-lg border border-slate-300 bg-white px-3 py-2"
           />
           <p className="text-xs text-slate-500">
-            Necessária apenas para Destino, Psíquico e Missão. Como todo o resto, nunca sai do seu
+            Necessária apenas para os números derivados da data. Como todo o resto, nunca sai do seu
             dispositivo.
+          </p>
+        </div>
+
+        <div className="flex flex-col gap-1">
+          <label htmlFor={referenceInputId} className="font-medium">
+            Data de referência <span className="font-normal text-slate-500">(para os números de tempo)</span>
+          </label>
+          <input
+            id={referenceInputId}
+            type="date"
+            value={referenceDate}
+            onChange={(event) => setReferenceDate(event.target.value)}
+            className="w-fit rounded-lg border border-slate-300 bg-white px-3 py-2"
+          />
+          <p className="text-xs text-slate-500">
+            Ciclos, Pináculos, Desafios e Ano/Mês/Dia Pessoal são calculados para esta data — por
+            padrão, hoje.
           </p>
         </div>
 

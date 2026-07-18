@@ -35,6 +35,38 @@ function StepBody({ step }: { step: CalculationStep }) {
       )
     case 'reduction':
       return <ReductionChain value={step.output.value} />
+    case 'timeline':
+      return (
+        <ol className="flex flex-col gap-1.5" aria-label="Linha do tempo dos períodos">
+          {step.output.segments.map((segment, index) => (
+            <li
+              key={index}
+              className={`flex items-center gap-3 rounded-lg border px-3 py-2 ${
+                segment.isCurrent ? 'border-indigo-400 bg-indigo-50' : 'border-slate-200 bg-white'
+              }`}
+            >
+              <span
+                className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg font-bold ${
+                  segment.isCurrent ? 'bg-indigo-600 text-white' : 'bg-slate-200 text-slate-700'
+                }`}
+              >
+                {segment.value.reduced}
+              </span>
+              <div className="flex min-w-0 flex-col">
+                <span className="text-sm font-medium">{localize(segment.label, LOCALE)}</span>
+                <span className="text-xs text-slate-500">
+                  {segment.toAge !== undefined
+                    ? `dos ${segment.fromAge} aos ${segment.toAge} anos`
+                    : `dos ${segment.fromAge} anos em diante`}
+                  {segment.isCurrent ? ' · vigente' : ''}
+                  {segment.value.isMaster ? ' · ✦ mestre' : ''}
+                  {segment.value.karmicDebt !== undefined ? ` · dívida ${segment.value.karmicDebt}` : ''}
+                </span>
+              </div>
+            </li>
+          ))}
+        </ol>
+      )
     case 'grid-analysis':
       return (
         <ul className="grid grid-cols-3 gap-1.5 sm:grid-cols-9" aria-label="Grade de dígitos do nome">

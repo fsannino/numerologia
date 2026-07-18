@@ -20,6 +20,16 @@ export type DigitTallyEntry = {
   readonly count: number
 }
 
+/** Um período de uma linha do tempo numerológica (ADR-0007). */
+export type TimelineSegment = {
+  readonly label: LocalizedText
+  readonly value: NumerologyValue
+  readonly fromAge: number
+  /** Ausente no último período (vale até o fim da vida). */
+  readonly toAge?: number
+  readonly isCurrent: boolean
+}
+
 /** União discriminada por `kind`: dá render type-safe sem casts na UI. */
 export type CalculationStep =
   | {
@@ -75,6 +85,14 @@ export type CalculationStep =
         readonly highlighted: ReadonlyArray<number>
       }
       readonly visual: 'digit-grid'
+    }
+  | {
+      readonly kind: 'timeline'
+      readonly title: LocalizedText
+      readonly explanation: LocalizedText
+      readonly input: { readonly ageAtReference: number }
+      readonly output: { readonly segments: ReadonlyArray<TimelineSegment> }
+      readonly visual: 'timeline'
     }
   | {
       readonly kind: 'karmic-check'

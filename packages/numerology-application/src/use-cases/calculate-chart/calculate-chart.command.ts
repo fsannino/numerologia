@@ -14,4 +14,6 @@ export type CalculateChartCommand = {
   readonly models: ReadonlyArray<ModelId>
   readonly numbers: ReadonlyArray<NumberKind>
   readonly variantSelections?: Readonly<Record<string, string>>
+  /** ISO `YYYY-MM-DD`; exigida apenas para números de tempo (ADR-0007). */
+  readonly referenceDate?: string
 }

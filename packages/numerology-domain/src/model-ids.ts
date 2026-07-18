@@ -17,6 +17,12 @@ export type NumberKind =
   | 'karmic-lessons'
   | 'hidden-tendencies'
   | 'subconscious'
+  | 'life-cycles'
+  | 'pinnacles'
+  | 'challenges'
+  | 'personal-year'
+  | 'personal-month'
+  | 'personal-day'
 
 export type SubjectKind =
   | 'person'

@@ -117,6 +117,38 @@ export const PYTHAGOREAN_RULES = {
     ),
     source: text('Tradição numerológica moderna (Balliett/Jordan).', 'Modern numerological tradition (Balliett/Jordan).'),
   },
+  lifeCyclesFromDateParts: {
+    id: 'pythagorean/life-cycles',
+    rule: text(
+      'Os três Ciclos de Vida vêm do mês (formativo), do dia (produtivo) e do ano (colheita) reduzidos; o primeiro ciclo vai até a idade 36 menos o Caminho de Vida, o segundo dura 27 anos e o terceiro segue até o fim.',
+      'The three Life Cycles come from the reduced month (formative), day (productive) and year (harvest); the first cycle lasts until age 36 minus the Life Path, the second lasts 27 years and the third runs to the end.',
+    ),
+    source: text('Juno Jordan, "Numerology: The Romance in Your Name" (1965).', 'Juno Jordan, "Numerology: The Romance in Your Name" (1965).'),
+  },
+  pinnaclesFromDateParts: {
+    id: 'pythagorean/pinnacles',
+    rule: text(
+      'Os quatro Pináculos: P1 = dia+mês, P2 = dia+ano, P3 = P1+P2, P4 = mês+ano (partes reduzidas, mestres preservados). P1 vai até 36 menos o Caminho de Vida; P2 e P3 duram 9 anos cada; P4 segue até o fim.',
+      'The four Pinnacles: P1 = day+month, P2 = day+year, P3 = P1+P2, P4 = month+year (reduced parts, masters preserved). P1 lasts until 36 minus the Life Path; P2 and P3 last 9 years each; P4 runs to the end.',
+    ),
+    source: text('Juno Jordan, "Numerology: The Romance in Your Name" (1965).', 'Juno Jordan, "Numerology: The Romance in Your Name" (1965).'),
+  },
+  challengesFromDateParts: {
+    id: 'pythagorean/challenges',
+    rule: text(
+      'Os quatro Desafios são diferenças absolutas dos componentes totalmente reduzidos: D1 = |mês−dia|, D2 = |dia−ano|, D3 = |D1−D2|, D4 = |mês−ano|. O resultado vai de 0 a 8 — o desafio 0 existe e não há números mestres em desafios.',
+      'The four Challenges are absolute differences of the fully reduced components: C1 = |month−day|, C2 = |day−year|, C3 = |C1−C2|, C4 = |month−year|. Results range 0–8 — challenge 0 exists and there are no master numbers in challenges.',
+    ),
+    source: text('Tradição numerológica moderna (Balliett/Jordan).', 'Modern numerological tradition (Balliett/Jordan).'),
+  },
+  personalTimeFromReference: {
+    id: 'pythagorean/personal-time',
+    rule: text(
+      'Ano Pessoal = dia e mês de nascimento + ano de referência (partes reduzidas); Mês Pessoal = Ano Pessoal + mês de referência; Dia Pessoal = Mês Pessoal + dia de referência. Totalmente reduzidos (1–9): o ciclo de nove anos fecha (ADR-0007).',
+      'Personal Year = birth day and month + reference year (reduced parts); Personal Month = Personal Year + reference month; Personal Day = Personal Month + reference day. Fully reduced (1–9): the nine-year cycle closes (ADR-0007).',
+    ),
+    source: text('Tradição numerológica moderna (Balliett/Jordan).', 'Modern numerological tradition (Balliett/Jordan).'),
+  },
   karmicDebts: {
     id: 'pythagorean/karmic-debts',
     rule: text(

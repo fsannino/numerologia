@@ -16,6 +16,12 @@ const NUMBER_LABELS: Record<string, { title: string; hint: string }> = {
   'karmic-lessons': { title: 'Lições Cármicas', hint: 'dígitos ausentes na grade do nome' },
   'hidden-tendencies': { title: 'Tendências Ocultas', hint: 'dígitos repetidos 3+ vezes' },
   subconscious: { title: 'Subconsciente', hint: 'dígitos distintos presentes' },
+  'life-cycles': { title: 'Ciclos de Vida', hint: 'ciclo vigente na data de referência' },
+  pinnacles: { title: 'Pináculos', hint: 'pináculo vigente na data de referência' },
+  challenges: { title: 'Desafios', hint: 'desafio vigente na data de referência' },
+  'personal-year': { title: 'Ano Pessoal', hint: 'vibração do ano de referência' },
+  'personal-month': { title: 'Mês Pessoal', hint: 'vibração do mês de referência' },
+  'personal-day': { title: 'Dia Pessoal', hint: 'vibração do dia de referência' },
 }
 
 /** Para números de grade, os dígitos destacados aparecem no próprio card. */
