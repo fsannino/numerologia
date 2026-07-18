@@ -66,6 +66,18 @@ export type UiMessages = {
     readonly divergenceCause: string
     readonly convergenceNote: string
   }
+  readonly modes: { readonly chart: string; readonly signature: string }
+  readonly signature: {
+    readonly intro: string
+    readonly registrationLabel: string
+    readonly signatureLabel: string
+    readonly compare: string
+    readonly changedSummary: (count: number) => string
+    readonly noChange: string
+    readonly changedTag: string
+    readonly registrationColumn: string
+    readonly signatureColumn: string
+  }
   readonly numberLabels: Readonly<Record<string, NumberLabel>>
   readonly footer: string
 }
@@ -134,6 +146,18 @@ const PT: UiMessages = {
     notCalculated: 'não calcula',
     divergenceCause: 'Onde os valores divergem, a causa é a tabela de letras: 1–9 pela posição alfabética (pitagórica) × 1–8 por afinidade fonética, sem o 9 (caldaica) — e a caldaica não preserva números mestres na redução.',
     convergenceNote: 'Quando escolas independentes apontam o mesmo número, isso é convergência de método — não evidência.',
+  },
+  modes: { chart: 'Mapa completo', signature: 'Assinatura / delta' },
+  signature: {
+    intro: 'Compare o nome de registro com o nome que você usa no dia a dia e veja o que muda quando você assina de outra forma.',
+    registrationLabel: 'Nome de registro',
+    signatureLabel: 'Nome de assinatura / dia a dia',
+    compare: 'Comparar assinaturas',
+    changedSummary: (count) => `${count} ${count === 1 ? 'número muda' : 'números mudam'} entre os dois nomes.`,
+    noChange: 'Nenhum número do nome muda entre as duas formas.',
+    changedTag: 'muda',
+    registrationColumn: 'Registro',
+    signatureColumn: 'Assinatura',
   },
   numberLabels: {
     expression: { title: 'Expressão', hint: 'todas as letras do nome' },
@@ -222,6 +246,18 @@ const EN: UiMessages = {
     divergenceCause: 'Where values diverge, the cause is the letter table: 1–9 by alphabetical position (Pythagorean) × 1–8 by phonetic affinity, without 9 (Chaldean) — and the Chaldean school does not preserve master numbers when reducing.',
     convergenceNote: 'When independent schools point to the same number, that is convergence of method — not evidence.',
   },
+  modes: { chart: 'Full chart', signature: 'Signature / delta' },
+  signature: {
+    intro: 'Compare your registration name with the name you use day to day and see what changes when you sign differently.',
+    registrationLabel: 'Registration name',
+    signatureLabel: 'Signature / everyday name',
+    compare: 'Compare signatures',
+    changedSummary: (count) => `${count} ${count === 1 ? 'number changes' : 'numbers change'} between the two names.`,
+    noChange: 'No name number changes between the two forms.',
+    changedTag: 'changes',
+    registrationColumn: 'Registration',
+    signatureColumn: 'Signature',
+  },
   numberLabels: {
     expression: { title: 'Expression', hint: 'every letter of the name' },
     motivation: { title: 'Motivation (Soul Urge)', hint: 'vowels only' },
@@ -308,6 +344,18 @@ const ES: UiMessages = {
     notCalculated: 'no calcula',
     divergenceCause: 'Donde los valores divergen, la causa es la tabla de letras: 1–9 por posición alfabética (pitagórica) × 1–8 por afinidad fonética, sin el 9 (caldea) — y la escuela caldea no preserva números maestros al reducir.',
     convergenceNote: 'Cuando escuelas independientes señalan el mismo número, eso es convergencia de método — no evidencia.',
+  },
+  modes: { chart: 'Carta completa', signature: 'Firma / delta' },
+  signature: {
+    intro: 'Compara tu nombre de registro con el nombre que usas a diario y ve qué cambia cuando firmas de otra forma.',
+    registrationLabel: 'Nombre de registro',
+    signatureLabel: 'Nombre de firma / diario',
+    compare: 'Comparar firmas',
+    changedSummary: (count) => `${count} ${count === 1 ? 'número cambia' : 'números cambian'} entre los dos nombres.`,
+    noChange: 'Ningún número del nombre cambia entre las dos formas.',
+    changedTag: 'cambia',
+    registrationColumn: 'Registro',
+    signatureColumn: 'Firma',
   },
   numberLabels: {
     expression: { title: 'Expresión', hint: 'todas las letras del nombre' },
