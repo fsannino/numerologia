@@ -29,6 +29,8 @@ export type NumberKind =
   | 'union-personality'
   | 'union-mission'
   | 'union-key'
+  | 'brand-harmony'
+  | 'founder-affinity'
 
 export type SubjectKind =
   | 'person'

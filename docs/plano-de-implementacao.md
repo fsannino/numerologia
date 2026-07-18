@@ -36,7 +36,8 @@ Carteira de clientes; persistência server-side com RLS por `professional_id` + 
 ## Fatia 6 — Sujeitos (em andamento)
 - **Nome alternativo / assinatura ✅**: use case `CompareSignatures` — delta vibracional entre nome de registro e nome do dia a dia.
 - **Casal / Sinastria ✅**: serviço de domínio `union-numbers` (agnóstico de escola — qualquer escola nova ganha sinastria de graça, R5) + use case `BuildSynastry`. Seis números da união (Destino, Alma, Expressão, Personalidade, Missão, Chave), comparação de Anos Pessoais, marcação de convergências. Linguagem de reflexão, nunca veredito de compatibilidade (§9). Modo próprio na UI com disclaimer permanente.
-- **Pendente**: casamento (casal + data), empresa (razão social/fantasia/constituição), evento/data.
+- **Empresa ✅**: agregado `CompanySubject` via use case `CalculateCompanyChart` — identidade corporativa (razão social), marca (nome fantasia), harmonia marca↔razão, destino corporativo (data de constituição) e afinidade opcional com sócio. Reusa o primitivo `combineReducedValues` (compartilhado com a sinastria). Modo próprio na UI, disclaimer §9.
+- **Pendente**: casamento (casal + data do casamento), evento/data.
 
 ## Fatia 7 — Educacional
 Modo aprendiz com conferência de cálculo manual, trilhas, glossário navegável, PDF didático.

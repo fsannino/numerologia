@@ -66,7 +66,7 @@ export type UiMessages = {
     readonly divergenceCause: string
     readonly convergenceNote: string
   }
-  readonly modes: { readonly chart: string; readonly signature: string; readonly synastry: string }
+  readonly modes: { readonly chart: string; readonly signature: string; readonly synastry: string; readonly company: string }
   readonly signature: {
     readonly intro: string
     readonly registrationLabel: string
@@ -87,6 +87,17 @@ export type UiMessages = {
     readonly personalYearTitle: string
     readonly convergenceNote: (count: number) => string
     readonly reflectionDisclaimer: string
+  }
+  readonly company: {
+    readonly intro: string
+    readonly legalNameLabel: string
+    readonly tradeNameLabel: string
+    readonly incorporationLabel: string
+    readonly founderLabel: string
+    readonly build: string
+    readonly corporateTitle: string
+    readonly brandTitle: string
+    readonly harmonyTitle: string
   }
   readonly numberLabels: Readonly<Record<string, NumberLabel>>
   readonly footer: string
@@ -157,7 +168,7 @@ const PT: UiMessages = {
     divergenceCause: 'Onde os valores divergem, a causa é a tabela de letras: 1–9 pela posição alfabética (pitagórica) × 1–8 por afinidade fonética, sem o 9 (caldaica) — e a caldaica não preserva números mestres na redução.',
     convergenceNote: 'Quando escolas independentes apontam o mesmo número, isso é convergência de método — não evidência.',
   },
-  modes: { chart: 'Mapa completo', signature: 'Assinatura / delta', synastry: 'Casal / sinastria' },
+  modes: { chart: 'Mapa completo', signature: 'Assinatura / delta', synastry: 'Casal / sinastria', company: 'Empresa' },
   signature: {
     intro: 'Compare o nome de registro com o nome que você usa no dia a dia e veja o que muda quando você assina de outra forma.',
     registrationLabel: 'Nome de registro',
@@ -178,6 +189,17 @@ const PT: UiMessages = {
     personalYearTitle: 'Comparação de Anos Pessoais',
     convergenceNote: (count) => `${count} ${count === 1 ? 'número da união converge' : 'números da união convergem'} (as duas pessoas já compartilham o mesmo dígito). Convergência não é evidência de harmonia.`,
     reflectionDisclaimer: 'Estes números são pontos de partida para conversa e autoconhecimento a dois, não uma medida de compatibilidade nem uma previsão sobre o relacionamento.',
+  },
+  company: {
+    intro: 'A razão social, o nome fantasia e a data de constituição produzem a identidade corporativa, a marca e a harmonia entre elas. Vocabulário para reflexão sobre a marca — não um veredito comercial.',
+    legalNameLabel: 'Razão social',
+    tradeNameLabel: 'Nome fantasia',
+    incorporationLabel: 'Data de constituição',
+    founderLabel: 'Nome de um sócio',
+    build: 'Calcular mapa da empresa',
+    corporateTitle: 'Identidade corporativa (razão social)',
+    brandTitle: 'Marca (nome fantasia)',
+    harmonyTitle: 'Harmonia e afinidade',
   },
   numberLabels: {
     expression: { title: 'Expressão', hint: 'todas as letras do nome' },
@@ -202,6 +224,8 @@ const PT: UiMessages = {
     'union-personality': { title: 'Personalidade da União', hint: 'das duas Impressões' },
     'union-mission': { title: 'Missão da União', hint: 'das duas Missões' },
     'union-key': { title: 'Chave da União', hint: 'dos dois Números Chave' },
+    'brand-harmony': { title: 'Harmonia da Marca', hint: 'razão social + nome fantasia' },
+    'founder-affinity': { title: 'Afinidade com o Sócio', hint: 'razão social + sócio' },
   },
   footer:
     'O Numerus é uma ferramenta de estudo, autoconhecimento e entretenimento cultural. Não substitui aconselhamento médico, psicológico, jurídico ou financeiro. O sistema de conversão de nomes praticado hoje foi estruturado no fim do séc. XIX / início do XX (L. Dow Balliett, Juno Jordan), reivindicando a herança pitagórica — cada escola exibe sua origem histórica real.',
@@ -272,7 +296,7 @@ const EN: UiMessages = {
     divergenceCause: 'Where values diverge, the cause is the letter table: 1–9 by alphabetical position (Pythagorean) × 1–8 by phonetic affinity, without 9 (Chaldean) — and the Chaldean school does not preserve master numbers when reducing.',
     convergenceNote: 'When independent schools point to the same number, that is convergence of method — not evidence.',
   },
-  modes: { chart: 'Full chart', signature: 'Signature / delta', synastry: 'Couple / synastry' },
+  modes: { chart: 'Full chart', signature: 'Signature / delta', synastry: 'Couple / synastry', company: 'Company' },
   signature: {
     intro: 'Compare your registration name with the name you use day to day and see what changes when you sign differently.',
     registrationLabel: 'Registration name',
@@ -293,6 +317,17 @@ const EN: UiMessages = {
     personalYearTitle: 'Personal Year comparison',
     convergenceNote: (count) => `${count} union ${count === 1 ? 'number converges' : 'numbers converge'} (both people already share the same digit). Convergence is not evidence of harmony.`,
     reflectionDisclaimer: 'These numbers are starting points for conversation and shared self-knowledge, not a measure of compatibility nor a prediction about the relationship.',
+  },
+  company: {
+    intro: 'The legal name, trade name and incorporation date produce the corporate identity, the brand and the harmony between them. Vocabulary for reflecting on the brand — not a commercial verdict.',
+    legalNameLabel: 'Legal name',
+    tradeNameLabel: 'Trade name',
+    incorporationLabel: 'Incorporation date',
+    founderLabel: "A founder's name",
+    build: 'Calculate company chart',
+    corporateTitle: 'Corporate identity (legal name)',
+    brandTitle: 'Brand (trade name)',
+    harmonyTitle: 'Harmony and affinity',
   },
   numberLabels: {
     expression: { title: 'Expression', hint: 'every letter of the name' },
@@ -317,6 +352,8 @@ const EN: UiMessages = {
     'union-personality': { title: 'Union Personality', hint: 'from both Impressions' },
     'union-mission': { title: 'Union Mission', hint: 'from both Missions' },
     'union-key': { title: 'Union Key', hint: 'from both Key Numbers' },
+    'brand-harmony': { title: 'Brand Harmony', hint: 'legal name + trade name' },
+    'founder-affinity': { title: 'Founder Affinity', hint: 'legal name + founder' },
   },
   footer:
     'Numerus is a tool for study, self-knowledge and cultural entertainment. It does not replace medical, psychological, legal or financial advice. The name-conversion system as practiced today was structured in the late 19th / early 20th century (L. Dow Balliett, Juno Jordan), claiming the Pythagorean heritage — each school displays its real historical origin.',
@@ -387,7 +424,7 @@ const ES: UiMessages = {
     divergenceCause: 'Donde los valores divergen, la causa es la tabla de letras: 1–9 por posición alfabética (pitagórica) × 1–8 por afinidad fonética, sin el 9 (caldea) — y la escuela caldea no preserva números maestros al reducir.',
     convergenceNote: 'Cuando escuelas independientes señalan el mismo número, eso es convergencia de método — no evidencia.',
   },
-  modes: { chart: 'Carta completa', signature: 'Firma / delta', synastry: 'Pareja / sinastría' },
+  modes: { chart: 'Carta completa', signature: 'Firma / delta', synastry: 'Pareja / sinastría', company: 'Empresa' },
   signature: {
     intro: 'Compara tu nombre de registro con el nombre que usas a diario y ve qué cambia cuando firmas de otra forma.',
     registrationLabel: 'Nombre de registro',
@@ -408,6 +445,17 @@ const ES: UiMessages = {
     personalYearTitle: 'Comparación de Años Personales',
     convergenceNote: (count) => `${count} ${count === 1 ? 'número de la unión converge' : 'números de la unión convergen'} (las dos personas ya comparten el mismo dígito). La convergencia no es evidencia de armonía.`,
     reflectionDisclaimer: 'Estos números son puntos de partida para la conversación y el autoconocimiento en pareja, no una medida de compatibilidad ni una predicción sobre la relación.',
+  },
+  company: {
+    intro: 'La razón social, el nombre comercial y la fecha de constitución producen la identidad corporativa, la marca y la armonía entre ellas. Vocabulario para reflexionar sobre la marca — no un veredicto comercial.',
+    legalNameLabel: 'Razón social',
+    tradeNameLabel: 'Nombre comercial',
+    incorporationLabel: 'Fecha de constitución',
+    founderLabel: 'Nombre de un socio',
+    build: 'Calcular carta de la empresa',
+    corporateTitle: 'Identidad corporativa (razón social)',
+    brandTitle: 'Marca (nombre comercial)',
+    harmonyTitle: 'Armonía y afinidad',
   },
   numberLabels: {
     expression: { title: 'Expresión', hint: 'todas las letras del nombre' },
@@ -432,6 +480,8 @@ const ES: UiMessages = {
     'union-personality': { title: 'Personalidad de la Unión', hint: 'de ambas Impresiones' },
     'union-mission': { title: 'Misión de la Unión', hint: 'de ambas Misiones' },
     'union-key': { title: 'Clave de la Unión', hint: 'de ambos Números Clave' },
+    'brand-harmony': { title: 'Armonía de la Marca', hint: 'razón social + nombre comercial' },
+    'founder-affinity': { title: 'Afinidad con el Socio', hint: 'razón social + socio' },
   },
   footer:
     'Numerus es una herramienta de estudio, autoconocimiento y entretenimiento cultural. No sustituye el consejo médico, psicológico, jurídico ni financiero. El sistema de conversión de nombres tal como se practica hoy fue estructurado a finales del s. XIX / inicios del XX (L. Dow Balliett, Juno Jordan), reivindicando la herencia pitagórica — cada escuela muestra su origen histórico real.',

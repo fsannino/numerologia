@@ -23,3 +23,11 @@ export type {
   SynastryModelResult,
 } from './use-cases/build-synastry/build-synastry.handler'
 export { buildSynastry } from './use-cases/build-synastry/build-synastry.handler'
+
+export type { CalculateCompanyChartCommand } from './use-cases/calculate-company-chart/calculate-company-chart.command'
+export type {
+  CalculateCompanyChartError,
+  CompanyChart,
+  CompanyModelResult,
+} from './use-cases/calculate-company-chart/calculate-company-chart.handler'
+export { calculateCompanyChart } from './use-cases/calculate-company-chart/calculate-company-chart.handler'
