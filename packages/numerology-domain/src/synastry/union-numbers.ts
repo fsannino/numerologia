@@ -1,9 +1,8 @@
 import type { LocalizedText } from '@numerus/shared-kernel'
-import { ENGINE_VERSION } from '../engine-version'
 import type { ModelId, NumberKind } from '../model-ids'
-import { reduceToValue } from '../value-objects/numerology-value'
-import type { CalculationStep, CalculationTrace } from '../trace/calculation-trace'
-import { karmicCheckStep, masterCheckStep, reductionStep, sumStep, text } from '../trace/step-builders'
+import type { CalculationTrace } from '../trace/calculation-trace'
+import { text } from '../trace/step-builders'
+import { combineReducedValues } from '../derivations/combine-reduced-values'
 import { SYNASTRY_RULES } from './synastry-rules'
 
 /**
@@ -50,32 +49,17 @@ export function calculateUnionNumber(
   reducedB: number,
 ): CalculationTrace {
   const label = UNION_LABELS[kind]
-  const total = reducedA + reducedB
-  const steps: CalculationStep[] = [
-    sumStep(
-      label,
-      [reducedA, reducedB],
-      total,
-      text(
-        `${label['pt-BR']}: somamos o valor reduzido de cada pessoa (${reducedA} + ${reducedB}) e reduzimos o total.`,
-        `${label.en ?? ''}: we sum each person's reduced value (${reducedA} + ${reducedB}) and reduce the total.`,
-        `${label.es ?? ''}: sumamos el valor reducido de cada persona (${reducedA} + ${reducedB}) y reducimos el total.`,
-      ),
-    ),
-    karmicCheckStep([total]),
-    masterCheckStep(total),
-  ]
-  const finalValue = reduceToValue(total, { preserveMasters: true })
-  steps.push(reductionStep(text('Redução final', 'Final reduction', 'Reducción final'), finalValue))
-
-  return {
+  return combineReducedValues({
     resultId: kind,
     model,
-    engineVersion: ENGINE_VERSION,
-    variantSelections: {},
-    finalValue,
-    steps,
+    label,
+    explanation: text(
+      `${label['pt-BR']}: somamos o valor reduzido de cada pessoa (${reducedA} + ${reducedB}) e reduzimos o total.`,
+      `${label.en ?? ''}: we sum each person's reduced value (${reducedA} + ${reducedB}) and reduce the total.`,
+      `${label.es ?? ''}: sumamos el valor reducido de cada persona (${reducedA} + ${reducedB}) y reducimos el total.`,
+    ),
+    reducedA,
+    reducedB,
     ruleRefs: [SYNASTRY_RULES.unionFromReducedValues, SYNASTRY_RULES.reflectionNotVerdict],
-    divergenceNotes: [],
-  }
+  })
 }

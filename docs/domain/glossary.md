@@ -62,4 +62,17 @@ Termos do domínio numerológico usados no código. O nome no código = o nome q
 
 Regra epistêmica dura (§9): os números da união são vocabulário para reflexão, **nunca** veredito de compatibilidade.
 
+## Empresa
+
+| Termo (código) | Definição |
+|---|---|
+| `CompanySubject` (Empresa) | Agregado distinto de Pessoa: razão social + nome fantasia + data de constituição (§2.3, item 4). |
+| Identidade corporativa | Números de nome da razão social. |
+| Marca | Números de nome do nome fantasia (Expressão da marca etc.). |
+| `brand-harmony` / Harmonia da Marca | Combina a Expressão da razão social e a do nome fantasia. Reflexão sobre coerência — não veredito comercial (§9). |
+| `founder-affinity` / Afinidade com o Sócio | Combina a Expressão da razão social e a de um sócio. |
+| Destino corporativo | Caminho de Vida da data de constituição. |
+
+`combineReducedValues` é o primitivo de domínio compartilhado por sinastria e empresa (soma de valores reduzidos + redução preservando mestres).
+
 O glossário cresce uma seção por escola a cada fase (caldaica, gematria, Lo Shu, védica...), com fonte histórica em `docs/domain/models-reference.md`.

@@ -92,3 +92,6 @@ export { getModel, listModels } from './models/registry'
 
 export type { UnionNumberKind } from './synastry/union-numbers'
 export { UNION_SOURCE, calculateUnionNumber } from './synastry/union-numbers'
+
+export { combineReducedValues } from './derivations/combine-reduced-values'
+export { calculateBrandHarmony, calculateFounderAffinity } from './company/company-numbers'
