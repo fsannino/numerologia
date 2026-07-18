@@ -1,4 +1,6 @@
 import { PYTHAGOREAN_LETTER_VALUES } from '@numerus/numerology-domain'
+import { useLocale } from '@/i18n/locale-context'
+import { UI_MESSAGES } from '@/i18n/ui-messages'
 
 const COLUMNS = [1, 2, 3, 4, 5, 6, 7, 8, 9] as const
 
@@ -13,8 +15,10 @@ function lettersForColumn(value: number): ReadonlyArray<string> {
  * a "tabela usada" que a camada educacional exige mostrar (§3.2).
  */
 export function PythagoreanTable({ highlight }: { highlight: ReadonlySet<string> }) {
+  const { locale } = useLocale()
+  const t = UI_MESSAGES[locale]
   return (
-    <table className="w-full border-collapse text-center text-sm" aria-label="Tabela de conversão pitagórica">
+    <table className="w-full border-collapse text-center text-sm" aria-label={t.results.tableTitle}>
       <thead>
         <tr>
           {COLUMNS.map((value) => (

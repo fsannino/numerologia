@@ -1,5 +1,6 @@
 import type { Result } from '@numerus/shared-kernel'
-import { err, ok, ptBR } from '@numerus/shared-kernel'
+import { err, ok } from '@numerus/shared-kernel'
+import { text } from './trace-steps'
 import type { NumberKind, SubjectKind } from '../../model-ids'
 import type { Subject } from '../../entities/person-subject'
 import type { CalculationTrace } from '../../trace/calculation-trace'
@@ -67,48 +68,76 @@ const TIME_KINDS: ReadonlySet<NumberKind> = new Set([
 const VARIANT_DIMENSIONS: ReadonlyArray<VariantDimension> = [
   {
     dimension: NAME_REDUCTION_DIMENSION,
-    label: ptBR('Método de redução dos números do nome'),
+    label: text('Método de redução dos números do nome', 'Name-number reduction method', 'Método de reducción de los números del nombre'),
     options: [
       {
         id: 'reduce-words-then-sum',
-        label: ptBR('Reduzir cada palavra antes de somar'),
-        description: ptBR('Cada palavra do nome é reduzida (preservando mestres) e os resultados são somados. Método predominante.'),
+        label: text('Reduzir cada palavra antes de somar', 'Reduce each word before summing', 'Reducir cada palabra antes de sumar'),
+        description: text(
+          'Cada palavra do nome é reduzida (preservando mestres) e os resultados são somados. Método predominante.',
+          'Each word of the name is reduced (preserving masters) and the results are summed. Predominant method.',
+          'Cada palabra del nombre se reduce (preservando maestros) y los resultados se suman. Método predominante.',
+        ),
       },
       {
         id: 'sum-all-then-reduce',
-        label: ptBR('Somar todas as letras e reduzir uma vez'),
-        description: ptBR('Todas as letras consideradas são somadas em um único total, reduzido ao final.'),
+        label: text('Somar todas as letras e reduzir uma vez', 'Sum all letters and reduce once', 'Sumar todas las letras y reducir una vez'),
+        description: text(
+          'Todas as letras consideradas são somadas em um único total, reduzido ao final.',
+          'Every considered letter is summed into a single total, reduced at the end.',
+          'Todas las letras consideradas se suman en un único total, reducido al final.',
+        ),
       },
     ],
     defaultOption: DEFAULT_NAME_REDUCTION,
   },
   {
     dimension: Y_CLASSIFICATION_DIMENSION,
-    label: ptBR('Classificação do Y'),
+    label: text('Classificação do Y', 'Y classification', 'Clasificación de la Y'),
     options: [
       {
         id: 'y-by-context',
-        label: ptBR('Y por contexto'),
-        description: ptBR('Y conta como vogal quando não há vogal plena vizinha na palavra (LYDIA → vogal; YARA → consoante).'),
+        label: text('Y por contexto', 'Y by context', 'Y por contexto'),
+        description: text(
+          'Y conta como vogal quando não há vogal plena vizinha na palavra (LYDIA → vogal; YARA → consoante).',
+          'Y counts as a vowel when no plain vowel is adjacent in the word (LYDIA → vowel; YARA → consonant).',
+          'La Y cuenta como vocal cuando no hay vocal plena vecina en la palabra (LYDIA → vocal; YARA → consonante).',
+        ),
       },
-      { id: 'y-always-vowel', label: ptBR('Y sempre vogal'), description: ptBR('Algumas escolas tratam o Y sempre como vogal.') },
-      { id: 'y-always-consonant', label: ptBR('Y sempre consoante'), description: ptBR('Outras escolas tratam o Y sempre como consoante.') },
+      {
+        id: 'y-always-vowel',
+        label: text('Y sempre vogal', 'Y always vowel', 'Y siempre vocal'),
+        description: text('Algumas escolas tratam o Y sempre como vogal.', 'Some schools always treat Y as a vowel.', 'Algunas escuelas tratan la Y siempre como vocal.'),
+      },
+      {
+        id: 'y-always-consonant',
+        label: text('Y sempre consoante', 'Y always consonant', 'Y siempre consonante'),
+        description: text('Outras escolas tratam o Y sempre como consoante.', 'Other schools always treat Y as a consonant.', 'Otras escuelas tratan la Y siempre como consonante.'),
+      },
     ],
     defaultOption: DEFAULT_Y_CLASSIFICATION,
   },
   {
     dimension: LIFE_PATH_REDUCTION_DIMENSION,
-    label: ptBR('Método de redução do Destino'),
+    label: text('Método de redução do Destino', 'Life Path reduction method', 'Método de reducción del Destino'),
     options: [
       {
         id: 'reduce-parts-then-sum',
-        label: ptBR('Reduzir dia, mês e ano antes de somar'),
-        description: ptBR('Cada parte da data é reduzida (preservando mestres) e os resultados são somados. Método predominante.'),
+        label: text('Reduzir dia, mês e ano antes de somar', 'Reduce day, month and year before summing', 'Reducir día, mes y año antes de sumar'),
+        description: text(
+          'Cada parte da data é reduzida (preservando mestres) e os resultados são somados. Método predominante.',
+          'Each date part is reduced (preserving masters) and the results are summed. Predominant method.',
+          'Cada parte de la fecha se reduce (preservando maestros) y los resultados se suman. Método predominante.',
+        ),
       },
       {
         id: 'sum-all-digits',
-        label: ptBR('Somar todos os dígitos da data'),
-        description: ptBR('Todos os dígitos de dia, mês e ano são somados em um único total, reduzido ao final.'),
+        label: text('Somar todos os dígitos da data', 'Sum every digit of the date', 'Sumar todos los dígitos de la fecha'),
+        description: text(
+          'Todos os dígitos de dia, mês e ano são somados em um único total, reduzido ao final.',
+          'Every digit of day, month and year is summed into a single total, reduced at the end.',
+          'Todos los dígitos de día, mes y año se suman en un único total, reducido al final.',
+        ),
       },
     ],
     defaultOption: DEFAULT_LIFE_PATH_VARIANT,
@@ -232,6 +261,7 @@ export const pythagoreanModel: NumerologyModel = {
       'pt-BR':
         'Sistema moderno estruturado no fim do séc. XIX / início do XX por L. Dow Balliett e Juno Jordan, reivindicando a herança de Pitágoras. É o modelo mais difundido no Ocidente.',
       en: 'Modern system structured in the late 19th / early 20th century by L. Dow Balliett and Juno Jordan, claiming the heritage of Pythagoras. The most widespread Western model.',
+      es: 'Sistema moderno estructurado a finales del s. XIX / inicios del XX por L. Dow Balliett y Juno Jordan, reivindicando la herencia de Pitágoras. Es el modelo más difundido en Occidente.',
     },
     sources: [
       'L. Dow Balliett, "The Philosophy of Numbers" (1908)',

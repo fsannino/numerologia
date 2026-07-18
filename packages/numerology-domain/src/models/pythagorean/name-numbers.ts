@@ -39,24 +39,24 @@ type NameNumberDefinition = {
 const NAME_NUMBER_DEFINITIONS: Record<NameNumberKind, NameNumberDefinition> = {
   expression: {
     firstWordOnly: false,
-    label: text('Expressão', 'Expression'),
+    label: text('Expressão', 'Expression', 'Expresión'),
     ruleRefs: [PYTHAGOREAN_RULES.letterTable, PYTHAGOREAN_RULES.expressionUsesAllLetters],
   },
   motivation: {
     roleFilter: 'vowel',
     firstWordOnly: false,
-    label: text('Motivação (vogais)', 'Motivation (vowels)'),
+    label: text('Motivação (vogais)', 'Motivation (vowels)', 'Motivación (vocales)'),
     ruleRefs: [PYTHAGOREAN_RULES.letterTable, PYTHAGOREAN_RULES.motivationUsesVowels, PYTHAGOREAN_RULES.yClassification],
   },
   impression: {
     roleFilter: 'consonant',
     firstWordOnly: false,
-    label: text('Impressão (consoantes)', 'Impression (consonants)'),
+    label: text('Impressão (consoantes)', 'Impression (consonants)', 'Impresión (consonantes)'),
     ruleRefs: [PYTHAGOREAN_RULES.letterTable, PYTHAGOREAN_RULES.impressionUsesConsonants, PYTHAGOREAN_RULES.yClassification],
   },
   'key-number': {
     firstWordOnly: true,
-    label: text('Número Chave (primeiro nome)', 'Key Number (first name)'),
+    label: text('Número Chave (primeiro nome)', 'Key Number (first name)', 'Número Clave (primer nombre)'),
     ruleRefs: [PYTHAGOREAN_RULES.letterTable, PYTHAGOREAN_RULES.keyNumberUsesFirstName],
   },
 }
@@ -64,10 +64,11 @@ const NAME_NUMBER_DEFINITIONS: Record<NameNumberKind, NameNumberDefinition> = {
 function normalizationStep(name: BirthName): CalculationStep {
   return {
     kind: 'filter',
-    title: text('Normalização do nome', 'Name normalization'),
+    title: text('Normalização do nome', 'Name normalization', 'Normalización del nombre'),
     explanation: text(
       'Acentos e cedilha são removidos (Á→A, Ç→C), apóstrofos unem letras, hífens separam palavras e as partículas ("de", "da"...) entram no cálculo — política documentada no ADR-0002.',
       'Diacritics are removed (Á→A, Ç→C), apostrophes join letters, hyphens split words and particles ("de", "da"...) are included — policy documented in ADR-0002.',
+      'Se eliminan acentos y cedilla (Á→A, Ç→C), los apóstrofos unen letras, los guiones separan palabras y las partículas ("de", "da"...) entran en el cálculo — política documentada en el ADR-0002.',
     ),
     input: { source: name.original },
     output: { kept: name.words },
@@ -77,21 +78,24 @@ function normalizationStep(name: BirthName): CalculationStep {
 
 function roleFilterStep(word: string, role: LetterRole, kept: ReadonlyArray<string>): CalculationStep {
   const roleName =
-    role === 'vowel' ? text('vogais', 'vowels') : text('consoantes', 'consonants')
+    role === 'vowel' ? text('vogais', 'vowels', 'vocales') : text('consoantes', 'consonants', 'consonantes')
   return {
     kind: 'filter',
     title: text(
       `Seleção das ${roleName['pt-BR']} de "${word}"`,
       `Selecting the ${roleName.en ?? ''} of "${word}"`,
+      `Selección de las ${roleName.es ?? ''} de "${word}"`,
     ),
     explanation: word.includes('Y')
       ? text(
           'O Y é classificado conforme a variante escolhida (ADR-0004); as demais letras seguem A/E/I/O/U como vogais.',
           'Y is classified according to the chosen variant (ADR-0004); other letters follow A/E/I/O/U as vowels.',
+          'La Y se clasifica según la variante elegida (ADR-0004); las demás letras siguen A/E/I/O/U como vocales.',
         )
       : text(
           'A, E, I, O e U são vogais; todas as outras letras são consoantes.',
           'A, E, I, O and U are vowels; every other letter is a consonant.',
+          'A, E, I, O y U son vocales; todas las demás letras son consonantes.',
         ),
     input: { source: word },
     output: { kept },
@@ -127,10 +131,14 @@ function contributionOf(
   const rawTotal = values.reduce((acc, value) => acc + value, 0)
   steps.push(
     sumStep(
-      text(`Soma de "${word}"`, `Sum of "${word}"`),
+      text(`Soma de "${word}"`, `Sum of "${word}"`, `Suma de "${word}"`),
       values,
       rawTotal,
-      text('Somamos os valores das letras consideradas desta palavra.', 'We sum the values of the considered letters of this word.'),
+      text(
+        'Somamos os valores das letras consideradas desta palavra.',
+        'We sum the values of the considered letters of this word.',
+        'Sumamos los valores de las letras consideradas de esta palabra.',
+      ),
     ),
   )
   return { word, letters, steps, rawTotal }
@@ -158,18 +166,24 @@ function compute(
     for (const contribution of contributions) {
       inspectedTotals.push(contribution.rawTotal)
       const wordValue = reduceToValue(contribution.rawTotal, { preserveMasters: true })
-      steps.push(reductionStep(text(`Redução de "${contribution.word}"`, `Reduction of "${contribution.word}"`), wordValue))
+      steps.push(
+        reductionStep(
+          text(`Redução de "${contribution.word}"`, `Reduction of "${contribution.word}"`, `Reducción de "${contribution.word}"`),
+          wordValue,
+        ),
+      )
       reducedValues.push(wordValue.reduced)
     }
     grandTotal = reducedValues.reduce((acc, value) => acc + value, 0)
     steps.push(
       sumStep(
-        text('Soma das palavras reduzidas', 'Sum of the reduced words'),
+        text('Soma das palavras reduzidas', 'Sum of the reduced words', 'Suma de las palabras reducidas'),
         reducedValues,
         grandTotal,
         text(
           'Nesta variante (reduce-words-then-sum), somamos os valores já reduzidos de cada palavra.',
           'In this variant (reduce-words-then-sum), we sum the already-reduced value of each word.',
+          'En esta variante (reduce-words-then-sum), sumamos los valores ya reducidos de cada palabra.',
         ),
       ),
     )
@@ -184,12 +198,13 @@ function compute(
     grandTotal = allValues.reduce((acc, value) => acc + value, 0)
     steps.push(
       sumStep(
-        text('Soma de todas as letras consideradas', 'Sum of all considered letters'),
+        text('Soma de todas as letras consideradas', 'Sum of all considered letters', 'Suma de todas las letras consideradas'),
         allValues,
         grandTotal,
         text(
           'Nesta variante (sum-all-then-reduce), somamos todas as letras consideradas de uma só vez.',
           'In this variant (sum-all-then-reduce), we sum every considered letter at once.',
+          'En esta variante (sum-all-then-reduce), sumamos todas las letras consideradas de una sola vez.',
         ),
       ),
     )
@@ -199,7 +214,7 @@ function compute(
   steps.push(karmicCheckStep(inspectedTotals))
   steps.push(masterCheckStep(grandTotal))
   const finalValue = reduceToValue(grandTotal, { preserveMasters: true })
-  steps.push(reductionStep(text('Redução final', 'Final reduction'), finalValue))
+  steps.push(reductionStep(text('Redução final', 'Final reduction', 'Reducción final'), finalValue))
   return { finalValue, steps }
 }
 
@@ -221,6 +236,7 @@ function reductionDivergence(
       note: text(
         `As variantes de redução divergem para este nome: "${variants.reduction}" resulta em ${chosen.reduced}${chosen.karmicDebt ? ` (dívida ${chosen.karmicDebt})` : ''}, enquanto "${other}" resulta em ${alternative.reduced}${alternative.karmicDebt ? ` (dívida ${alternative.karmicDebt})` : ''}. A causa é o momento da redução: reduzir cada palavra antes de somar preserva mestres por palavra e muda os totais intermediários.`,
         `The reduction variants diverge for this name: "${variants.reduction}" yields ${chosen.reduced}${chosen.karmicDebt ? ` (debt ${chosen.karmicDebt})` : ''}, while "${other}" yields ${alternative.reduced}${alternative.karmicDebt ? ` (debt ${alternative.karmicDebt})` : ''}. The cause is when reduction happens: reducing each word before summing preserves per-word masters and changes intermediate totals.`,
+        `Las variantes de reducción divergen para este nombre: "${variants.reduction}" da ${chosen.reduced}${chosen.karmicDebt ? ` (deuda ${chosen.karmicDebt})` : ''}, mientras que "${other}" da ${alternative.reduced}${alternative.karmicDebt ? ` (deuda ${alternative.karmicDebt})` : ''}. La causa es el momento de la reducción: reducir cada palabra antes de sumar preserva los maestros por palabra y cambia los totales intermedios.`,
       ),
     },
   ]
@@ -254,6 +270,7 @@ function yDivergence(
       note: text(
         `O nome contém Y, e as escolas divergem sobre classificá-lo como vogal ou consoante. Com "${variants.yClassification}" o resultado é ${chosen.reduced}; alternativas: ${alternativesText}.`,
         `The name contains Y, and schools diverge on classifying it as vowel or consonant. With "${variants.yClassification}" the result is ${chosen.reduced}; alternatives: ${alternativesText}.`,
+        `El nombre contiene Y, y las escuelas divergen sobre clasificarla como vocal o consonante. Con "${variants.yClassification}" el resultado es ${chosen.reduced}; alternativas: ${alternativesText}.`,
       ),
     },
   ]
