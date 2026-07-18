@@ -19,13 +19,13 @@ Cada fatia é end-to-end (UI → aplicação → domínio → volta) e entrega v
 ## Fatia 2 — Núcleo pessoal (em andamento)
 - **2a — Números do nome ✅**: Motivação (vogais), Impressão (consoantes), Número Chave; variante explícita do Y (`y-classification`, ADR-0004); dimensão `name-reduction` generalizada; teste de consistência cruzada (vogais + consoantes = total).
 - **2b — Números da data ✅**: `LocalDate` puro sem timezone (ADR-0005), Destino com variante `life-path-reduction`, Psíquico, Missão; data opcional com erro explícito `missing-birth-date`.
-- **2c — Grade do nome ✅ (parcial)**: Lições Cármicas, Tendências Ocultas e Subconsciente via passo `grid-analysis` (ADR-0006); dívidas ocultas já cobertas pelos `karmic-check` dos números. **Pendente**: Ciclos de Vida, Pináculos, Desafios e Ano/Mês/Dia Pessoal.
-- **2d — i18n (pendente)**: UI pt-BR/es/en (o domínio já emite `LocalizedText`).
+- **2c — Grade do nome e números de tempo ✅**: Lições Cármicas, Tendências Ocultas e Subconsciente via passo `grid-analysis` (ADR-0006); Ciclos de Vida, Pináculos, Desafios e Ano/Mês/Dia Pessoal via passo `timeline` com data de referência explícita (ADR-0007).
+- **2d — i18n ✅**: domínio trilíngue (pt-BR/en/es) em textos didáticos, regras e variantes; UI com dicionários versionados (`src/i18n/ui-messages.ts`) e seletor de idioma. Conteúdo é recurso versionado, não string em componente.
 - **2e — Auth + efêmero + `usage_counters` + entitlements (pendente — aguarda projeto Supabase)**. Trial de 3 leituras pós-cadastro (ver avaliação, risco 2).
 - Ciclos/Pináculos/Desafios e Ano/Mês/Dia Pessoal ficam para complemento da 2c.
 
-## Fatia 3 — Pluralidade
-Engine Caldeu (número composto como saída de primeira classe); seleção múltipla de modelos; matriz comparativa com explicação automática de divergência.
+## Fatia 3 — Pluralidade ✅
+Engine Caldeu (`models/chaldean/` + registro — nenhum outro arquivo do núcleo tocado, validando o critério de plugabilidade): tabela 1–8, número composto como saída de primeira classe (`finalValue.raw`), sem preservação de mestres. Seleção múltipla de escolas na UI, matriz comparativa com divergência destacada e causa explicada, células "não calcula" para capacidade não declarada, e aviso epistêmico de que convergência não é evidência (§2.4). Port evoluiu com `metadata.letterValues` para a UI exibir a tabela de qualquer escola sem importar de dentro dela.
 
 ## Fatia 4 — Mobile
 App Expo com paridade e cálculo offline; ADR de framework de teste mobile (Maestro × Detox); backup cifrado exportável.
@@ -33,8 +33,10 @@ App Expo com paridade e cálculo offline; ADR de framework de teste mobile (Maes
 ## Fatia 5 — Profissional
 Carteira de clientes; persistência server-side com RLS por `professional_id` + suíte de testes de acesso cruzado; DPA no onboarding; audit trail append-only; PDF detalhado com marca própria; ADR de envelope encryption; RIPD/DPIA.
 
-## Fatia 6 — Sujeitos
-Casal/sinastria, casamento, empresa, nome alternativo (delta vibracional), evento/data.
+## Fatia 6 — Sujeitos (em andamento)
+- **Nome alternativo / assinatura ✅**: use case `CompareSignatures` — delta vibracional entre nome de registro e nome do dia a dia.
+- **Casal / Sinastria ✅**: serviço de domínio `union-numbers` (agnóstico de escola — qualquer escola nova ganha sinastria de graça, R5) + use case `BuildSynastry`. Seis números da união (Destino, Alma, Expressão, Personalidade, Missão, Chave), comparação de Anos Pessoais, marcação de convergências. Linguagem de reflexão, nunca veredito de compatibilidade (§9). Modo próprio na UI com disclaimer permanente.
+- **Pendente**: casamento (casal + data), empresa (razão social/fantasia/constituição), evento/data.
 
 ## Fatia 7 — Educacional
 Modo aprendiz com conferência de cálculo manual, trilhas, glossário navegável, PDF didático.

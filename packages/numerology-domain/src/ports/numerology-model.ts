@@ -1,6 +1,7 @@
 import type { LocalizedText, Result } from '@numerus/shared-kernel'
 import type { ModelId, NumberKind, SubjectKind } from '../model-ids'
 import type { Subject } from '../entities/person-subject'
+import type { LocalDate } from '../value-objects/local-date'
 import type { CalculationTrace } from '../trace/calculation-trace'
 
 export type VariantOption = {
@@ -25,11 +26,18 @@ export type ModelMetadata = {
   readonly historicalOrigin: LocalizedText
   readonly sources: ReadonlyArray<string>
   readonly variantDimensions: ReadonlyArray<VariantDimension>
+  /** Tabela letra→valor para exibição educacional (escolas de alfabeto latino). */
+  readonly letterValues?: Readonly<Record<string, number>>
 }
 
 export type CalculationRequest = {
   readonly numbers: ReadonlyArray<NumberKind>
   readonly variantSelections?: Readonly<Record<string, string>>
+  /**
+   * Data de referência para números de tempo (ADR-0007). Entrada explícita:
+   * o domínio nunca lê o relógio — a UI fornece "hoje" como default editável.
+   */
+  readonly referenceDate?: LocalDate
 }
 
 export type CalculationError =
@@ -37,6 +45,8 @@ export type CalculationError =
   | { readonly code: 'unsupported-subject'; readonly subject: SubjectKind; readonly model: ModelId }
   | { readonly code: 'unknown-variant'; readonly dimension: string; readonly option: string }
   | { readonly code: 'missing-birth-date'; readonly number: NumberKind }
+  | { readonly code: 'missing-reference-date'; readonly number: NumberKind }
+  | { readonly code: 'reference-before-birth-date' }
 
 /**
  * Port de escola numerológica (§4.3). Adicionar uma escola = criar um

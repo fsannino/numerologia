@@ -24,6 +24,7 @@ export type Chart = {
 export type CalculateChartError =
   | { readonly code: 'invalid-name'; readonly cause: BirthNameError }
   | { readonly code: 'invalid-birth-date'; readonly cause: LocalDateError }
+  | { readonly code: 'invalid-reference-date'; readonly cause: LocalDateError }
   | UnknownModelError
   | CalculationError
 
@@ -44,6 +45,14 @@ export function calculateChart(command: CalculateChartCommand): Result<Chart, Ca
     }
     birthDate = parsed.value
   }
+  let referenceDate: LocalDate | undefined
+  if (command.referenceDate !== undefined && command.referenceDate !== '') {
+    const parsed = LocalDate.fromISO(command.referenceDate)
+    if (!parsed.ok) {
+      return err({ code: 'invalid-reference-date', cause: parsed.error })
+    }
+    referenceDate = parsed.value
+  }
   const subject = personSubject(birthName.value, birthDate)
 
   const results: ChartModelResult[] = []
@@ -52,11 +61,17 @@ export function calculateChart(command: CalculateChartCommand): Result<Chart, Ca
     if (!model.ok) {
       return model
     }
+    // Capacidade declarada não é ambiguidade: cada escola calcula o subconjunto
+    // que suporta e a UI mostra explicitamente o que uma escola não calcula.
+    const numbersForModel = command.numbers.filter((number) =>
+      model.value.supportedNumbers.has(number),
+    )
     const request = {
-      numbers: command.numbers,
+      numbers: numbersForModel,
       ...(command.variantSelections !== undefined
         ? { variantSelections: command.variantSelections }
         : {}),
+      ...(referenceDate !== undefined ? { referenceDate } : {}),
     }
     const traces = model.value.calculate(subject, request)
     if (!traces.ok) {

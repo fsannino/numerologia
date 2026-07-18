@@ -29,10 +29,26 @@ describe('calculateChart', () => {
   it('propaga erro de modelo desconhecido', () => {
     const result = calculateChart({
       subject: { kind: 'person', fullName: 'Maria Silva' },
-      models: ['chaldean'],
+      models: ['gematria'],
       numbers: ['expression'],
     })
     expect(result).toMatchObject({ ok: false, error: { code: 'unknown-model' } })
+  })
+
+  it('calcula múltiplas escolas e filtra por capacidade declarada', () => {
+    const chart = unwrap(
+      calculateChart({
+        subject: { kind: 'person', fullName: 'Maria Silva', birthDate: '1990-03-27' },
+        models: ['pythagorean', 'chaldean'],
+        numbers: ['expression', 'life-path'],
+      }),
+    )
+    // Pitagórico calcula ambos; Caldeu declara suporte apenas à Expressão.
+    expect(chart.results[0]?.traces.map((trace) => trace.resultId)).toEqual(['expression', 'life-path'])
+    expect(chart.results[1]?.traces.map((trace) => trace.resultId)).toEqual(['expression'])
+    // Divergência entre escolas: 6 (pitagórico) × 5 (caldeu, composto 23).
+    expect(chart.results[0]?.traces[0]?.finalValue.reduced).toBe(6)
+    expect(chart.results[1]?.traces[0]?.finalValue).toMatchObject({ raw: 23, reduced: 5 })
   })
 
   it('calcula o mapa completo quando a data de nascimento é fornecida', () => {

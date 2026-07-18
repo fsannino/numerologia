@@ -4,7 +4,7 @@ import type { NumerologyValue } from '../../value-objects/numerology-value'
 import { reduceToValue } from '../../value-objects/numerology-value'
 import type { CalculationStep, CalculationTrace, DivergenceNote } from '../../trace/calculation-trace'
 import { PYTHAGOREAN_RULES } from './rules'
-import { karmicCheckStep, masterCheckStep, reductionStep, sumStep, text } from './trace-steps'
+import { karmicCheckStep, masterCheckStep, reductionStep, sumStep, text } from '../../trace/step-builders'
 
 export const LIFE_PATH_REDUCTION_DIMENSION = 'life-path-reduction'
 
@@ -23,16 +23,20 @@ function digitsOf(value: number): ReadonlyArray<number> {
 function computeReducePartsThenSum(date: LocalDate): LifePathComputation {
   const steps: CalculationStep[] = []
   const parts = [
-    { label: text('dia', 'day'), raw: date.day },
-    { label: text('mês', 'month'), raw: date.month },
-    { label: text('ano', 'year'), raw: date.year },
+    { label: text('dia', 'day', 'día'), raw: date.day },
+    { label: text('mês', 'month', 'mes'), raw: date.month },
+    { label: text('ano', 'year', 'año'), raw: date.year },
   ]
   const reducedParts: number[] = []
   for (const part of parts) {
     const value = reduceToValue(part.raw, { preserveMasters: true })
     steps.push(
       reductionStep(
-        text(`Redução do ${part.label['pt-BR']} (${part.raw})`, `Reduction of the ${part.label.en ?? ''} (${part.raw})`),
+        text(
+          `Redução do ${part.label['pt-BR']} (${part.raw})`,
+          `Reduction of the ${part.label.en ?? ''} (${part.raw})`,
+          `Reducción del ${part.label.es ?? ''} (${part.raw})`,
+        ),
         value,
       ),
     )
@@ -41,19 +45,20 @@ function computeReducePartsThenSum(date: LocalDate): LifePathComputation {
   const total = reducedParts.reduce((acc, value) => acc + value, 0)
   steps.push(
     sumStep(
-      text('Soma das partes reduzidas', 'Sum of the reduced parts'),
+      text('Soma das partes reduzidas', 'Sum of the reduced parts', 'Suma de las partes reducidas'),
       reducedParts,
       total,
       text(
         'Nesta variante (reduce-parts-then-sum), dia, mês e ano são reduzidos separadamente (preservando mestres) e depois somados.',
         'In this variant (reduce-parts-then-sum), day, month and year are reduced separately (preserving masters) and then summed.',
+        'En esta variante (reduce-parts-then-sum), día, mes y año se reducen por separado (preservando maestros) y luego se suman.',
       ),
     ),
   )
   steps.push(karmicCheckStep([date.day, total]))
   steps.push(masterCheckStep(total))
   const finalValue = reduceToValue(total, { preserveMasters: true })
-  steps.push(reductionStep(text('Redução final', 'Final reduction'), finalValue))
+  steps.push(reductionStep(text('Redução final', 'Final reduction', 'Reducción final'), finalValue))
   return { finalValue, steps }
 }
 
@@ -63,19 +68,20 @@ function computeSumAllDigits(date: LocalDate): LifePathComputation {
   const total = allDigits.reduce((acc, value) => acc + value, 0)
   steps.push(
     sumStep(
-      text('Soma de todos os dígitos da data', 'Sum of every digit of the date'),
+      text('Soma de todos os dígitos da data', 'Sum of every digit of the date', 'Suma de todos los dígitos de la fecha'),
       allDigits,
       total,
       text(
         'Nesta variante (sum-all-digits), todos os dígitos de dia, mês e ano são somados de uma só vez.',
         'In this variant (sum-all-digits), every digit of day, month and year is summed at once.',
+        'En esta variante (sum-all-digits), todos los dígitos de día, mes y año se suman de una sola vez.',
       ),
     ),
   )
   steps.push(karmicCheckStep([date.day, total]))
   steps.push(masterCheckStep(total))
   const finalValue = reduceToValue(total, { preserveMasters: true })
-  steps.push(reductionStep(text('Redução final', 'Final reduction'), finalValue))
+  steps.push(reductionStep(text('Redução final', 'Final reduction', 'Reducción final'), finalValue))
   return { finalValue, steps }
 }
 
@@ -97,6 +103,7 @@ function lifePathDivergence(date: LocalDate, chosen: LifePathVariant): ReadonlyA
       note: text(
         `As variantes de método divergem para esta data: "${chosen}" resulta em ${chosenValue.reduced}${chosenValue.karmicDebt ? ` (dívida ${chosenValue.karmicDebt})` : ''}, enquanto "${other}" resulta em ${otherValue.reduced}${otherValue.karmicDebt ? ` (dívida ${otherValue.karmicDebt})` : ''}. Reduzir as partes antes preserva mestres de dia/mês/ano; somar todos os dígitos muda o total intermediário — é isso que faz dívidas cármicas aparecerem em um método e não no outro.`,
         `The method variants diverge for this date: "${chosen}" yields ${chosenValue.reduced}${chosenValue.karmicDebt ? ` (debt ${chosenValue.karmicDebt})` : ''}, while "${other}" yields ${otherValue.reduced}${otherValue.karmicDebt ? ` (debt ${otherValue.karmicDebt})` : ''}. Reducing the parts first preserves day/month/year masters; summing all digits changes the intermediate total — which is why karmic debts appear in one method and not the other.`,
+        `Las variantes de método divergen para esta fecha: "${chosen}" da ${chosenValue.reduced}${chosenValue.karmicDebt ? ` (deuda ${chosenValue.karmicDebt})` : ''}, mientras que "${other}" da ${otherValue.reduced}${otherValue.karmicDebt ? ` (deuda ${otherValue.karmicDebt})` : ''}. Reducir las partes primero preserva los maestros de día/mes/año; sumar todos los dígitos cambia el total intermedio — por eso las deudas kármicas aparecen en un método y no en el otro.`,
       ),
     },
   ]
@@ -123,7 +130,16 @@ export function calculatePsychic(date: LocalDate): CalculationTrace {
   steps.push(karmicCheckStep([date.day]))
   steps.push(masterCheckStep(date.day))
   const finalValue = reduceToValue(date.day, { preserveMasters: true })
-  steps.push(reductionStep(text(`Redução do dia do nascimento (${date.day})`, `Reduction of the birth day (${date.day})`), finalValue))
+  steps.push(
+    reductionStep(
+      text(
+        `Redução do dia do nascimento (${date.day})`,
+        `Reduction of the birth day (${date.day})`,
+        `Reducción del día de nacimiento (${date.day})`,
+      ),
+      finalValue,
+    ),
+  )
   return {
     resultId: 'psychic',
     model: 'pythagorean',
@@ -150,19 +166,20 @@ export function calculateMission(
   const total = expression.reduced + lifePath.reduced
   steps.push(
     sumStep(
-      text('Expressão + Destino', 'Expression + Life Path'),
+      text('Expressão + Destino', 'Expression + Life Path', 'Expresión + Destino'),
       [expression.reduced, lifePath.reduced],
       total,
       text(
         'A Missão nasce da soma dos valores reduzidos da Expressão (nome) e do Destino (data).',
         'The Mission comes from summing the reduced values of Expression (name) and Life Path (date).',
+        'La Misión nace de la suma de los valores reducidos de la Expresión (nombre) y el Destino (fecha).',
       ),
     ),
   )
   steps.push(karmicCheckStep([total]))
   steps.push(masterCheckStep(total))
   const finalValue = reduceToValue(total, { preserveMasters: true })
-  steps.push(reductionStep(text('Redução final', 'Final reduction'), finalValue))
+  steps.push(reductionStep(text('Redução final', 'Final reduction', 'Reducción final'), finalValue))
   return {
     resultId: 'mission',
     model: 'pythagorean',

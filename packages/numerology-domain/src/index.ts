@@ -37,6 +37,7 @@ export type {
   DivergenceNote,
   LetterMappingEntry,
   RuleReference,
+  TimelineSegment,
 } from './trace/calculation-trace'
 
 export type {
@@ -59,12 +60,12 @@ export {
   calculateExpression,
   calculateNameNumber,
 } from './models/pythagorean/name-numbers'
-export type { LetterRole, YClassificationVariant } from './models/pythagorean/letter-classification'
+export type { LetterRole, YClassificationVariant } from './value-objects/letter-classification'
 export {
   DEFAULT_Y_CLASSIFICATION,
   classifyLetter,
   lettersWithRole,
-} from './models/pythagorean/letter-classification'
+} from './value-objects/letter-classification'
 export type { NameGridNumberKind } from './models/pythagorean/name-grid'
 export { calculateNameGridNumber } from './models/pythagorean/name-grid'
 export type { LifePathVariant } from './models/pythagorean/date-numbers'
@@ -75,8 +76,19 @@ export {
   calculateMission,
   calculatePsychic,
 } from './models/pythagorean/date-numbers'
+export type { TimeNumberKind } from './models/pythagorean/time-numbers'
+export {
+  ageAt,
+  calculateChallenges,
+  calculateLifeCycles,
+  calculatePersonalTime,
+  calculatePinnacles,
+} from './models/pythagorean/time-numbers'
 export { PYTHAGOREAN_LETTER_VALUES } from './models/pythagorean/letter-table'
 export { Y_CLASSIFICATION_DIMENSION, pythagoreanModel } from './models/pythagorean/pythagorean-model'
 
 export type { UnknownModelError } from './models/registry'
 export { getModel, listModels } from './models/registry'
+
+export type { UnionNumberKind } from './synastry/union-numbers'
+export { UNION_SOURCE, calculateUnionNumber } from './synastry/union-numbers'

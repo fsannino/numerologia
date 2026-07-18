@@ -6,7 +6,7 @@ import type { NumberKind } from '../../model-ids'
 import type { LocalizedText } from '@numerus/shared-kernel'
 import { pythagoreanValueOf } from './letter-table'
 import { PYTHAGOREAN_RULES } from './rules'
-import { letterMappingStep, text } from './trace-steps'
+import { letterMappingStep, text } from '../../trace/step-builders'
 
 /**
  * Grade do nome (ADR-0006): Lições Cármicas, Tendências Ocultas e
@@ -60,10 +60,11 @@ const GRID_DEFINITIONS: Record<NameGridNumberKind, GridDefinition> = {
   'karmic-lessons': {
     highlight: (tally) => tally.filter((entry) => entry.count === 0).map((entry) => entry.digit),
     finalCount: (_tally, highlighted) => highlighted.length,
-    stepTitle: text('Dígitos ausentes na grade', 'Missing digits in the grid'),
+    stepTitle: text('Dígitos ausentes na grade', 'Missing digits in the grid', 'Dígitos ausentes en la cuadrícula'),
     stepExplanation: text(
       'Contamos quantas vezes cada dígito 1–9 aparece entre os valores das letras; os ausentes (contagem zero) são as Lições Cármicas.',
       'We count how often each digit 1–9 appears among the letter values; the absent ones (count zero) are the Karmic Lessons.',
+      'Contamos cuántas veces aparece cada dígito 1–9 entre los valores de las letras; los ausentes (conteo cero) son las Lecciones Kármicas.',
     ),
     ruleRef: PYTHAGOREAN_RULES.karmicLessonsFromMissingDigits,
   },
@@ -71,20 +72,22 @@ const GRID_DEFINITIONS: Record<NameGridNumberKind, GridDefinition> = {
     highlight: (tally) =>
       tally.filter((entry) => entry.count >= HIDDEN_TENDENCY_MIN_COUNT).map((entry) => entry.digit),
     finalCount: (_tally, highlighted) => highlighted.length,
-    stepTitle: text('Dígitos repetidos na grade', 'Repeated digits in the grid'),
+    stepTitle: text('Dígitos repetidos na grade', 'Repeated digits in the grid', 'Dígitos repetidos en la cuadrícula'),
     stepExplanation: text(
       `Dígitos que aparecem ${HIDDEN_TENDENCY_MIN_COUNT} ou mais vezes entre os valores das letras são Tendências Ocultas.`,
       `Digits appearing ${HIDDEN_TENDENCY_MIN_COUNT} or more times among the letter values are Hidden Tendencies.`,
+      `Los dígitos que aparecen ${HIDDEN_TENDENCY_MIN_COUNT} o más veces entre los valores de las letras son Tendencias Ocultas.`,
     ),
     ruleRef: PYTHAGOREAN_RULES.hiddenTendenciesFromRepetition,
   },
   subconscious: {
     highlight: (tally) => tally.filter((entry) => entry.count > 0).map((entry) => entry.digit),
     finalCount: (_tally, highlighted) => highlighted.length,
-    stepTitle: text('Dígitos presentes na grade', 'Digits present in the grid'),
+    stepTitle: text('Dígitos presentes na grade', 'Digits present in the grid', 'Dígitos presentes en la cuadrícula'),
     stepExplanation: text(
       'O Subconsciente é a quantidade de dígitos distintos presentes — equivalente a 9 menos o número de Lições Cármicas.',
       'The Subconscious is the count of distinct digits present — equivalent to 9 minus the number of Karmic Lessons.',
+      'El Subconsciente es la cantidad de dígitos distintos presentes — equivalente a 9 menos el número de Lecciones Kármicas.',
     ),
     ruleRef: PYTHAGOREAN_RULES.subconsciousFromDistinctDigits,
   },
@@ -99,10 +102,11 @@ export function calculateNameGridNumber(name: BirthName, kind: NameGridNumberKin
   const steps: CalculationStep[] = [
     {
       kind: 'filter',
-      title: text('Normalização do nome', 'Name normalization'),
+      title: text('Normalização do nome', 'Name normalization', 'Normalización del nombre'),
       explanation: text(
         'Acentos e cedilha são removidos, apóstrofos unem letras, hífens separam palavras e as partículas entram no cálculo (ADR-0002).',
         'Diacritics are removed, apostrophes join letters, hyphens split words and particles are included (ADR-0002).',
+        'Se eliminan acentos y cedilla, los apóstrofos unen letras, los guiones separan palabras y las partículas entran en el cálculo (ADR-0002).',
       ),
       input: { source: name.original },
       output: { kept: name.words },

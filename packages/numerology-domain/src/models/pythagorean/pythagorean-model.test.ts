@@ -57,9 +57,24 @@ describe('pythagoreanModel', () => {
     })
   })
 
+  it('exige data de referência para números de tempo — erro explícito', () => {
+    const result = pythagoreanModel.calculate(subjectWithDate, { numbers: ['personal-year'] })
+    expect(result).toMatchObject({ ok: false, error: { code: 'missing-reference-date', number: 'personal-year' } })
+  })
+
+  it('calcula os números de tempo com data de referência explícita', () => {
+    const result = pythagoreanModel.calculate(subjectWithDate, {
+      numbers: ['life-cycles', 'pinnacles', 'challenges', 'personal-year'],
+      referenceDate: unwrap(LocalDate.fromISO('2026-07-18')),
+    })
+    const traces = unwrap(result)
+    // Vigentes na idade 36: ciclo 9, pináculo 1, desafio 8; Ano Pessoal 4.
+    expect(traces.map((trace) => trace.finalValue.reduced)).toEqual([9, 1, 8, 4])
+  })
+
   it('declara metadados, sujeitos e números suportados', () => {
     expect(pythagoreanModel.supportedSubjects.has('person')).toBe(true)
-    expect(pythagoreanModel.supportedNumbers.size).toBe(10)
+    expect(pythagoreanModel.supportedNumbers.size).toBe(16)
     expect(pythagoreanModel.metadata.variantDimensions.map((dimension) => dimension.dimension)).toEqual([
       'name-reduction', 'y-classification', 'life-path-reduction',
     ])

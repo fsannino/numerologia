@@ -1,15 +1,18 @@
 import type { NumerologyValue } from '@numerus/numerology-domain'
 import { sumDigits } from '@numerus/numerology-domain'
+import { useLocale } from '@/i18n/locale-context'
+import { UI_MESSAGES } from '@/i18n/ui-messages'
 
 /**
  * Cadeia de redução com cada etapa explícita: 62 → 6+2 → 8.
  * Acessível: também descrita em texto para leitores de tela.
  */
 export function ReductionChain({ value }: { value: NumerologyValue }) {
-  const readable = value.chain.join(', depois ')
+  const { locale } = useLocale()
+  const t = UI_MESSAGES[locale]
   return (
     <div>
-      <p className="sr-only">Cadeia de redução: {readable}.</p>
+      <p className="sr-only">{t.results.chainSr(value.chain.join(' → '))}</p>
       <ol aria-hidden className="flex flex-wrap items-center gap-2">
         {value.chain.map((stage, index) => {
           const isLast = index === value.chain.length - 1
