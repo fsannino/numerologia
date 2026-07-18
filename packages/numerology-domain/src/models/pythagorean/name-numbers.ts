@@ -6,8 +6,8 @@ import { reduceToValue } from '../../value-objects/numerology-value'
 import type { CalculationStep, CalculationTrace, DivergenceNote } from '../../trace/calculation-trace'
 import { pythagoreanValueOf } from './letter-table'
 import { PYTHAGOREAN_RULES } from './rules'
-import type { LetterRole, YClassificationVariant } from './letter-classification'
-import { DEFAULT_Y_CLASSIFICATION, classifyLetter } from './letter-classification'
+import type { LetterRole, YClassificationVariant } from '../../value-objects/letter-classification'
+import { DEFAULT_Y_CLASSIFICATION, classifyLetter } from '../../value-objects/letter-classification'
 import {
   karmicCheckStep,
   letterMappingStep,
@@ -15,7 +15,7 @@ import {
   reductionStep,
   sumStep,
   text,
-} from './trace-steps'
+} from '../../trace/step-builders'
 
 export const NAME_REDUCTION_DIMENSION = 'name-reduction'
 

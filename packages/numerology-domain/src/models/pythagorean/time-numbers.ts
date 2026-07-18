@@ -10,7 +10,7 @@ import type { CalculationError } from '../../ports/numerology-model'
 import type { LifePathVariant } from './date-numbers'
 import { calculateLifePath } from './date-numbers'
 import { PYTHAGOREAN_RULES } from './rules'
-import { karmicCheckStep, reductionStep, sumStep, text } from './trace-steps'
+import { karmicCheckStep, reductionStep, sumStep, text } from '../../trace/step-builders'
 
 /**
  * Números de tempo (ADR-0007): dependem da data de nascimento E de uma data

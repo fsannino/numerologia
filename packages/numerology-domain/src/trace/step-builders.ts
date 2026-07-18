@@ -1,7 +1,7 @@
 import type { LocalizedText } from '@numerus/shared-kernel'
-import type { NumerologyValue } from '../../value-objects/numerology-value'
-import { isMasterNumber, karmicDebtOf } from '../../value-objects/numerology-value'
-import type { CalculationStep, LetterMappingEntry } from '../../trace/calculation-trace'
+import type { NumerologyValue } from '../value-objects/numerology-value'
+import { isMasterNumber, karmicDebtOf } from '../value-objects/numerology-value'
+import type { CalculationStep, LetterMappingEntry } from './calculation-trace'
 
 /** Construtores de passos compartilhados pelos cálculos da escola pitagórica. */
 

@@ -30,6 +30,11 @@ export function NumberResultCard({ trace }: { trace: CalculationTrace }) {
           <h3 className="font-semibold text-indigo-950">{label.title}</h3>
           <p className="text-xs text-slate-500">{label.hint}</p>
           <div className="flex flex-wrap gap-1.5 text-xs">
+            {trace.model === 'chaldean' && trace.finalValue.raw !== trace.finalValue.reduced && (
+              <span className="rounded-full bg-sky-100 px-2 py-0.5 font-medium text-sky-900">
+                {t.results.compoundBadge(trace.finalValue.raw)}
+              </span>
+            )}
             {highlightedDigits !== null && (
               <span className="rounded-full bg-amber-100 px-2 py-0.5 font-medium text-amber-900">
                 {highlightedDigits.length > 0

@@ -1,6 +1,6 @@
 import type { Result } from '@numerus/shared-kernel'
 import { err, ok } from '@numerus/shared-kernel'
-import { text } from './trace-steps'
+import { text } from '../../trace/step-builders'
 import type { NumberKind, SubjectKind } from '../../model-ids'
 import type { Subject } from '../../entities/person-subject'
 import type { CalculationTrace } from '../../trace/calculation-trace'
@@ -10,10 +10,11 @@ import type {
   NumerologyModel,
   VariantDimension,
 } from '../../ports/numerology-model'
+import { PYTHAGOREAN_LETTER_VALUES } from './letter-table'
 import type { NameNumberKind, NameNumberVariants, NameReductionVariant } from './name-numbers'
 import { DEFAULT_NAME_REDUCTION, NAME_REDUCTION_DIMENSION, calculateNameNumber } from './name-numbers'
-import type { YClassificationVariant } from './letter-classification'
-import { DEFAULT_Y_CLASSIFICATION } from './letter-classification'
+import type { YClassificationVariant } from '../../value-objects/letter-classification'
+import { DEFAULT_Y_CLASSIFICATION } from '../../value-objects/letter-classification'
 import type { NameGridNumberKind } from './name-grid'
 import { calculateNameGridNumber } from './name-grid'
 import {
@@ -268,6 +269,7 @@ export const pythagoreanModel: NumerologyModel = {
       'Juno Jordan, "Numerology: The Romance in Your Name" (1965)',
     ],
     variantDimensions: VARIANT_DIMENSIONS,
+    letterValues: PYTHAGOREAN_LETTER_VALUES,
   },
   supportedSubjects: SUPPORTED_SUBJECTS,
   supportedNumbers: SUPPORTED_NUMBERS,

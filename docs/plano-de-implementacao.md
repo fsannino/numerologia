@@ -24,8 +24,8 @@ Cada fatia é end-to-end (UI → aplicação → domínio → volta) e entrega v
 - **2e — Auth + efêmero + `usage_counters` + entitlements (pendente — aguarda projeto Supabase)**. Trial de 3 leituras pós-cadastro (ver avaliação, risco 2).
 - Ciclos/Pináculos/Desafios e Ano/Mês/Dia Pessoal ficam para complemento da 2c.
 
-## Fatia 3 — Pluralidade
-Engine Caldeu (número composto como saída de primeira classe); seleção múltipla de modelos; matriz comparativa com explicação automática de divergência.
+## Fatia 3 — Pluralidade ✅
+Engine Caldeu (`models/chaldean/` + registro — nenhum outro arquivo do núcleo tocado, validando o critério de plugabilidade): tabela 1–8, número composto como saída de primeira classe (`finalValue.raw`), sem preservação de mestres. Seleção múltipla de escolas na UI, matriz comparativa com divergência destacada e causa explicada, células "não calcula" para capacidade não declarada, e aviso epistêmico de que convergência não é evidência (§2.4). Port evoluiu com `metadata.letterValues` para a UI exibir a tabela de qualquer escola sem importar de dentro dela.
 
 ## Fatia 4 — Mobile
 App Expo com paridade e cálculo offline; ADR de framework de teste mobile (Maestro × Detox); backup cifrado exportável.

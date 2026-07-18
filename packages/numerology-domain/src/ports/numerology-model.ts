@@ -26,6 +26,8 @@ export type ModelMetadata = {
   readonly historicalOrigin: LocalizedText
   readonly sources: ReadonlyArray<string>
   readonly variantDimensions: ReadonlyArray<VariantDimension>
+  /** Tabela letra→valor para exibição educacional (escolas de alfabeto latino). */
+  readonly letterValues?: Readonly<Record<string, number>>
 }
 
 export type CalculationRequest = {

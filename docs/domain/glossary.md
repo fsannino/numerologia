@@ -38,4 +38,13 @@ Termos do domínio numerológico usados no código. O nome no código = o nome q
 | Variante `y-classification` | Y por contexto (default), sempre vogal ou sempre consoante (ADR-0004). |
 | Variante `life-path-reduction` | Destino por partes reduzidas (default) ou soma de todos os dígitos (ADR-0005). |
 
+## Escola caldaica
+
+| Termo | Definição |
+|---|---|
+| Tabela 1–8 | Valores por afinidade fonética; nenhuma letra vale 9 (sagrado). |
+| `CompoundNumber` (Número composto) | Total antes da redução (ex.: 23) — dado de saída de primeira classe, lido antes do dígito. Vive em `finalValue.raw`. |
+| Sem preservação de mestres | A redução caldaica vai até 1–9; o significado de 11/22/33 vive na leitura do composto. |
+| Fonte | Cheiro, "Cheiro's Book of Numbers" (1926). |
+
 O glossário cresce uma seção por escola a cada fase (caldaica, gematria, Lo Shu, védica...), com fonte histórica em `docs/domain/models-reference.md`.

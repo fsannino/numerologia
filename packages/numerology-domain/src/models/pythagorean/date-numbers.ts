@@ -4,7 +4,7 @@ import type { NumerologyValue } from '../../value-objects/numerology-value'
 import { reduceToValue } from '../../value-objects/numerology-value'
 import type { CalculationStep, CalculationTrace, DivergenceNote } from '../../trace/calculation-trace'
 import { PYTHAGOREAN_RULES } from './rules'
-import { karmicCheckStep, masterCheckStep, reductionStep, sumStep, text } from './trace-steps'
+import { karmicCheckStep, masterCheckStep, reductionStep, sumStep, text } from '../../trace/step-builders'
 
 export const LIFE_PATH_REDUCTION_DIMENSION = 'life-path-reduction'
 

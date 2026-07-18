@@ -60,12 +60,12 @@ export {
   calculateExpression,
   calculateNameNumber,
 } from './models/pythagorean/name-numbers'
-export type { LetterRole, YClassificationVariant } from './models/pythagorean/letter-classification'
+export type { LetterRole, YClassificationVariant } from './value-objects/letter-classification'
 export {
   DEFAULT_Y_CLASSIFICATION,
   classifyLetter,
   lettersWithRole,
-} from './models/pythagorean/letter-classification'
+} from './value-objects/letter-classification'
 export type { NameGridNumberKind } from './models/pythagorean/name-grid'
 export { calculateNameGridNumber } from './models/pythagorean/name-grid'
 export type { LifePathVariant } from './models/pythagorean/date-numbers'

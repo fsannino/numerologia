@@ -61,8 +61,13 @@ export function calculateChart(command: CalculateChartCommand): Result<Chart, Ca
     if (!model.ok) {
       return model
     }
+    // Capacidade declarada não é ambiguidade: cada escola calcula o subconjunto
+    // que suporta e a UI mostra explicitamente o que uma escola não calcula.
+    const numbersForModel = command.numbers.filter((number) =>
+      model.value.supportedNumbers.has(number),
+    )
     const request = {
-      numbers: command.numbers,
+      numbers: numbersForModel,
       ...(command.variantSelections !== undefined
         ? { variantSelections: command.variantSelections }
         : {}),

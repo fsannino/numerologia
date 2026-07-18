@@ -20,6 +20,7 @@ export type UiMessages = {
     readonly referenceHint: string
     readonly variantsSummary: string
     readonly variantsNote: string
+    readonly schoolsLabel: string
     readonly calculate: string
   }
   readonly errors: {
@@ -51,11 +52,19 @@ export type UiMessages = {
     readonly noDigits: string
     readonly noLetters: string
     readonly chainSr: (chain: string) => string
+    readonly compoundBadge: (compound: number) => string
   }
   readonly timeline: {
     readonly range: (from: number, to: number) => string
     readonly rangeOpen: (from: number) => string
     readonly current: string
+  }
+  readonly matrix: {
+    readonly title: string
+    readonly numberColumn: string
+    readonly notCalculated: string
+    readonly divergenceCause: string
+    readonly convergenceNote: string
   }
   readonly numberLabels: Readonly<Record<string, NumberLabel>>
   readonly footer: string
@@ -79,6 +88,7 @@ const PT: UiMessages = {
     referenceHint: 'Ciclos, Pináculos, Desafios e Ano/Mês/Dia Pessoal são calculados para esta data — por padrão, hoje.',
     variantsSummary: 'Métodos de cálculo (variantes das escolas)',
     variantsNote: 'Escolas divergem nos métodos — por isso a escolha é sua, e cada resultado registra a variante usada.',
+    schoolsLabel: 'Escolas numerológicas',
     calculate: 'Calcular mapa',
   },
   errors: {
@@ -111,11 +121,19 @@ const PT: UiMessages = {
     noDigits: 'Nenhum dígito destacado',
     noLetters: 'nenhuma letra',
     chainSr: (chain) => `Cadeia de redução: ${chain}.`,
+    compoundBadge: (compound) => `Composto ${compound}`,
   },
   timeline: {
     range: (from, to) => `dos ${from} aos ${to} anos`,
     rangeOpen: (from) => `dos ${from} anos em diante`,
     current: 'vigente',
+  },
+  matrix: {
+    title: 'Matriz comparativa entre escolas',
+    numberColumn: 'Número',
+    notCalculated: 'não calcula',
+    divergenceCause: 'Onde os valores divergem, a causa é a tabela de letras: 1–9 pela posição alfabética (pitagórica) × 1–8 por afinidade fonética, sem o 9 (caldaica) — e a caldaica não preserva números mestres na redução.',
+    convergenceNote: 'Quando escolas independentes apontam o mesmo número, isso é convergência de método — não evidência.',
   },
   numberLabels: {
     expression: { title: 'Expressão', hint: 'todas as letras do nome' },
@@ -157,6 +175,7 @@ const EN: UiMessages = {
     referenceHint: 'Cycles, Pinnacles, Challenges and Personal Year/Month/Day are computed for this date — today by default.',
     variantsSummary: 'Calculation methods (school variants)',
     variantsNote: 'Schools diverge on methods — so the choice is yours, and every result records the variant used.',
+    schoolsLabel: 'Numerology schools',
     calculate: 'Calculate chart',
   },
   errors: {
@@ -189,11 +208,19 @@ const EN: UiMessages = {
     noDigits: 'No highlighted digits',
     noLetters: 'no letters',
     chainSr: (chain) => `Reduction chain: ${chain}.`,
+    compoundBadge: (compound) => `Compound ${compound}`,
   },
   timeline: {
     range: (from, to) => `from age ${from} to ${to}`,
     rangeOpen: (from) => `from age ${from} onwards`,
     current: 'current',
+  },
+  matrix: {
+    title: 'School comparison matrix',
+    numberColumn: 'Number',
+    notCalculated: 'not calculated',
+    divergenceCause: 'Where values diverge, the cause is the letter table: 1–9 by alphabetical position (Pythagorean) × 1–8 by phonetic affinity, without 9 (Chaldean) — and the Chaldean school does not preserve master numbers when reducing.',
+    convergenceNote: 'When independent schools point to the same number, that is convergence of method — not evidence.',
   },
   numberLabels: {
     expression: { title: 'Expression', hint: 'every letter of the name' },
@@ -235,6 +262,7 @@ const ES: UiMessages = {
     referenceHint: 'Ciclos, Pináculos, Desafíos y Año/Mes/Día Personal se calculan para esta fecha — por defecto, hoy.',
     variantsSummary: 'Métodos de cálculo (variantes de las escuelas)',
     variantsNote: 'Las escuelas divergen en los métodos — por eso la elección es tuya, y cada resultado registra la variante usada.',
+    schoolsLabel: 'Escuelas numerológicas',
     calculate: 'Calcular carta',
   },
   errors: {
@@ -267,11 +295,19 @@ const ES: UiMessages = {
     noDigits: 'Ningún dígito destacado',
     noLetters: 'ninguna letra',
     chainSr: (chain) => `Cadena de reducción: ${chain}.`,
+    compoundBadge: (compound) => `Compuesto ${compound}`,
   },
   timeline: {
     range: (from, to) => `de los ${from} a los ${to} años`,
     rangeOpen: (from) => `desde los ${from} años en adelante`,
     current: 'vigente',
+  },
+  matrix: {
+    title: 'Matriz comparativa entre escuelas',
+    numberColumn: 'Número',
+    notCalculated: 'no calcula',
+    divergenceCause: 'Donde los valores divergen, la causa es la tabla de letras: 1–9 por posición alfabética (pitagórica) × 1–8 por afinidad fonética, sin el 9 (caldea) — y la escuela caldea no preserva números maestros al reducir.',
+    convergenceNote: 'Cuando escuelas independientes señalan el mismo número, eso es convergencia de método — no evidencia.',
   },
   numberLabels: {
     expression: { title: 'Expresión', hint: 'todas las letras del nombre' },

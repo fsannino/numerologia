@@ -3,6 +3,7 @@ import { err, ok } from '@numerus/shared-kernel'
 import type { ModelId } from '../model-ids'
 import type { NumerologyModel } from '../ports/numerology-model'
 import { pythagoreanModel } from './pythagorean/pythagorean-model'
+import { chaldeanModel } from './chaldean/chaldean-model'
 
 export type UnknownModelError = { readonly code: 'unknown-model'; readonly model: string }
 
@@ -12,6 +13,7 @@ export type UnknownModelError = { readonly code: 'unknown-model'; readonly model
  */
 const MODELS: ReadonlyMap<ModelId, NumerologyModel> = new Map<ModelId, NumerologyModel>([
   [pythagoreanModel.id, pythagoreanModel],
+  [chaldeanModel.id, chaldeanModel],
 ])
 
 export function getModel(id: ModelId): Result<NumerologyModel, UnknownModelError> {

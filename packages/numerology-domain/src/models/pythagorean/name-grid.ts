@@ -6,7 +6,7 @@ import type { NumberKind } from '../../model-ids'
 import type { LocalizedText } from '@numerus/shared-kernel'
 import { pythagoreanValueOf } from './letter-table'
 import { PYTHAGOREAN_RULES } from './rules'
-import { letterMappingStep, text } from './trace-steps'
+import { letterMappingStep, text } from '../../trace/step-builders'
 
 /**
  * Grade do nome (ADR-0006): Lições Cármicas, Tendências Ocultas e
