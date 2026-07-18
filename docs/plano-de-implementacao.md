@@ -33,8 +33,10 @@ App Expo com paridade e cálculo offline; ADR de framework de teste mobile (Maes
 ## Fatia 5 — Profissional
 Carteira de clientes; persistência server-side com RLS por `professional_id` + suíte de testes de acesso cruzado; DPA no onboarding; audit trail append-only; PDF detalhado com marca própria; ADR de envelope encryption; RIPD/DPIA.
 
-## Fatia 6 — Sujeitos
-- **Nome alternativo / assinatura ✅ (parcial)**: use case `CompareSignatures` — delta vibracional entre nome de registro e nome do dia a dia (reusa o motor de números do nome, multi-escola), com modo próprio na UI e tabela de comparação. Pendente: casal/sinastria, casamento, empresa, evento/data.
+## Fatia 6 — Sujeitos (em andamento)
+- **Nome alternativo / assinatura ✅**: use case `CompareSignatures` — delta vibracional entre nome de registro e nome do dia a dia.
+- **Casal / Sinastria ✅**: serviço de domínio `union-numbers` (agnóstico de escola — qualquer escola nova ganha sinastria de graça, R5) + use case `BuildSynastry`. Seis números da união (Destino, Alma, Expressão, Personalidade, Missão, Chave), comparação de Anos Pessoais, marcação de convergências. Linguagem de reflexão, nunca veredito de compatibilidade (§9). Modo próprio na UI com disclaimer permanente.
+- **Pendente**: casamento (casal + data), empresa (razão social/fantasia/constituição), evento/data.
 
 ## Fatia 7 — Educacional
 Modo aprendiz com conferência de cálculo manual, trilhas, glossário navegável, PDF didático.

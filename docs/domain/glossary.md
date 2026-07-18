@@ -47,4 +47,19 @@ Termos do domínio numerológico usados no código. O nome no código = o nome q
 | Sem preservação de mestres | A redução caldaica vai até 1–9; o significado de 11/22/33 vive na leitura do composto. |
 | Fonte | Cheiro, "Cheiro's Book of Numbers" (1926). |
 
+## Sinastria (casal)
+
+| Termo (código) | Definição |
+|---|---|
+| `UnionNumber` (Número da união) | Deriva do mesmo número individual de duas pessoas: soma os valores reduzidos e reduz o total. Serviço de domínio agnóstico de escola. |
+| `union-destiny` / Destino da União | Dos dois Destinos (Caminho de Vida). |
+| `union-soul` / Alma da União | Das duas Motivações. |
+| `union-expression` / Expressão da União | Das duas Expressões. |
+| `union-personality` / Personalidade da União | Das duas Impressões. |
+| `union-mission` / Missão da União | Das duas Missões. |
+| `union-key` / Chave da União | Dos dois Números Chave. |
+| Convergência | União onde as duas pessoas já compartilham o mesmo dígito. **Não é evidência de harmonia** (§9). |
+
+Regra epistêmica dura (§9): os números da união são vocabulário para reflexão, **nunca** veredito de compatibilidade.
+
 O glossário cresce uma seção por escola a cada fase (caldaica, gematria, Lo Shu, védica...), com fonte histórica em `docs/domain/models-reference.md`.

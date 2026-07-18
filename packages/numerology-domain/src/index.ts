@@ -89,3 +89,6 @@ export { Y_CLASSIFICATION_DIMENSION, pythagoreanModel } from './models/pythagore
 
 export type { UnknownModelError } from './models/registry'
 export { getModel, listModels } from './models/registry'
+
+export type { UnionNumberKind } from './synastry/union-numbers'
+export { UNION_SOURCE, calculateUnionNumber } from './synastry/union-numbers'

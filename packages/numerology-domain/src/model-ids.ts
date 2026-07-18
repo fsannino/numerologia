@@ -23,6 +23,12 @@ export type NumberKind =
   | 'personal-year'
   | 'personal-month'
   | 'personal-day'
+  | 'union-destiny'
+  | 'union-soul'
+  | 'union-expression'
+  | 'union-personality'
+  | 'union-mission'
+  | 'union-key'
 
 export type SubjectKind =
   | 'person'

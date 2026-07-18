@@ -7,10 +7,11 @@ import { LocaleProvider, useLocale } from '@/i18n/locale-context'
 import { UI_MESSAGES } from '@/i18n/ui-messages'
 import { ChartCalculator } from '@/components/features/chart-calculator'
 import { SignatureComparator } from '@/components/features/signature-comparator'
+import { SynastryCalculator } from '@/components/features/synastry-calculator'
 
 const LOCALE_SHORT_NAMES: Readonly<Record<Locale, string>> = { 'pt-BR': 'PT', en: 'EN', es: 'ES' }
 
-type Mode = 'chart' | 'signature'
+type Mode = 'chart' | 'signature' | 'synastry'
 
 function Shell() {
   const { locale, setLocale } = useLocale()
@@ -46,7 +47,7 @@ function Shell() {
       </header>
 
       <nav aria-label={t.modes.chart} className="flex gap-2 border-b border-slate-200">
-        {(['chart', 'signature'] as const).map((option) => (
+        {(['chart', 'signature', 'synastry'] as const).map((option) => (
           <button
             key={option}
             type="button"
@@ -63,7 +64,9 @@ function Shell() {
         ))}
       </nav>
 
-      {mode === 'chart' ? <ChartCalculator /> : <SignatureComparator />}
+      {mode === 'chart' && <ChartCalculator />}
+      {mode === 'signature' && <SignatureComparator />}
+      {mode === 'synastry' && <SynastryCalculator />}
 
       <footer className="border-t border-slate-200 pt-4 text-xs leading-relaxed text-slate-500">
         <p>{t.footer}</p>

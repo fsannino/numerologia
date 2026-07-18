@@ -66,7 +66,7 @@ export type UiMessages = {
     readonly divergenceCause: string
     readonly convergenceNote: string
   }
-  readonly modes: { readonly chart: string; readonly signature: string }
+  readonly modes: { readonly chart: string; readonly signature: string; readonly synastry: string }
   readonly signature: {
     readonly intro: string
     readonly registrationLabel: string
@@ -77,6 +77,16 @@ export type UiMessages = {
     readonly changedTag: string
     readonly registrationColumn: string
     readonly signatureColumn: string
+  }
+  readonly synastry: {
+    readonly intro: string
+    readonly personALabel: string
+    readonly personBLabel: string
+    readonly build: string
+    readonly unionTitle: string
+    readonly personalYearTitle: string
+    readonly convergenceNote: (count: number) => string
+    readonly reflectionDisclaimer: string
   }
   readonly numberLabels: Readonly<Record<string, NumberLabel>>
   readonly footer: string
@@ -147,7 +157,7 @@ const PT: UiMessages = {
     divergenceCause: 'Onde os valores divergem, a causa é a tabela de letras: 1–9 pela posição alfabética (pitagórica) × 1–8 por afinidade fonética, sem o 9 (caldaica) — e a caldaica não preserva números mestres na redução.',
     convergenceNote: 'Quando escolas independentes apontam o mesmo número, isso é convergência de método — não evidência.',
   },
-  modes: { chart: 'Mapa completo', signature: 'Assinatura / delta' },
+  modes: { chart: 'Mapa completo', signature: 'Assinatura / delta', synastry: 'Casal / sinastria' },
   signature: {
     intro: 'Compare o nome de registro com o nome que você usa no dia a dia e veja o que muda quando você assina de outra forma.',
     registrationLabel: 'Nome de registro',
@@ -158,6 +168,16 @@ const PT: UiMessages = {
     changedTag: 'muda',
     registrationColumn: 'Registro',
     signatureColumn: 'Assinatura',
+  },
+  synastry: {
+    intro: 'Dois mapas produzem os números da união. É vocabulário para reflexão sobre a relação — nunca um veredito de compatibilidade.',
+    personALabel: 'Primeira pessoa',
+    personBLabel: 'Segunda pessoa',
+    build: 'Calcular sinastria',
+    unionTitle: 'Números da união',
+    personalYearTitle: 'Comparação de Anos Pessoais',
+    convergenceNote: (count) => `${count} ${count === 1 ? 'número da união converge' : 'números da união convergem'} (as duas pessoas já compartilham o mesmo dígito). Convergência não é evidência de harmonia.`,
+    reflectionDisclaimer: 'Estes números são pontos de partida para conversa e autoconhecimento a dois, não uma medida de compatibilidade nem uma previsão sobre o relacionamento.',
   },
   numberLabels: {
     expression: { title: 'Expressão', hint: 'todas as letras do nome' },
@@ -176,6 +196,12 @@ const PT: UiMessages = {
     'personal-year': { title: 'Ano Pessoal', hint: 'vibração do ano de referência' },
     'personal-month': { title: 'Mês Pessoal', hint: 'vibração do mês de referência' },
     'personal-day': { title: 'Dia Pessoal', hint: 'vibração do dia de referência' },
+    'union-destiny': { title: 'Destino da União', hint: 'dos dois Destinos' },
+    'union-soul': { title: 'Alma da União', hint: 'das duas Motivações' },
+    'union-expression': { title: 'Expressão da União', hint: 'das duas Expressões' },
+    'union-personality': { title: 'Personalidade da União', hint: 'das duas Impressões' },
+    'union-mission': { title: 'Missão da União', hint: 'das duas Missões' },
+    'union-key': { title: 'Chave da União', hint: 'dos dois Números Chave' },
   },
   footer:
     'O Numerus é uma ferramenta de estudo, autoconhecimento e entretenimento cultural. Não substitui aconselhamento médico, psicológico, jurídico ou financeiro. O sistema de conversão de nomes praticado hoje foi estruturado no fim do séc. XIX / início do XX (L. Dow Balliett, Juno Jordan), reivindicando a herança pitagórica — cada escola exibe sua origem histórica real.',
@@ -246,7 +272,7 @@ const EN: UiMessages = {
     divergenceCause: 'Where values diverge, the cause is the letter table: 1–9 by alphabetical position (Pythagorean) × 1–8 by phonetic affinity, without 9 (Chaldean) — and the Chaldean school does not preserve master numbers when reducing.',
     convergenceNote: 'When independent schools point to the same number, that is convergence of method — not evidence.',
   },
-  modes: { chart: 'Full chart', signature: 'Signature / delta' },
+  modes: { chart: 'Full chart', signature: 'Signature / delta', synastry: 'Couple / synastry' },
   signature: {
     intro: 'Compare your registration name with the name you use day to day and see what changes when you sign differently.',
     registrationLabel: 'Registration name',
@@ -257,6 +283,16 @@ const EN: UiMessages = {
     changedTag: 'changes',
     registrationColumn: 'Registration',
     signatureColumn: 'Signature',
+  },
+  synastry: {
+    intro: 'Two charts produce the union numbers. This is vocabulary for reflecting on the relationship — never a compatibility verdict.',
+    personALabel: 'First person',
+    personBLabel: 'Second person',
+    build: 'Calculate synastry',
+    unionTitle: 'Union numbers',
+    personalYearTitle: 'Personal Year comparison',
+    convergenceNote: (count) => `${count} union ${count === 1 ? 'number converges' : 'numbers converge'} (both people already share the same digit). Convergence is not evidence of harmony.`,
+    reflectionDisclaimer: 'These numbers are starting points for conversation and shared self-knowledge, not a measure of compatibility nor a prediction about the relationship.',
   },
   numberLabels: {
     expression: { title: 'Expression', hint: 'every letter of the name' },
@@ -275,6 +311,12 @@ const EN: UiMessages = {
     'personal-year': { title: 'Personal Year', hint: 'vibration of the reference year' },
     'personal-month': { title: 'Personal Month', hint: 'vibration of the reference month' },
     'personal-day': { title: 'Personal Day', hint: 'vibration of the reference day' },
+    'union-destiny': { title: 'Union Destiny', hint: 'from both Life Paths' },
+    'union-soul': { title: 'Union Soul', hint: 'from both Motivations' },
+    'union-expression': { title: 'Union Expression', hint: 'from both Expressions' },
+    'union-personality': { title: 'Union Personality', hint: 'from both Impressions' },
+    'union-mission': { title: 'Union Mission', hint: 'from both Missions' },
+    'union-key': { title: 'Union Key', hint: 'from both Key Numbers' },
   },
   footer:
     'Numerus is a tool for study, self-knowledge and cultural entertainment. It does not replace medical, psychological, legal or financial advice. The name-conversion system as practiced today was structured in the late 19th / early 20th century (L. Dow Balliett, Juno Jordan), claiming the Pythagorean heritage — each school displays its real historical origin.',
@@ -345,7 +387,7 @@ const ES: UiMessages = {
     divergenceCause: 'Donde los valores divergen, la causa es la tabla de letras: 1–9 por posición alfabética (pitagórica) × 1–8 por afinidad fonética, sin el 9 (caldea) — y la escuela caldea no preserva números maestros al reducir.',
     convergenceNote: 'Cuando escuelas independientes señalan el mismo número, eso es convergencia de método — no evidencia.',
   },
-  modes: { chart: 'Carta completa', signature: 'Firma / delta' },
+  modes: { chart: 'Carta completa', signature: 'Firma / delta', synastry: 'Pareja / sinastría' },
   signature: {
     intro: 'Compara tu nombre de registro con el nombre que usas a diario y ve qué cambia cuando firmas de otra forma.',
     registrationLabel: 'Nombre de registro',
@@ -356,6 +398,16 @@ const ES: UiMessages = {
     changedTag: 'cambia',
     registrationColumn: 'Registro',
     signatureColumn: 'Firma',
+  },
+  synastry: {
+    intro: 'Dos cartas producen los números de la unión. Es vocabulario para reflexionar sobre la relación — nunca un veredicto de compatibilidad.',
+    personALabel: 'Primera persona',
+    personBLabel: 'Segunda persona',
+    build: 'Calcular sinastría',
+    unionTitle: 'Números de la unión',
+    personalYearTitle: 'Comparación de Años Personales',
+    convergenceNote: (count) => `${count} ${count === 1 ? 'número de la unión converge' : 'números de la unión convergen'} (las dos personas ya comparten el mismo dígito). La convergencia no es evidencia de armonía.`,
+    reflectionDisclaimer: 'Estos números son puntos de partida para la conversación y el autoconocimiento en pareja, no una medida de compatibilidad ni una predicción sobre la relación.',
   },
   numberLabels: {
     expression: { title: 'Expresión', hint: 'todas las letras del nombre' },
@@ -374,6 +426,12 @@ const ES: UiMessages = {
     'personal-year': { title: 'Año Personal', hint: 'vibración del año de referencia' },
     'personal-month': { title: 'Mes Personal', hint: 'vibración del mes de referencia' },
     'personal-day': { title: 'Día Personal', hint: 'vibración del día de referencia' },
+    'union-destiny': { title: 'Destino de la Unión', hint: 'de ambos Destinos' },
+    'union-soul': { title: 'Alma de la Unión', hint: 'de ambas Motivaciones' },
+    'union-expression': { title: 'Expresión de la Unión', hint: 'de ambas Expresiones' },
+    'union-personality': { title: 'Personalidad de la Unión', hint: 'de ambas Impresiones' },
+    'union-mission': { title: 'Misión de la Unión', hint: 'de ambas Misiones' },
+    'union-key': { title: 'Clave de la Unión', hint: 'de ambos Números Clave' },
   },
   footer:
     'Numerus es una herramienta de estudio, autoconocimiento y entretenimiento cultural. No sustituye el consejo médico, psicológico, jurídico ni financiero. El sistema de conversión de nombres tal como se practica hoy fue estructurado a finales del s. XIX / inicios del XX (L. Dow Balliett, Juno Jordan), reivindicando la herencia pitagórica — cada escuela muestra su origen histórico real.',
