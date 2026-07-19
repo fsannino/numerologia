@@ -44,10 +44,10 @@ Carteira de clientes; persistência server-side com RLS por `professional_id` + 
 - **Análise de cada número ✅ (base)**: port `InterpretationProvider` (definido desde já, §11 decisão 3, sem adapter de LLM) + adapter de **conteúdo curado** (`curatedInterpretationProvider`): reflexão por vibração (1–9 + mestres) × enquadramento por tipo de número, trilíngue, rotulada na UI como "conteúdo curado — não é veredito" (§9). Camada separada do cálculo. A Fase 10 pluga um adapter de IA no mesmo port sem refatorar.
 - **Pendente**: análise de grupo por método e análise comparativa interpretativa (dependem da IA, Fase 10); modo aprendiz, trilhas, glossário navegável, PDF didático.
 
-## Fatia 8 — Esotéricos (em andamento)
+## Fatia 8 — Esotéricos ✅
 - **Lo Shu ✅**: terceira escola no registry (`models/lo-shu/` + registro — núcleo intacto), a primeira que produz uma **grade** em vez de número único. Dígitos da data no quadrado mágico 4-9-2/3-5-7/8-1-6, com detecção de setas de força/ausência (§9: qualidade a desenvolver, não veredito). Novo passo de traço `lo-shu-grid` (visual `lo-shu`) e renderer 3×3 na UI.
 - **Gematria ✅**: quarta escola (`models/gematria/` + registro — núcleo intacto). Valores das letras hebraicas (mispar hechrachi); transliteração latino→hebraico **ambígua exposta como múltiplas candidatas** por letra + espectro min/padrão/máx + nº de combinações — nunca resposta silenciosa (ADR-0008, §2.1/§4.3/§9). Novo passo de traço `transliteration` (visual `transliteration`) e renderer na UI com hebraico RTL.
-- **Pendente**: védico.
+- **Védica ✅**: quinta escola (`models/vedic/` + registro — núcleo intacto). Derivada de data: **Moolank** (número raiz, o dia reduzido) e **Bhagyank** (número do destino, a data completa reduzida), cada dígito 1–9 regido por uma **graha** (planeta): Sol, Lua, Júpiter, Rahu, Mercúrio, Vênus, Ketu, Saturno, Marte. Não preserva mestres (como a caldaica, por motivo próprio) — quando a leitura ocidental pararia num mestre, a divergência é registrada (§2.4). Novo passo de traço `planetary-ruler` (visual `planetary-ruler`) e renderer na UI. Qualidades do planeta são reflexão, nunca veredito (§9, ADR-0009).
 
 ## Fatia 9 — Monetização
 Ligar billing (estrutura de planos/cupons 0–100% existente desde a Fase 2 sob feature flag).

@@ -105,4 +105,18 @@ O casamento reusa a sinastria (números da união do casal) + os números da dat
 | Espectro | Total mínimo, padrão e máximo + nº de combinações — a ambiguidade exposta, **nunca resposta silenciosa** (§9). |
 | Fonte | Gematria hebraica clássica (mispar hechrachi). |
 
+## Escola Védica (indiana)
+
+| Termo | Definição |
+|---|---|
+| Ank Jyotish | Numerologia védica, da tradição da astrologia indiana. Deriva números da data de nascimento, cada um regido por um planeta. |
+| `vedic-moolank` (Moolank) | Número raiz / psíquico: o **dia** do nascimento reduzido a 1–9. |
+| `vedic-bhagyank` (Bhagyank) | Número do destino: a soma de **todos os dígitos** da data, reduzida a 1–9. |
+| Graha | Planeta regente de um dígito 1–9: Sol (1), Lua (2), Júpiter (3), Rahu (4), Mercúrio (5), Vênus (6), Ketu (7), Saturno (8), Marte (9). O significado do número é o do seu planeta. |
+| `planetary-ruler` | Passo de traço que expõe a graha regente (planeta, nome sânscrito, símbolo, qualidades). Assinatura da escola — como `lo-shu-grid` e `transliteration` das suas. |
+| Sem preservação de mestres | A redução védica vai sempre até 1–9. Quando a leitura ocidental (mestres) divergiria, o traço registra a nota (§2.4, ADR-0009). |
+| Fonte | Ank Jyotish; correspondência clássica entre números e grahas. |
+
+Qualidades do planeta (§9): vocabulário de reflexão sobre o arquétipo, **nunca** veredito sobre a pessoa.
+
 O glossário cresce uma seção por escola a cada fase (caldaica, gematria, Lo Shu, védica...), com fonte histórica em `docs/domain/models-reference.md`.

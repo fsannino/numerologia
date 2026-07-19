@@ -35,6 +35,8 @@ const DATE_NUMBERS: ReadonlyArray<NumberKind> = [
   'personal-month',
   'personal-day',
   'lo-shu-grid',
+  'vedic-moolank',
+  'vedic-bhagyank',
 ]
 
 /** "Hoje" calculado na UI — o domínio nunca lê o relógio (ADR-0007). */
