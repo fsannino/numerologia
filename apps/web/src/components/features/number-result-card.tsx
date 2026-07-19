@@ -1,4 +1,5 @@
 import type { CalculationTrace } from '@numerus/numerology-domain'
+import { curatedInterpretationProvider } from '@numerus/numerology-domain'
 import { localize } from '@numerus/shared-kernel'
 import { useLocale } from '@/i18n/locale-context'
 import { UI_MESSAGES } from '@/i18n/ui-messages'
@@ -20,6 +21,11 @@ export function NumberResultCard({ trace }: { trace: CalculationTrace }) {
   const t = UI_MESSAGES[locale]
   const label = t.numberLabels[trace.resultId] ?? { title: trace.resultId, hint: '' }
   const highlightedDigits = highlightedDigitsOf(trace)
+  const interpretation = curatedInterpretationProvider.interpret({
+    model: trace.model,
+    resultId: trace.resultId,
+    value: trace.finalValue,
+  })
   return (
     <article className="rounded-xl border border-indigo-200 bg-white shadow-sm" aria-label={label.title}>
       <div className="flex items-center gap-4 p-4">
@@ -58,6 +64,15 @@ export function NumberResultCard({ trace }: { trace: CalculationTrace }) {
           <ReductionChain value={trace.finalValue} />
         </div>
       </div>
+
+      {interpretation !== null && (
+        <div className="mx-4 mb-3 rounded-lg bg-indigo-50/60 p-3">
+          <p className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-indigo-700">
+            {t.results.interpretationLabel}
+          </p>
+          <p className="text-sm leading-relaxed text-slate-700">{localize(interpretation.text, locale)}</p>
+        </div>
+      )}
 
       {trace.divergenceNotes.length > 0 && (
         <div className="mx-4 mb-3 rounded-lg border border-amber-300 bg-amber-50 p-3" role="note">

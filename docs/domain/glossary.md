@@ -18,6 +18,7 @@ Termos do domínio numerológico usados no código. O nome no código = o nome q
 | `KarmicDebt` | Dívida cármica | 13, 14, 16, 19 detectados em totais brutos antes da redução. |
 | `RuleReference` | Referência de regra | Qual regra da escola justificou um passo (base do modo "por quê?"). |
 | `DivergenceNote` | Nota de divergência | Registro de que outra escola/variante produziria resultado diferente e por quê. |
+| `InterpretationProvider` | Provider de interpretação | Port (§11 dec. 3) que produz **reflexão** sobre um número — camada separada do cálculo. Hoje `curated`; `ai` na Fase 10. Sempre §9: reflexão, nunca veredito. |
 
 ## Escola pitagórica
 

@@ -52,6 +52,13 @@ export type {
 } from './ports/numerology-model'
 
 export type {
+  Interpretation,
+  InterpretationProvider,
+  InterpretationRequest,
+} from './ports/interpretation-provider'
+export { curatedInterpretationProvider } from './interpretations/curated-interpretations'
+
+export type {
   NameNumberKind,
   NameNumberVariants,
   NameReductionVariant,
