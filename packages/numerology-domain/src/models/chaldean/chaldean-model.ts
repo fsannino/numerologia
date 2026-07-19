@@ -29,6 +29,8 @@ export const chaldeanModel: NumerologyModel = {
     },
     sources: ['Cheiro, "Cheiro\'s Book of Numbers" (1926)'],
     letterValues: CHALDEAN_LETTER_VALUES,
+    canonicity: 'modern-systematization',
+    standardization: 'standardized',
     variantDimensions: [
       {
         dimension: Y_CLASSIFICATION_DIMENSION,

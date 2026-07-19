@@ -66,6 +66,8 @@ export const loShuModel: NumerologyModel = {
       es: 'Numerología china basada en el cuadrado mágico Lo Shu (4-9-2 / 3-5-7 / 8-1-6), atribuido al mito del río Luo. Produce una cuadrícula a partir de los dígitos de la fecha — no un número único.',
     },
     sources: ['Tradição do quadrado Lo Shu (numerologia chinesa)'],
+    canonicity: 'documented-tradition',
+    standardization: 'standardized',
     variantDimensions: [],
   },
   supportedSubjects: SUPPORTED_SUBJECTS,

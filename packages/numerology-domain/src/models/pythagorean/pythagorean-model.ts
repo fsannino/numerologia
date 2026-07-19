@@ -268,6 +268,8 @@ export const pythagoreanModel: NumerologyModel = {
       'L. Dow Balliett, "The Philosophy of Numbers" (1908)',
       'Juno Jordan, "Numerology: The Romance in Your Name" (1965)',
     ],
+    canonicity: 'modern-systematization',
+    standardization: 'standardized',
     variantDimensions: VARIANT_DIMENSIONS,
     letterValues: PYTHAGOREAN_LETTER_VALUES,
   },

@@ -13,6 +13,7 @@ import { UI_MESSAGES } from '@/i18n/ui-messages'
 import { ComparisonMatrix } from './comparison-matrix'
 import { LetterValuesTable } from './letter-values-table'
 import { NumberResultCard } from './number-result-card'
+import { SchoolProvenanceBadge } from './school-provenance-badge'
 
 const NAME_NUMBERS: ReadonlyArray<NumberKind> = [
   'expression',
@@ -285,11 +286,14 @@ export function ChartCalculator() {
             const model = listModels().find((entry) => entry.id === result.model)
             return (
               <section key={result.model} className="flex flex-col gap-3" aria-label={model ? localize(model.metadata.name, locale) : result.model}>
-                {results.length > 1 && (
-                  <h3 className="text-lg font-semibold text-indigo-900">
-                    {model ? localize(model.metadata.name, locale) : result.model}
-                  </h3>
-                )}
+                <div className="flex flex-wrap items-center gap-2">
+                  {results.length > 1 && (
+                    <h3 className="text-lg font-semibold text-indigo-900">
+                      {model ? localize(model.metadata.name, locale) : result.model}
+                    </h3>
+                  )}
+                  {model && <SchoolProvenanceBadge metadata={model.metadata} />}
+                </div>
                 <div className="grid gap-3">
                   {result.traces.map((trace) => (
                     <NumberResultCard key={`${result.model}-${trace.resultId}`} trace={trace} />

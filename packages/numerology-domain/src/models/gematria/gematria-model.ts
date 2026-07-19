@@ -47,6 +47,8 @@ export const gematriaModel: NumerologyModel = {
       es: 'Sistema hebreo que suma los valores de las letras (mispar hechrachi). Los nombres latinos requieren transliteración al hebreo — ambigua por naturaleza, expuesta como múltiples candidatas (ADR-0008).',
     },
     sources: ['Gematria hebraica clássica (mispar hechrachi)'],
+    canonicity: 'documented-tradition',
+    standardization: 'variant-dependent',
     variantDimensions: [],
   },
   supportedSubjects: SUPPORTED_SUBJECTS,

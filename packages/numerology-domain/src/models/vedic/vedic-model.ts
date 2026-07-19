@@ -25,6 +25,8 @@ export const vedicModel: NumerologyModel = {
       es: 'Numerología védica (Ank Jyotish), de la tradición de la astrología india. Deriva de la fecha de nacimiento el Moolank (número raíz) y el Bhagyank (número del destino), cada dígito regido por una graha (planeta). Reduce siempre a un solo dígito 1–9, sin números maestros.',
     },
     sources: ['Ank Jyotish (numerologia védica / indiana)'],
+    canonicity: 'documented-tradition',
+    standardization: 'standardized',
     variantDimensions: [],
   },
   supportedSubjects: SUPPORTED_SUBJECTS,
