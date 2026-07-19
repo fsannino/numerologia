@@ -33,6 +33,7 @@ const DATE_NUMBERS: ReadonlyArray<NumberKind> = [
   'personal-year',
   'personal-month',
   'personal-day',
+  'lo-shu-grid',
 ]
 
 /** "Hoje" calculado na UI — o domínio nunca lê o relógio (ADR-0007). */
@@ -277,7 +278,7 @@ export function ChartCalculator() {
 
           {results.length > 1 && <ComparisonMatrix results={results} />}
 
-          {results.map((result) => {
+          {results.filter((result) => result.traces.length > 0).map((result) => {
             const model = listModels().find((entry) => entry.id === result.model)
             return (
               <section key={result.model} className="flex flex-col gap-3" aria-label={model ? localize(model.metadata.name, locale) : result.model}>

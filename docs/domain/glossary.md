@@ -84,4 +84,14 @@ O casamento reusa a sinastria (números da união do casal) + os números da dat
 
 `combineReducedValues` é o primitivo de domínio compartilhado por sinastria e empresa (soma de valores reduzidos + redução preservando mestres).
 
+## Escola Lo Shu (chinesa)
+
+| Termo | Definição |
+|---|---|
+| Quadrado Lo Shu | Grade mágica 4-9-2 / 3-5-7 / 8-1-6 onde os dígitos da data são posicionados. |
+| `lo-shu-grid` | Único resultado da escola: a grade. Produz grade, não número único — renderer próprio (passo `lo-shu-grid`, visual `lo-shu`). Escalar = nº de números distintos presentes. |
+| Seta de força | Linha (fila/coluna/diagonal) com os três números presentes. |
+| Seta de ausência | Linha com os três números ausentes — qualidade a desenvolver, não veredito (§9). |
+| Fonte | Tradição da numerologia chinesa (mito do rio Luo). |
+
 O glossário cresce uma seção por escola a cada fase (caldaica, gematria, Lo Shu, védica...), com fonte histórica em `docs/domain/models-reference.md`.

@@ -20,6 +20,14 @@ export type DigitTallyEntry = {
   readonly count: number
 }
 
+/** Uma "seta" (linha completa ou ausente) na grade Lo Shu. */
+export type LoShuArrow = {
+  /** Os três números que formam a linha, na ordem do quadrado. */
+  readonly line: readonly [number, number, number]
+  readonly kind: 'strength' | 'absence'
+  readonly label: LocalizedText
+}
+
 /** Um período de uma linha do tempo numerológica (ADR-0007). */
 export type TimelineSegment = {
   readonly label: LocalizedText
@@ -85,6 +93,17 @@ export type CalculationStep =
         readonly highlighted: ReadonlyArray<number>
       }
       readonly visual: 'digit-grid'
+    }
+  | {
+      readonly kind: 'lo-shu-grid'
+      readonly title: LocalizedText
+      readonly explanation: LocalizedText
+      readonly input: { readonly dateDigits: ReadonlyArray<number> }
+      readonly output: {
+        readonly tally: ReadonlyArray<DigitTallyEntry>
+        readonly arrows: ReadonlyArray<LoShuArrow>
+      }
+      readonly visual: 'lo-shu'
     }
   | {
       readonly kind: 'timeline'

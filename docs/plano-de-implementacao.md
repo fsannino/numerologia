@@ -43,8 +43,9 @@ Carteira de clientes; persistência server-side com RLS por `professional_id` + 
 ## Fatia 7 — Educacional
 Modo aprendiz com conferência de cálculo manual, trilhas, glossário navegável, PDF didático.
 
-## Fatia 8 — Esotéricos
-Gematria com transliterações múltiplas candidatas, Lo Shu (renderer de grade), védico.
+## Fatia 8 — Esotéricos (em andamento)
+- **Lo Shu ✅**: terceira escola no registry (`models/lo-shu/` + registro — núcleo intacto), a primeira que produz uma **grade** em vez de número único. Dígitos da data no quadrado mágico 4-9-2/3-5-7/8-1-6, com detecção de setas de força/ausência (§9: qualidade a desenvolver, não veredito). Novo passo de traço `lo-shu-grid` (visual `lo-shu`) e renderer 3×3 na UI.
+- **Pendente**: Gematria com transliterações múltiplas candidatas, védico.
 
 ## Fatia 9 — Monetização
 Ligar billing (estrutura de planos/cupons 0–100% existente desde a Fase 2 sob feature flag).

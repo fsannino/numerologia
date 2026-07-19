@@ -5,6 +5,7 @@ describe('registry de modelos', () => {
   it('resolve as escolas registradas', () => {
     expect(getModel('pythagorean').ok).toBe(true)
     expect(getModel('chaldean').ok).toBe(true)
+    expect(getModel('lo-shu').ok).toBe(true)
   })
 
   it('retorna erro explícito para escola ainda não registrada', () => {
@@ -12,6 +13,6 @@ describe('registry de modelos', () => {
   })
 
   it('lista os modelos registrados', () => {
-    expect(listModels().map((model) => model.id)).toEqual(['pythagorean', 'chaldean'])
+    expect(listModels().map((model) => model.id)).toEqual(['pythagorean', 'chaldean', 'lo-shu'])
   })
 })
