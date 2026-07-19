@@ -6,13 +6,14 @@ describe('registry de modelos', () => {
     expect(getModel('pythagorean').ok).toBe(true)
     expect(getModel('chaldean').ok).toBe(true)
     expect(getModel('lo-shu').ok).toBe(true)
+    expect(getModel('gematria').ok).toBe(true)
   })
 
   it('retorna erro explícito para escola ainda não registrada', () => {
-    expect(getModel('gematria')).toMatchObject({ ok: false, error: { code: 'unknown-model', model: 'gematria' } })
+    expect(getModel('vedic')).toMatchObject({ ok: false, error: { code: 'unknown-model', model: 'vedic' } })
   })
 
   it('lista os modelos registrados', () => {
-    expect(listModels().map((model) => model.id)).toEqual(['pythagorean', 'chaldean', 'lo-shu'])
+    expect(listModels().map((model) => model.id)).toEqual(['pythagorean', 'chaldean', 'lo-shu', 'gematria'])
   })
 })

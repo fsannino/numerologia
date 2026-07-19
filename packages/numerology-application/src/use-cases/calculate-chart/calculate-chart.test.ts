@@ -29,7 +29,7 @@ describe('calculateChart', () => {
   it('propaga erro de modelo desconhecido', () => {
     const result = calculateChart({
       subject: { kind: 'person', fullName: 'Maria Silva' },
-      models: ['gematria'],
+      models: ['vedic'],
       numbers: ['expression'],
     })
     expect(result).toMatchObject({ ok: false, error: { code: 'unknown-model' } })
