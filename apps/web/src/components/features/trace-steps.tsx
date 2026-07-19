@@ -12,8 +12,8 @@ function StepBody({ step }: { step: CalculationStep }) {
   switch (step.kind) {
     case 'filter':
       return (
-        <p className="font-mono text-sm">
-          &quot;{step.input.source}&quot; <span className="text-slate-400">→</span>{' '}
+        <p className="font-mono text-sm text-tinta">
+          &quot;{step.input.source}&quot; <span className="text-anil">→</span>{' '}
           {step.output.kept.length > 0 ? step.output.kept.join(' · ') : <em>{t.results.noLetters}</em>}
         </p>
       )
@@ -23,18 +23,18 @@ function StepBody({ step }: { step: CalculationStep }) {
           {step.output.entries.map((entry, index) => (
             <li
               key={`${entry.letter}-${index}`}
-              className="flex flex-col items-center rounded border border-indigo-200 bg-white px-2 py-1"
+              className="flex flex-col items-center border border-anil bg-giz px-2 py-1"
             >
-              <span className="font-bold">{entry.letter}</span>
-              <span className="text-sm text-indigo-700">{entry.value}</span>
+              <span className="font-mono text-sm font-semibold text-tinta">{entry.letter}</span>
+              <span className="font-mono text-sm text-latao">{entry.value}</span>
             </li>
           ))}
         </ul>
       )
     case 'sum':
       return (
-        <p className="font-mono text-sm">
-          {step.input.parcels.join(' + ')} = <strong className="text-base">{step.output.total}</strong>
+        <p className="font-mono text-sm text-tinta">
+          {step.input.parcels.join(' + ')} = <strong className="font-display text-2xl text-latao">{step.output.total}</strong>
         </p>
       )
     case 'reduction':
@@ -207,7 +207,7 @@ function StepBody({ step }: { step: CalculationStep }) {
       // A frase completa já vem localizada em step.explanation; aqui só o destaque.
       return step.output.isMaster ? (
         <p className="text-sm">
-          <span className="rounded bg-violet-100 px-2 py-0.5 font-semibold text-violet-900">
+          <span className="border border-latao px-2 py-0.5 font-mono text-[11px] uppercase tracking-[0.1em] text-latao">
             {t.results.masterShort} {step.input.candidate}
           </span>
         </p>
@@ -216,7 +216,7 @@ function StepBody({ step }: { step: CalculationStep }) {
       return step.output.debtsFound.length > 0 ? (
         <p className="flex flex-wrap gap-1.5 text-sm">
           {step.output.debtsFound.map((debt, index) => (
-            <span key={index} className="rounded bg-rose-100 px-2 py-0.5 font-semibold text-rose-900">
+            <span key={index} className="border border-tinta px-2 py-0.5 font-mono text-[11px] uppercase tracking-[0.1em] text-tinta">
               {t.results.debtBadge(debt)}
             </span>
           ))}
@@ -229,18 +229,18 @@ function StepBody({ step }: { step: CalculationStep }) {
 export function TraceSteps({ steps }: { steps: ReadonlyArray<CalculationStep> }) {
   const { locale } = useLocale()
   return (
-    <ol className="flex flex-col gap-2">
+    <ol className="flex flex-col gap-px border border-anil bg-anil">
       {steps.map((step, index) => (
         <li key={index}>
-          <details className="group rounded-lg border border-slate-200 bg-slate-50 open:bg-white" open={index === 0}>
+          <details className="bg-giz open:bg-papel" open={index === 0}>
             <summary className="flex cursor-pointer items-center gap-3 px-4 py-2.5">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-indigo-600 text-xs font-bold text-white">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center bg-tinta font-mono text-[11px] text-giz tabular-nums">
                 {index + 1}
               </span>
-              <span className="font-medium">{localize(step.title, locale)}</span>
+              <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-tinta">{localize(step.title, locale)}</span>
             </summary>
-            <div className="flex flex-col gap-3 border-t border-slate-100 px-4 py-3">
-              <p className="text-sm text-slate-600">{localize(step.explanation, locale)}</p>
+            <div className="flex flex-col gap-3 border-t border-anil px-4 py-3">
+              <p className="text-[14px] leading-relaxed text-anil">{localize(step.explanation, locale)}</p>
               <StepBody step={step} />
             </div>
           </details>

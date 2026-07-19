@@ -20,21 +20,24 @@ function Shell() {
   const t = UI_MESSAGES[locale]
   const [mode, setMode] = useState<Mode>('chart')
   return (
-    <main className="mx-auto flex max-w-3xl flex-col gap-8 px-4 py-10">
-      <header className="flex flex-col gap-2">
+    <main className="mx-auto flex max-w-3xl flex-col gap-10 px-5 py-10 sm:px-8">
+      <header className="flex flex-col gap-4 border-b border-anil pb-6">
         <div className="flex items-start justify-between gap-4">
-          <h1 className="text-3xl font-bold tracking-tight text-indigo-900">{t.header.title}</h1>
-          <nav aria-label="Idioma / Language / Idioma" className="flex gap-1">
+          <div className="flex flex-col gap-1.5">
+            <h1 className="font-display text-5xl leading-none tracking-tight text-tinta">{t.header.title}</h1>
+            <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-anil">
+              a numerologia com a conta à mostra
+            </span>
+          </div>
+          <nav aria-label="Idioma / Language / Idioma" className="flex gap-px border border-anil">
             {SUPPORTED_LOCALES.map((option) => (
               <button
                 key={option}
                 type="button"
                 onClick={() => setLocale(option)}
                 aria-pressed={locale === option}
-                className={`rounded-lg px-2.5 py-1 text-sm font-medium transition ${
-                  locale === option
-                    ? 'bg-indigo-600 text-white'
-                    : 'bg-slate-200 text-slate-700 hover:bg-slate-300'
+                className={`px-2.5 py-1 font-mono text-xs tracking-wide transition ${
+                  locale === option ? 'bg-latao text-giz' : 'bg-giz text-anil hover:bg-papel'
                 }`}
               >
                 {LOCALE_SHORT_NAMES[option]}
@@ -42,23 +45,23 @@ function Shell() {
             ))}
           </nav>
         </div>
-        <p className="text-slate-600">{t.header.tagline}</p>
-        <p className="inline-flex w-fit items-center gap-2 rounded-full bg-emerald-100 px-3 py-1 text-sm font-medium text-emerald-900">
+        <p className="max-w-[52ch] text-[15px] leading-relaxed text-anil">{t.header.tagline}</p>
+        <p className="inline-flex w-fit items-center gap-2 font-mono text-[11px] uppercase tracking-[0.08em] text-anil">
           <span aria-hidden>🔒</span> {t.header.deviceBadge}
         </p>
       </header>
 
-      <nav aria-label={t.modes.chart} className="flex gap-2 border-b border-slate-200">
+      <nav aria-label={t.modes.chart} className="flex flex-wrap gap-x-1 gap-y-2 border-b border-anil">
         {(['chart', 'signature', 'synastry', 'company', 'marriage'] as const).map((option) => (
           <button
             key={option}
             type="button"
             onClick={() => setMode(option)}
             aria-current={mode === option}
-            className={`-mb-px border-b-2 px-3 py-2 text-sm font-medium transition ${
+            className={`-mb-px border-b-2 px-3 py-2 font-mono text-[11px] uppercase tracking-[0.1em] transition ${
               mode === option
-                ? 'border-indigo-600 text-indigo-700'
-                : 'border-transparent text-slate-500 hover:text-slate-700'
+                ? 'border-latao text-tinta'
+                : 'border-transparent text-anil hover:text-tinta'
             }`}
           >
             {t.modes[option]}
@@ -72,7 +75,7 @@ function Shell() {
       {mode === 'company' && <CompanyCalculator />}
       {mode === 'marriage' && <MarriageCalculator />}
 
-      <footer className="border-t border-slate-200 pt-4 text-xs leading-relaxed text-slate-500">
+      <footer className="border-t border-anil pt-5 font-mono text-[11px] leading-relaxed tracking-wide text-anil">
         <p>{t.footer}</p>
       </footer>
     </main>

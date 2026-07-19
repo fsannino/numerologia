@@ -153,11 +153,11 @@ export function ChartCalculator() {
     <section className="flex flex-col gap-6">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-4 rounded-xl border border-slate-200 bg-white p-6 shadow-sm"
+        className="flex flex-col gap-5 border border-anil bg-giz p-6"
         aria-label={t.form.calculate}
       >
-        <div className="flex flex-col gap-1">
-          <label htmlFor={nameInputId} className="font-medium">
+        <div className="flex flex-col gap-1.5">
+          <label htmlFor={nameInputId} className="font-mono text-[10px] uppercase tracking-[0.14em] text-latao">
             {t.form.nameLabel}
           </label>
           <input
@@ -167,49 +167,48 @@ export function ChartCalculator() {
             onChange={(event) => setFullName(event.target.value)}
             placeholder={t.form.namePlaceholder}
             autoComplete="off"
-            className="rounded-lg border border-slate-300 px-3 py-2 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+            className="border-0 border-b border-anil bg-transparent px-1 py-2 font-mono text-lg tracking-wide text-tinta placeholder:text-anil/50 focus:outline-none focus:border-latao"
           />
         </div>
 
-        <div className="flex flex-col gap-1">
-          <label htmlFor={dateInputId} className="font-medium">
-            {t.form.birthLabel} <span className="font-normal text-slate-500">{t.form.optionalTag}</span>
+        <div className="flex flex-col gap-1.5">
+          <label htmlFor={dateInputId} className="font-mono text-[10px] uppercase tracking-[0.14em] text-latao">
+            {t.form.birthLabel} <span className="text-anil">{t.form.optionalTag}</span>
           </label>
           <input
             id={dateInputId}
             type="date"
             value={birthDate}
             onChange={(event) => setBirthDate(event.target.value)}
-            className="w-fit rounded-lg border border-slate-300 bg-white px-3 py-2"
+            className="w-fit border border-anil bg-papel px-3 py-2 font-mono text-sm text-tinta"
           />
-          <p className="text-xs text-slate-500">{t.form.birthHint}</p>
+          <p className="text-[13px] leading-relaxed text-anil">{t.form.birthHint}</p>
         </div>
 
-        <div className="flex flex-col gap-1">
-          <label htmlFor={referenceInputId} className="font-medium">
-            {t.form.referenceLabel}{' '}
-            <span className="font-normal text-slate-500">{t.form.referenceTag}</span>
+        <div className="flex flex-col gap-1.5">
+          <label htmlFor={referenceInputId} className="font-mono text-[10px] uppercase tracking-[0.14em] text-latao">
+            {t.form.referenceLabel} <span className="text-anil">{t.form.referenceTag}</span>
           </label>
           <input
             id={referenceInputId}
             type="date"
             value={referenceDate}
             onChange={(event) => setReferenceDate(event.target.value)}
-            className="w-fit rounded-lg border border-slate-300 bg-white px-3 py-2"
+            className="w-fit border border-anil bg-papel px-3 py-2 font-mono text-sm text-tinta"
           />
-          <p className="text-xs text-slate-500">{t.form.referenceHint}</p>
+          <p className="text-[13px] leading-relaxed text-anil">{t.form.referenceHint}</p>
         </div>
 
         <fieldset className="flex flex-col gap-2">
-          <legend className="font-medium">{t.form.schoolsLabel}</legend>
-          <div className="flex flex-wrap gap-3">
+          <legend className="mb-1 font-mono text-[10px] uppercase tracking-[0.14em] text-latao">{t.form.schoolsLabel}</legend>
+          <div className="flex flex-wrap gap-2">
             {listModels().map((model) => (
-              <label key={model.id} className="flex cursor-pointer items-center gap-2 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50">
+              <label key={model.id} className="flex cursor-pointer items-center gap-2 border border-anil bg-papel px-3 py-1.5 text-sm text-tinta has-[:checked]:bg-latao has-[:checked]:text-giz">
                 <input
                   type="checkbox"
                   checked={selectedModels.includes(model.id)}
                   onChange={() => toggleModel(model.id)}
-                  className="accent-indigo-600"
+                  className="accent-latao"
                 />
                 {localize(model.metadata.name, locale)}
               </label>
@@ -217,14 +216,14 @@ export function ChartCalculator() {
           </div>
         </fieldset>
 
-        <details className="rounded-lg border border-slate-200 bg-slate-50 p-3">
-          <summary className="cursor-pointer text-sm font-medium">{t.form.variantsSummary}</summary>
+        <details className="border border-anil bg-papel p-3">
+          <summary className="cursor-pointer font-mono text-[11px] uppercase tracking-[0.1em] text-anil">{t.form.variantsSummary}</summary>
           <div className="mt-3 flex flex-col gap-3">
             {variantDimensionsFor(selectedModels).map((dimension) => {
               const selectId = `variant-${dimension.dimension}`
               return (
                 <div key={dimension.dimension} className="flex flex-col gap-1">
-                  <label htmlFor={selectId} className="text-sm font-medium">
+                  <label htmlFor={selectId} className="font-mono text-[10px] uppercase tracking-[0.12em] text-anil">
                     {localize(dimension.label, locale)}
                   </label>
                   <select
@@ -236,7 +235,7 @@ export function ChartCalculator() {
                         [dimension.dimension]: event.target.value,
                       }))
                     }
-                    className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm"
+                    className="border border-anil bg-giz px-3 py-2 font-mono text-sm text-tinta"
                   >
                     {dimension.options.map((option) => (
                       <option key={option.id} value={option.id}>
@@ -256,29 +255,29 @@ export function ChartCalculator() {
                 </div>
               )
             })}
-            <p className="text-xs text-slate-500">{t.form.variantsNote}</p>
+            <p className="text-[13px] leading-relaxed text-anil">{t.form.variantsNote}</p>
           </div>
         </details>
 
         <button
           type="submit"
-          className="rounded-lg bg-indigo-600 px-4 py-2 font-semibold text-white transition hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+          className="w-fit bg-tinta px-6 py-2.5 font-mono text-[12px] uppercase tracking-[0.14em] text-giz transition hover:bg-anil"
         >
           {t.form.calculate}
         </button>
 
         {error !== null && (
-          <p role="alert" className="rounded-lg bg-rose-50 px-4 py-3 text-sm text-rose-900">
+          <p role="alert" className="border-l-2 border-tinta bg-papel px-4 py-3 text-[15px] font-medium text-tinta">
             {error}
           </p>
         )}
       </form>
 
       {results.length > 0 && (
-        <div className="flex flex-col gap-8" aria-label={t.results.chartTitle}>
-          <h2 className="text-xl font-semibold text-indigo-950">
-            {t.results.chartTitle}{' '}
-            <span className="text-sm font-normal text-slate-500">· {t.results.engine(engineVersion)}</span>
+        <div className="flex flex-col gap-10" aria-label={t.results.chartTitle}>
+          <h2 className="flex flex-wrap items-baseline gap-x-3 border-b border-anil pb-2 font-display text-3xl text-tinta">
+            {t.results.chartTitle}
+            <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-anil">· {t.results.engine(engineVersion)}</span>
           </h2>
 
           {results.length > 1 && <ComparisonMatrix results={results} />}
@@ -287,9 +286,9 @@ export function ChartCalculator() {
             const model = listModels().find((entry) => entry.id === result.model)
             return (
               <section key={result.model} className="flex flex-col gap-3" aria-label={model ? localize(model.metadata.name, locale) : result.model}>
-                <div className="flex flex-wrap items-center gap-2">
+                <div className="flex flex-wrap items-center gap-3">
                   {results.length > 1 && (
-                    <h3 className="text-lg font-semibold text-indigo-900">
+                    <h3 className="font-display text-2xl text-tinta">
                       {model ? localize(model.metadata.name, locale) : result.model}
                     </h3>
                   )}
@@ -302,8 +301,8 @@ export function ChartCalculator() {
                 </div>
                 {model?.metadata.letterValues !== undefined && (
                   <div className="flex flex-col gap-2">
-                    <h4 className="text-sm font-semibold">{t.results.tableTitle}</h4>
-                    <p className="text-xs text-slate-600">{t.results.tableHint}</p>
+                    <h4 className="font-mono text-[10px] uppercase tracking-[0.12em] text-latao">{t.results.tableTitle}</h4>
+                    <p className="text-[13px] text-anil">{t.results.tableHint}</p>
                     <LetterValuesTable values={model.metadata.letterValues} highlight={lettersUsedIn(result)} />
                   </div>
                 )}
