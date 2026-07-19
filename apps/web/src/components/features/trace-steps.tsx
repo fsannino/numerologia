@@ -45,20 +45,20 @@ function StepBody({ step }: { step: CalculationStep }) {
           {step.output.segments.map((segment, index) => (
             <li
               key={index}
-              className={`flex items-center gap-3 rounded-lg border px-3 py-2 ${
-                segment.isCurrent ? 'border-indigo-400 bg-indigo-50' : 'border-slate-200 bg-white'
+              className={`flex items-center gap-3 border px-3 py-2 ${
+                segment.isCurrent ? 'border-latao bg-papel' : 'border-anil bg-giz'
               }`}
             >
               <span
-                className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg font-bold ${
-                  segment.isCurrent ? 'bg-indigo-600 text-white' : 'bg-slate-200 text-slate-700'
+                className={`flex h-8 w-8 shrink-0 items-center justify-center font-bold ${
+                  segment.isCurrent ? 'bg-latao text-giz' : 'bg-papel text-anil'
                 }`}
               >
                 {segment.value.reduced}
               </span>
               <div className="flex min-w-0 flex-col">
                 <span className="text-sm font-medium">{localize(segment.label, locale)}</span>
-                <span className="text-xs text-slate-500">
+                <span className="text-[11px] text-anil">
                   {segment.toAge !== undefined
                     ? t.timeline.range(segment.fromAge, segment.toAge)
                     : t.timeline.rangeOpen(segment.fromAge)}
@@ -75,34 +75,34 @@ function StepBody({ step }: { step: CalculationStep }) {
       return (
         <div className="flex flex-col gap-3">
           <div className="flex flex-wrap items-center gap-2 text-sm">
-            <span className="rounded bg-indigo-100 px-2 py-0.5 font-medium text-indigo-900">
+            <span className="border border-anil px-2 py-0.5 font-mono text-[11px] text-anil">
               {step.output.standardTotal} · {t.gematria.standardLabel}
             </span>
             <span dir="rtl" className="font-serif text-lg">{step.output.standardHebrew}</span>
           </div>
-          <div className="flex flex-wrap gap-2 text-xs text-slate-600">
+          <div className="flex flex-wrap gap-2 text-[11px] text-anil">
             <span>{t.gematria.spectrumLabel(step.output.minTotal, step.output.maxTotal)}</span>
             <span>· {t.gematria.combinationsLabel(step.output.combinationCount)}</span>
           </div>
           <div>
-            <p className="mb-1 text-xs font-semibold text-slate-700">{t.gematria.candidatesTitle}</p>
+            <p className="mb-1 font-mono text-[10px] uppercase tracking-[0.1em] text-anil">{t.gematria.candidatesTitle}</p>
             <ul className="flex flex-wrap gap-2">
               {step.output.letters.map((letter, index) => (
                 <li
                   key={index}
-                  className={`rounded border px-2 py-1 text-xs ${
-                    letter.options.length > 1 ? 'border-amber-300 bg-amber-50' : 'border-slate-200 bg-white'
+                  className={`border px-2 py-1 text-xs ${
+                    letter.options.length > 1 ? 'border-latao bg-papel' : 'border-anil bg-giz'
                   }`}
                 >
                   <span className="font-bold">{letter.latin}</span>
                   {letter.options.length > 1 && (
-                    <span className="ml-1 text-[10px] text-amber-700">({t.gematria.ambiguous})</span>
+                    <span className="ml-1 text-[10px] text-latao">({t.gematria.ambiguous})</span>
                   )}
                   <span className="mt-0.5 flex flex-col">
                     {letter.options.map((option, optionIndex) => (
                       <span key={optionIndex}>
                         <span dir="rtl" className="font-serif">{option.hebrew}</span>{' '}
-                        <span className="text-slate-500">{option.name} = {option.value}</span>
+                        <span className="text-anil">{option.name} = {option.value}</span>
                       </span>
                     ))}
                   </span>
@@ -126,8 +126,8 @@ function StepBody({ step }: { step: CalculationStep }) {
                     return (
                       <td
                         key={digit}
-                        className={`h-14 w-14 border border-slate-300 text-center align-middle ${
-                          count > 0 ? 'bg-indigo-50 font-semibold text-indigo-900' : 'bg-slate-50 text-slate-300'
+                        className={`h-14 w-14 border border-anil text-center align-middle font-display text-lg ${
+                          count > 0 ? 'bg-papel text-latao' : 'bg-giz text-anil/40'
                         }`}
                       >
                         {count > 0 ? (
@@ -143,16 +143,16 @@ function StepBody({ step }: { step: CalculationStep }) {
             </tbody>
           </table>
           <div>
-            <p className="mb-1 text-xs font-semibold text-slate-700">{t.loShu.arrowsTitle}</p>
+            <p className="mb-1 font-mono text-[10px] uppercase tracking-[0.1em] text-anil">{t.loShu.arrowsTitle}</p>
             {step.output.arrows.length === 0 ? (
-              <p className="text-xs text-slate-500">{t.loShu.noArrows}</p>
+              <p className="text-[11px] text-anil">{t.loShu.noArrows}</p>
             ) : (
               <ul className="flex flex-col gap-1">
                 {step.output.arrows.map((arrow, index) => (
                   <li key={index} className="text-xs">
                     <span
-                      className={`rounded px-1.5 py-0.5 font-medium ${
-                        arrow.kind === 'strength' ? 'bg-emerald-100 text-emerald-900' : 'bg-amber-100 text-amber-900'
+                      className={`px-1.5 py-0.5 font-medium ${
+                        arrow.kind === 'strength' ? 'border border-anil text-anil' : 'border border-latao text-latao'
                       }`}
                     >
                       {arrow.line.join('-')} · {localize(arrow.label, locale)} ·{' '}
@@ -174,8 +174,8 @@ function StepBody({ step }: { step: CalculationStep }) {
             return (
               <li
                 key={entry.digit}
-                className={`flex flex-col items-center rounded border px-2 py-1 ${
-                  highlighted ? 'border-amber-400 bg-amber-100 font-semibold' : 'border-slate-200 bg-white text-slate-500'
+                className={`flex flex-col items-center border px-2 py-1 ${
+                  highlighted ? 'border-latao bg-papel text-latao' : 'border-anil bg-giz text-anil'
                 }`}
               >
                 <span className="text-base">{entry.digit}</span>
@@ -189,15 +189,15 @@ function StepBody({ step }: { step: CalculationStep }) {
       return <ReadingMatrix readings={step.output.readings} />
     case 'planetary-ruler':
       return (
-        <div className="flex items-center gap-3 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2">
+        <div className="flex items-center gap-3 border-l-2 border-latao bg-papel px-3 py-2">
           <span className="text-3xl leading-none" aria-hidden="true">
             {step.output.symbol}
           </span>
           <div className="flex flex-col">
-            <span className="text-sm font-semibold text-amber-900">
+            <span className="font-display text-lg text-tinta">
               {localize(step.output.planet, locale)} · {step.output.sanskrit}
             </span>
-            <span className="text-xs text-amber-800">
+            <span className="text-[12px] text-anil">
               {t.vedic.qualitiesLabel}: {localize(step.output.qualities, locale)}
             </span>
           </div>

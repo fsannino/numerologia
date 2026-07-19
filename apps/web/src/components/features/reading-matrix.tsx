@@ -25,11 +25,11 @@ export function ReadingMatrix({ readings }: { readings: ReadonlyArray<Kabbalisti
         <table className="w-full min-w-[420px] border-separate border-spacing-2">
           <thead>
             <tr>
-              <th className="w-1/3 text-left align-bottom text-[11px] font-semibold uppercase tracking-wide text-slate-400">
+              <th className="w-1/3 text-left align-bottom font-mono text-[10px] uppercase tracking-[0.1em] text-anil">
                 {t.tableHeader}
               </th>
               {REDUCTIONS.map((reduction) => (
-                <th key={reduction} className="text-center text-[11px] font-semibold uppercase tracking-wide text-slate-400">
+                <th key={reduction} className="text-center font-mono text-[10px] uppercase tracking-[0.1em] text-anil">
                   {t.reductionLabel[reduction]}
                 </th>
               ))}
@@ -38,7 +38,7 @@ export function ReadingMatrix({ readings }: { readings: ReadonlyArray<Kabbalisti
           <tbody>
             {TABLES.map((table) => (
               <tr key={table}>
-                <th className="text-left align-middle text-sm font-semibold text-slate-700">
+                <th className="text-left align-middle font-mono text-[11px] uppercase tracking-[0.08em] text-tinta">
                   {t.tableLabel[table]}
                 </th>
                 {REDUCTIONS.map((reduction) => {
@@ -53,28 +53,28 @@ export function ReadingMatrix({ readings }: { readings: ReadonlyArray<Kabbalisti
                         type="button"
                         onClick={() => setPinned(isPinned ? null : key)}
                         aria-pressed={isPinned}
-                        className={`flex w-full items-center gap-3 rounded-xl border p-3 text-left transition ${
+                        className={`flex w-full items-center gap-3 border p-3 text-left transition ${
                           isOwn
-                            ? 'border-indigo-200 bg-indigo-50'
-                            : 'border-slate-200 bg-slate-50/70'
-                        } ${isPinned ? 'ring-2 ring-indigo-500' : 'hover:-translate-y-px'}`}
+                            ? 'border-latao bg-papel'
+                            : 'border-anil bg-giz'
+                        } ${isPinned ? 'ring-2 ring-latao' : 'hover:-translate-y-px'}`}
                       >
                         <span
-                          className={`min-w-[2rem] text-center text-2xl font-bold tabular-nums ${
-                            isOwn ? 'text-indigo-700' : 'text-slate-400'
+                          className={`min-w-[2rem] text-center font-display text-3xl tabular-nums ${
+                            isOwn ? 'text-latao' : 'text-anil'
                           }`}
                         >
                           {reading.value}
                         </span>
                         <span className="flex flex-col gap-0.5">
                           <span
-                            className={`w-fit rounded-full px-2 py-0.5 text-[11px] font-semibold ${
-                              isOwn ? 'bg-indigo-100 text-indigo-800' : 'bg-slate-200 text-slate-600'
+                            className={`w-fit border px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.1em] ${
+                              isOwn ? 'border-latao text-latao' : 'border-anil text-anil'
                             }`}
                           >
                             {isOwn ? t.own : t.coincides[reading.coincidesWith as 'pythagorean' | 'chaldean']}
                           </span>
-                          <span className="text-[11px] text-slate-400 tabular-nums">{t.total(reading.rawTotal)}</span>
+                          <span className="text-[10px] text-anil tabular-nums">{t.total(reading.rawTotal)}</span>
                         </span>
                       </button>
                     </td>
@@ -85,7 +85,7 @@ export function ReadingMatrix({ readings }: { readings: ReadonlyArray<Kabbalisti
           </tbody>
         </table>
       </div>
-      <p className="rounded-lg bg-amber-50 p-3 text-xs leading-relaxed text-amber-900">{t.whyMultiple}</p>
+      <p className="border-l-2 border-latao bg-papel p-3 text-[13px] leading-relaxed text-tinta">{t.whyMultiple}</p>
     </div>
   )
 }
