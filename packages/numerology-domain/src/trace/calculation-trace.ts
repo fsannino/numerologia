@@ -132,6 +132,23 @@ export type CalculationStep =
       readonly visual: 'timeline'
     }
   | {
+      readonly kind: 'planetary-ruler'
+      readonly title: LocalizedText
+      readonly explanation: LocalizedText
+      readonly input: { readonly number: number }
+      readonly output: {
+        /** Nome do planeta regente na tradição védica (localizado). */
+        readonly planet: LocalizedText
+        /** Nome sânscrito da graha (ex.: "Surya", "Chandra"). */
+        readonly sanskrit: string
+        /** Símbolo astronômico/astrológico da graha (ex.: "☉"). */
+        readonly symbol: string
+        /** Qualidades que o planeta simboliza na tradição — vocabulário de reflexão (§9). */
+        readonly qualities: LocalizedText
+      }
+      readonly visual: 'planetary-ruler'
+    }
+  | {
       readonly kind: 'karmic-check'
       readonly title: LocalizedText
       readonly explanation: LocalizedText

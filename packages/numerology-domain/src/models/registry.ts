@@ -6,6 +6,7 @@ import { pythagoreanModel } from './pythagorean/pythagorean-model'
 import { chaldeanModel } from './chaldean/chaldean-model'
 import { loShuModel } from './lo-shu/lo-shu-model'
 import { gematriaModel } from './gematria/gematria-model'
+import { vedicModel } from './vedic/vedic-model'
 
 export type UnknownModelError = { readonly code: 'unknown-model'; readonly model: string }
 
@@ -18,6 +19,7 @@ const MODELS: ReadonlyMap<ModelId, NumerologyModel> = new Map<ModelId, Numerolog
   [chaldeanModel.id, chaldeanModel],
   [loShuModel.id, loShuModel],
   [gematriaModel.id, gematriaModel],
+  [vedicModel.id, vedicModel],
 ])
 
 export function getModel(id: ModelId): Result<NumerologyModel, UnknownModelError> {

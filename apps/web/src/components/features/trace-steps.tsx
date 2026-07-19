@@ -184,6 +184,22 @@ function StepBody({ step }: { step: CalculationStep }) {
           })}
         </ul>
       )
+    case 'planetary-ruler':
+      return (
+        <div className="flex items-center gap-3 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2">
+          <span className="text-3xl leading-none" aria-hidden="true">
+            {step.output.symbol}
+          </span>
+          <div className="flex flex-col">
+            <span className="text-sm font-semibold text-amber-900">
+              {localize(step.output.planet, locale)} · {step.output.sanskrit}
+            </span>
+            <span className="text-xs text-amber-800">
+              {t.vedic.qualitiesLabel}: {localize(step.output.qualities, locale)}
+            </span>
+          </div>
+        </div>
+      )
     case 'master-check':
       // A frase completa já vem localizada em step.explanation; aqui só o destaque.
       return step.output.isMaster ? (

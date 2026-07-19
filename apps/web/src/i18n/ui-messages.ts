@@ -121,6 +121,9 @@ export type UiMessages = {
     readonly candidatesTitle: string
     readonly ambiguous: string
   }
+  readonly vedic: {
+    readonly qualitiesLabel: string
+  }
   readonly numberLabels: Readonly<Record<string, NumberLabel>>
   readonly footer: string
 }
@@ -260,6 +263,11 @@ const PT: UiMessages = {
     'marriage-personal-year': { title: 'Ano Pessoal do Casamento', hint: 'ciclo atual da união' },
     'lo-shu-grid': { title: 'Grade Lo Shu', hint: 'números distintos presentes na data' },
     'gematria-value': { title: 'Valor Gematria', hint: 'transliteração padrão (há candidatas)' },
+    'vedic-moolank': { title: 'Moolank (raiz)', hint: 'dia do nascimento · planeta regente' },
+    'vedic-bhagyank': { title: 'Bhagyank (destino)', hint: 'data completa · planeta regente' },
+  },
+  vedic: {
+    qualitiesLabel: 'Qualidades',
   },
   loShu: {
     strengthArrow: 'seta de força',
@@ -414,6 +422,11 @@ const EN: UiMessages = {
     'marriage-personal-year': { title: 'Marriage Personal Year', hint: "the union's current cycle" },
     'lo-shu-grid': { title: 'Lo Shu grid', hint: 'distinct numbers present in the date' },
     'gematria-value': { title: 'Gematria value', hint: 'standard transliteration (candidates exist)' },
+    'vedic-moolank': { title: 'Moolank (root)', hint: 'birth day · ruling planet' },
+    'vedic-bhagyank': { title: 'Bhagyank (destiny)', hint: 'full date · ruling planet' },
+  },
+  vedic: {
+    qualitiesLabel: 'Qualities',
   },
   loShu: {
     strengthArrow: 'arrow of strength',
@@ -568,6 +581,11 @@ const ES: UiMessages = {
     'marriage-personal-year': { title: 'Año Personal del Matrimonio', hint: 'ciclo actual de la unión' },
     'lo-shu-grid': { title: 'Cuadrícula Lo Shu', hint: 'números distintos presentes en la fecha' },
     'gematria-value': { title: 'Valor Gematría', hint: 'transliteración estándar (hay candidatas)' },
+    'vedic-moolank': { title: 'Moolank (raíz)', hint: 'día de nacimiento · planeta regente' },
+    'vedic-bhagyank': { title: 'Bhagyank (destino)', hint: 'fecha completa · planeta regente' },
+  },
+  vedic: {
+    qualitiesLabel: 'Cualidades',
   },
   loShu: {
     strengthArrow: 'flecha de fuerza',

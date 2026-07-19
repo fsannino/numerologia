@@ -42,6 +42,8 @@ export type NumberKind =
   | 'marriage-personal-year'
   | 'lo-shu-grid'
   | 'gematria-value'
+  | 'vedic-moolank'
+  | 'vedic-bhagyank'
 
 export type SubjectKind =
   | 'person'
