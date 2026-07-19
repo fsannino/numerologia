@@ -113,6 +113,13 @@ export type UiMessages = {
     readonly noArrows: string
     readonly emptyCell: string
   }
+  readonly gematria: {
+    readonly standardLabel: string
+    readonly spectrumLabel: (min: number, max: number) => string
+    readonly combinationsLabel: (count: number) => string
+    readonly candidatesTitle: string
+    readonly ambiguous: string
+  }
   readonly numberLabels: Readonly<Record<string, NumberLabel>>
   readonly footer: string
 }
@@ -250,6 +257,7 @@ const PT: UiMessages = {
     'marriage-governing': { title: 'Número Regente da União', hint: 'Caminho de Vida da data do casamento' },
     'marriage-personal-year': { title: 'Ano Pessoal do Casamento', hint: 'ciclo atual da união' },
     'lo-shu-grid': { title: 'Grade Lo Shu', hint: 'números distintos presentes na data' },
+    'gematria-value': { title: 'Valor Gematria', hint: 'transliteração padrão (há candidatas)' },
   },
   loShu: {
     strengthArrow: 'seta de força',
@@ -257,6 +265,13 @@ const PT: UiMessages = {
     arrowsTitle: 'Setas (linhas completas ou ausentes)',
     noArrows: 'Nenhuma linha completa ou totalmente ausente nesta data.',
     emptyCell: 'ausente',
+  },
+  gematria: {
+    standardLabel: 'transliteração padrão',
+    spectrumLabel: (min, max) => `espectro de valores: ${min} a ${max}`,
+    combinationsLabel: (count) => `${count} combinações possíveis`,
+    candidatesTitle: 'Candidatas por letra (a transliteração é uma reconstrução)',
+    ambiguous: 'ambígua',
   },
   footer:
     'O Numerus é uma ferramenta de estudo, autoconhecimento e entretenimento cultural. Não substitui aconselhamento médico, psicológico, jurídico ou financeiro. O sistema de conversão de nomes praticado hoje foi estruturado no fim do séc. XIX / início do XX (L. Dow Balliett, Juno Jordan), reivindicando a herança pitagórica — cada escola exibe sua origem histórica real.',
@@ -395,6 +410,7 @@ const EN: UiMessages = {
     'marriage-governing': { title: 'Union Governing Number', hint: 'Life Path of the wedding date' },
     'marriage-personal-year': { title: 'Marriage Personal Year', hint: "the union's current cycle" },
     'lo-shu-grid': { title: 'Lo Shu grid', hint: 'distinct numbers present in the date' },
+    'gematria-value': { title: 'Gematria value', hint: 'standard transliteration (candidates exist)' },
   },
   loShu: {
     strengthArrow: 'arrow of strength',
@@ -402,6 +418,13 @@ const EN: UiMessages = {
     arrowsTitle: 'Arrows (complete or absent lines)',
     noArrows: 'No complete or fully-absent line in this date.',
     emptyCell: 'absent',
+  },
+  gematria: {
+    standardLabel: 'standard transliteration',
+    spectrumLabel: (min, max) => `value spectrum: ${min} to ${max}`,
+    combinationsLabel: (count) => `${count} possible combinations`,
+    candidatesTitle: 'Candidates per letter (transliteration is a reconstruction)',
+    ambiguous: 'ambiguous',
   },
   footer:
     'Numerus is a tool for study, self-knowledge and cultural entertainment. It does not replace medical, psychological, legal or financial advice. The name-conversion system as practiced today was structured in the late 19th / early 20th century (L. Dow Balliett, Juno Jordan), claiming the Pythagorean heritage — each school displays its real historical origin.',
@@ -540,6 +563,7 @@ const ES: UiMessages = {
     'marriage-governing': { title: 'Número Regente de la Unión', hint: 'Camino de Vida de la fecha de la boda' },
     'marriage-personal-year': { title: 'Año Personal del Matrimonio', hint: 'ciclo actual de la unión' },
     'lo-shu-grid': { title: 'Cuadrícula Lo Shu', hint: 'números distintos presentes en la fecha' },
+    'gematria-value': { title: 'Valor Gematría', hint: 'transliteración estándar (hay candidatas)' },
   },
   loShu: {
     strengthArrow: 'flecha de fuerza',
@@ -547,6 +571,13 @@ const ES: UiMessages = {
     arrowsTitle: 'Flechas (líneas completas o ausentes)',
     noArrows: 'Ninguna línea completa o totalmente ausente en esta fecha.',
     emptyCell: 'ausente',
+  },
+  gematria: {
+    standardLabel: 'transliteración estándar',
+    spectrumLabel: (min, max) => `espectro de valores: ${min} a ${max}`,
+    combinationsLabel: (count) => `${count} combinaciones posibles`,
+    candidatesTitle: 'Candidatas por letra (la transliteración es una reconstrucción)',
+    ambiguous: 'ambigua',
   },
   footer:
     'Numerus es una herramienta de estudio, autoconocimiento y entretenimiento cultural. No sustituye el consejo médico, psicológico, jurídico ni financiero. El sistema de conversión de nombres tal como se practica hoy fue estructurado a finales del s. XIX / inicios del XX (L. Dow Balliett, Juno Jordan), reivindicando la herencia pitagórica — cada escuela muestra su origen histórico real.',

@@ -45,7 +45,8 @@ Modo aprendiz com conferência de cálculo manual, trilhas, glossário navegáve
 
 ## Fatia 8 — Esotéricos (em andamento)
 - **Lo Shu ✅**: terceira escola no registry (`models/lo-shu/` + registro — núcleo intacto), a primeira que produz uma **grade** em vez de número único. Dígitos da data no quadrado mágico 4-9-2/3-5-7/8-1-6, com detecção de setas de força/ausência (§9: qualidade a desenvolver, não veredito). Novo passo de traço `lo-shu-grid` (visual `lo-shu`) e renderer 3×3 na UI.
-- **Pendente**: Gematria com transliterações múltiplas candidatas, védico.
+- **Gematria ✅**: quarta escola (`models/gematria/` + registro — núcleo intacto). Valores das letras hebraicas (mispar hechrachi); transliteração latino→hebraico **ambígua exposta como múltiplas candidatas** por letra + espectro min/padrão/máx + nº de combinações — nunca resposta silenciosa (ADR-0008, §2.1/§4.3/§9). Novo passo de traço `transliteration` (visual `transliteration`) e renderer na UI com hebraico RTL.
+- **Pendente**: védico.
 
 ## Fatia 9 — Monetização
 Ligar billing (estrutura de planos/cupons 0–100% existente desde a Fase 2 sob feature flag).

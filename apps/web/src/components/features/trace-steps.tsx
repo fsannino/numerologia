@@ -70,6 +70,47 @@ function StepBody({ step }: { step: CalculationStep }) {
           ))}
         </ol>
       )
+    case 'transliteration':
+      return (
+        <div className="flex flex-col gap-3">
+          <div className="flex flex-wrap items-center gap-2 text-sm">
+            <span className="rounded bg-indigo-100 px-2 py-0.5 font-medium text-indigo-900">
+              {step.output.standardTotal} · {t.gematria.standardLabel}
+            </span>
+            <span dir="rtl" className="font-serif text-lg">{step.output.standardHebrew}</span>
+          </div>
+          <div className="flex flex-wrap gap-2 text-xs text-slate-600">
+            <span>{t.gematria.spectrumLabel(step.output.minTotal, step.output.maxTotal)}</span>
+            <span>· {t.gematria.combinationsLabel(step.output.combinationCount)}</span>
+          </div>
+          <div>
+            <p className="mb-1 text-xs font-semibold text-slate-700">{t.gematria.candidatesTitle}</p>
+            <ul className="flex flex-wrap gap-2">
+              {step.output.letters.map((letter, index) => (
+                <li
+                  key={index}
+                  className={`rounded border px-2 py-1 text-xs ${
+                    letter.options.length > 1 ? 'border-amber-300 bg-amber-50' : 'border-slate-200 bg-white'
+                  }`}
+                >
+                  <span className="font-bold">{letter.latin}</span>
+                  {letter.options.length > 1 && (
+                    <span className="ml-1 text-[10px] text-amber-700">({t.gematria.ambiguous})</span>
+                  )}
+                  <span className="mt-0.5 flex flex-col">
+                    {letter.options.map((option, optionIndex) => (
+                      <span key={optionIndex}>
+                        <span dir="rtl" className="font-serif">{option.hebrew}</span>{' '}
+                        <span className="text-slate-500">{option.name} = {option.value}</span>
+                      </span>
+                    ))}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )
     case 'lo-shu-grid': {
       const countOf = (digit: number) =>
         step.output.tally.find((entry) => entry.digit === digit)?.count ?? 0

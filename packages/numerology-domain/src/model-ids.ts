@@ -41,6 +41,7 @@ export type NumberKind =
   | 'marriage-governing'
   | 'marriage-personal-year'
   | 'lo-shu-grid'
+  | 'gematria-value'
 
 export type SubjectKind =
   | 'person'

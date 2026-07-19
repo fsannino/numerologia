@@ -94,4 +94,14 @@ O casamento reusa a sinastria (números da união do casal) + os números da dat
 | Seta de ausência | Linha com os três números ausentes — qualidade a desenvolver, não veredito (§9). |
 | Fonte | Tradição da numerologia chinesa (mito do rio Luo). |
 
+## Escola Gematria (hebraica)
+
+| Termo | Definição |
+|---|---|
+| Gematria | Soma dos valores das letras hebraicas (mispar hechrachi: א=1 … ת=400). |
+| Transliteração | Mapeamento latino→hebraico, **ambíguo por natureza** (ADR-0008). Cada letra tem 1+ candidatas. |
+| `gematria-value` | Valor do nome pela transliteração **padrão** (primeira opção de cada letra). |
+| Espectro | Total mínimo, padrão e máximo + nº de combinações — a ambiguidade exposta, **nunca resposta silenciosa** (§9). |
+| Fonte | Gematria hebraica clássica (mispar hechrachi). |
+
 O glossário cresce uma seção por escola a cada fase (caldaica, gematria, Lo Shu, védica...), com fonte histórica em `docs/domain/models-reference.md`.

@@ -95,6 +95,24 @@ export type CalculationStep =
       readonly visual: 'digit-grid'
     }
   | {
+      readonly kind: 'transliteration'
+      readonly title: LocalizedText
+      readonly explanation: LocalizedText
+      readonly input: { readonly name: string }
+      readonly output: {
+        readonly letters: ReadonlyArray<{
+          readonly latin: string
+          readonly options: ReadonlyArray<{ readonly hebrew: string; readonly value: number; readonly name: string }>
+        }>
+        readonly standardTotal: number
+        readonly minTotal: number
+        readonly maxTotal: number
+        readonly combinationCount: number
+        readonly standardHebrew: string
+      }
+      readonly visual: 'transliteration'
+    }
+  | {
       readonly kind: 'lo-shu-grid'
       readonly title: LocalizedText
       readonly explanation: LocalizedText
