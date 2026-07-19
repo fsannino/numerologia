@@ -1,4 +1,5 @@
 export type { ModelId, NumberKind, SubjectKind } from './model-ids'
+export { LO_SHU_SQUARE } from './model-ids'
 export { ENGINE_VERSION } from './engine-version'
 
 export type {
@@ -36,6 +37,7 @@ export type {
   DigitTallyEntry,
   DivergenceNote,
   LetterMappingEntry,
+  LoShuArrow,
   RuleReference,
   TimelineSegment,
 } from './trace/calculation-trace'

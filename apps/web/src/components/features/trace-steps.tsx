@@ -1,4 +1,5 @@
 import type { CalculationStep } from '@numerus/numerology-domain'
+import { LO_SHU_SQUARE } from '@numerus/numerology-domain'
 import { localize } from '@numerus/shared-kernel'
 import { useLocale } from '@/i18n/locale-context'
 import { UI_MESSAGES } from '@/i18n/ui-messages'
@@ -69,6 +70,60 @@ function StepBody({ step }: { step: CalculationStep }) {
           ))}
         </ol>
       )
+    case 'lo-shu-grid': {
+      const countOf = (digit: number) =>
+        step.output.tally.find((entry) => entry.digit === digit)?.count ?? 0
+      return (
+        <div className="flex flex-col gap-3">
+          <table className="w-fit border-collapse" aria-label={localize(step.title, locale)}>
+            <tbody>
+              {LO_SHU_SQUARE.map((row, rowIndex) => (
+                <tr key={rowIndex}>
+                  {row.map((digit) => {
+                    const count = countOf(digit)
+                    return (
+                      <td
+                        key={digit}
+                        className={`h-14 w-14 border border-slate-300 text-center align-middle ${
+                          count > 0 ? 'bg-indigo-50 font-semibold text-indigo-900' : 'bg-slate-50 text-slate-300'
+                        }`}
+                      >
+                        {count > 0 ? (
+                          <span aria-label={`${digit}: ${count}`}>{String(digit).repeat(count)}</span>
+                        ) : (
+                          <span className="sr-only">{`${digit} ${t.loShu.emptyCell}`}</span>
+                        )}
+                      </td>
+                    )
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <div>
+            <p className="mb-1 text-xs font-semibold text-slate-700">{t.loShu.arrowsTitle}</p>
+            {step.output.arrows.length === 0 ? (
+              <p className="text-xs text-slate-500">{t.loShu.noArrows}</p>
+            ) : (
+              <ul className="flex flex-col gap-1">
+                {step.output.arrows.map((arrow, index) => (
+                  <li key={index} className="text-xs">
+                    <span
+                      className={`rounded px-1.5 py-0.5 font-medium ${
+                        arrow.kind === 'strength' ? 'bg-emerald-100 text-emerald-900' : 'bg-amber-100 text-amber-900'
+                      }`}
+                    >
+                      {arrow.line.join('-')} · {localize(arrow.label, locale)} ·{' '}
+                      {arrow.kind === 'strength' ? t.loShu.strengthArrow : t.loShu.absenceArrow}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+      )
+    }
     case 'grid-analysis':
       return (
         <ul className="grid grid-cols-3 gap-1.5 sm:grid-cols-9" aria-label={localize(step.title, locale)}>

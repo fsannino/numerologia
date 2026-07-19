@@ -6,6 +6,13 @@ export type ModelId =
   | 'vedic'
   | 'lo-shu'
 
+/** Posições do quadrado mágico Lo Shu (4-9-2 / 3-5-7 / 8-1-6). */
+export const LO_SHU_SQUARE: ReadonlyArray<ReadonlyArray<number>> = [
+  [4, 9, 2],
+  [3, 5, 7],
+  [8, 1, 6],
+]
+
 export type NumberKind =
   | 'expression'
   | 'motivation'
@@ -33,6 +40,7 @@ export type NumberKind =
   | 'founder-affinity'
   | 'marriage-governing'
   | 'marriage-personal-year'
+  | 'lo-shu-grid'
 
 export type SubjectKind =
   | 'person'
