@@ -40,8 +40,9 @@ Carteira de clientes; persistência server-side com RLS por `professional_id` + 
 - **Casamento ✅**: use case `CalculateMarriageChart` — número regente da união formal (`marriage-governing`, Caminho de Vida da data do casamento) e Ano Pessoal do casamento (`marriage-personal-year`), reusando a sinastria do casal + as funções de data (R4: redução de datas não é duplicada, apenas re-rotulada para o contexto de casamento). Modo próprio na UI.
 - **Fatia 6 completa** exceto Evento/data (a menor pendência; vibração de uma data específica).
 
-## Fatia 7 — Educacional
-Modo aprendiz com conferência de cálculo manual, trilhas, glossário navegável, PDF didático.
+## Fatia 7 — Educacional (em andamento)
+- **Análise de cada número ✅ (base)**: port `InterpretationProvider` (definido desde já, §11 decisão 3, sem adapter de LLM) + adapter de **conteúdo curado** (`curatedInterpretationProvider`): reflexão por vibração (1–9 + mestres) × enquadramento por tipo de número, trilíngue, rotulada na UI como "conteúdo curado — não é veredito" (§9). Camada separada do cálculo. A Fase 10 pluga um adapter de IA no mesmo port sem refatorar.
+- **Pendente**: análise de grupo por método e análise comparativa interpretativa (dependem da IA, Fase 10); modo aprendiz, trilhas, glossário navegável, PDF didático.
 
 ## Fatia 8 — Esotéricos (em andamento)
 - **Lo Shu ✅**: terceira escola no registry (`models/lo-shu/` + registro — núcleo intacto), a primeira que produz uma **grade** em vez de número único. Dígitos da data no quadrado mágico 4-9-2/3-5-7/8-1-6, com detecção de setas de força/ausência (§9: qualidade a desenvolver, não veredito). Novo passo de traço `lo-shu-grid` (visual `lo-shu`) e renderer 3×3 na UI.

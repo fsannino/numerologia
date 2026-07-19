@@ -53,6 +53,7 @@ export type UiMessages = {
     readonly noLetters: string
     readonly chainSr: (chain: string) => string
     readonly compoundBadge: (compound: number) => string
+    readonly interpretationLabel: string
   }
   readonly timeline: {
     readonly range: (from: number, to: number) => string
@@ -176,6 +177,7 @@ const PT: UiMessages = {
     noLetters: 'nenhuma letra',
     chainSr: (chain) => `Cadeia de redução: ${chain}.`,
     compoundBadge: (compound) => `Composto ${compound}`,
+    interpretationLabel: 'Reflexão (conteúdo curado — não é veredito)',
   },
   timeline: {
     range: (from, to) => `dos ${from} aos ${to} anos`,
@@ -329,6 +331,7 @@ const EN: UiMessages = {
     noLetters: 'no letters',
     chainSr: (chain) => `Reduction chain: ${chain}.`,
     compoundBadge: (compound) => `Compound ${compound}`,
+    interpretationLabel: 'Reflection (curated content — not a verdict)',
   },
   timeline: {
     range: (from, to) => `from age ${from} to ${to}`,
@@ -482,6 +485,7 @@ const ES: UiMessages = {
     noLetters: 'ninguna letra',
     chainSr: (chain) => `Cadena de reducción: ${chain}.`,
     compoundBadge: (compound) => `Compuesto ${compound}`,
+    interpretationLabel: 'Reflexión (contenido curado — no es un veredicto)',
   },
   timeline: {
     range: (from, to) => `de los ${from} a los ${to} años`,
