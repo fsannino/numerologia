@@ -59,14 +59,14 @@ export function SignatureComparator() {
 
   return (
     <section className="flex flex-col gap-6">
-      <p className="text-sm text-slate-600">{t.signature.intro}</p>
+      <p className="text-[15px] leading-relaxed text-anil">{t.signature.intro}</p>
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-4 rounded-xl border border-slate-200 bg-white p-6 shadow-sm"
+        className="flex flex-col gap-5 border border-anil bg-giz p-6"
         aria-label={t.signature.compare}
       >
         <div className="flex flex-col gap-1">
-          <label htmlFor={registrationId} className="font-medium">
+          <label htmlFor={registrationId} className="font-mono text-[10px] uppercase tracking-[0.14em] text-latao">
             {t.signature.registrationLabel}
           </label>
           <input
@@ -76,11 +76,11 @@ export function SignatureComparator() {
             onChange={(event) => setRegistrationName(event.target.value)}
             placeholder={t.form.namePlaceholder}
             autoComplete="off"
-            className="rounded-lg border border-slate-300 px-3 py-2 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+            className="border border-anil bg-papel px-3 py-2 font-mono text-sm text-tinta focus:outline-none focus:border-latao"
           />
         </div>
         <div className="flex flex-col gap-1">
-          <label htmlFor={signatureId} className="font-medium">
+          <label htmlFor={signatureId} className="font-mono text-[10px] uppercase tracking-[0.14em] text-latao">
             {t.signature.signatureLabel}
           </label>
           <input
@@ -90,20 +90,20 @@ export function SignatureComparator() {
             onChange={(event) => setSignatureName(event.target.value)}
             placeholder={t.form.namePlaceholder}
             autoComplete="off"
-            className="rounded-lg border border-slate-300 px-3 py-2 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+            className="border border-anil bg-papel px-3 py-2 font-mono text-sm text-tinta focus:outline-none focus:border-latao"
           />
         </div>
 
         <fieldset className="flex flex-col gap-2">
-          <legend className="font-medium">{t.form.schoolsLabel}</legend>
+          <legend className="font-mono text-[10px] uppercase tracking-[0.14em] text-latao">{t.form.schoolsLabel}</legend>
           <div className="flex flex-wrap gap-3">
             {listModels().map((model) => (
-              <label key={model.id} className="flex cursor-pointer items-center gap-2 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50">
+              <label key={model.id} className="flex cursor-pointer items-center gap-2 border border-anil bg-papel px-3 py-1.5 text-sm text-tinta has-[:checked]:bg-latao has-[:checked]:text-giz">
                 <input
                   type="checkbox"
                   checked={selectedModels.includes(model.id)}
                   onChange={() => toggleModel(model.id)}
-                  className="accent-indigo-600"
+                  className="accent-latao"
                 />
                 {localize(model.metadata.name, locale)}
               </label>
@@ -113,13 +113,13 @@ export function SignatureComparator() {
 
         <button
           type="submit"
-          className="rounded-lg bg-indigo-600 px-4 py-2 font-semibold text-white transition hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+          className="w-fit bg-tinta px-6 py-2.5 font-mono text-[12px] uppercase tracking-[0.14em] text-giz transition hover:bg-anil"
         >
           {t.signature.compare}
         </button>
 
         {error !== null && (
-          <p role="alert" className="rounded-lg bg-rose-50 px-4 py-3 text-sm text-rose-900">
+          <p role="alert" className="border-l-2 border-tinta bg-papel px-4 py-3 text-[15px] font-medium text-tinta">
             {error}
           </p>
         )}
@@ -128,8 +128,8 @@ export function SignatureComparator() {
       {comparison !== null && (
         <div className="flex flex-col gap-5" aria-label={t.modes.signature}>
           <p
-            className={`rounded-lg px-4 py-3 text-sm font-medium ${
-              comparison.changedCount > 0 ? 'bg-amber-100 text-amber-900' : 'bg-emerald-100 text-emerald-900'
+            className={` px-4 py-3 text-sm font-medium ${
+              comparison.changedCount > 0 ? 'border-l-2 border-latao bg-papel text-tinta' : 'border-l-2 border-anil bg-papel text-tinta'
             }`}
           >
             {comparison.changedCount > 0 ? t.signature.changedSummary(comparison.changedCount) : t.signature.noChange}
@@ -140,7 +140,7 @@ export function SignatureComparator() {
             return (
               <section key={result.model} className="flex flex-col gap-2" aria-label={model ? localize(model.metadata.name, locale) : result.model}>
                 {comparison.results.length > 1 && (
-                  <h3 className="text-lg font-semibold text-indigo-900">
+                  <h3 className="font-display text-2xl text-tinta">
                     {model ? localize(model.metadata.name, locale) : result.model}
                   </h3>
                 )}
@@ -148,32 +148,32 @@ export function SignatureComparator() {
                   <table className="w-full border-collapse text-sm">
                     <thead>
                       <tr>
-                        <th scope="col" className="border border-slate-300 bg-indigo-50 px-3 py-2 text-left font-semibold text-indigo-900">
+                        <th scope="col" className="border border-anil bg-papel px-3 py-2 text-left font-mono text-[10px] uppercase tracking-[0.1em] text-anil">
                           {t.matrix.numberColumn}
                         </th>
-                        <th scope="col" className="border border-slate-300 bg-indigo-50 px-3 py-2 font-semibold text-indigo-900">
+                        <th scope="col" className="border border-anil bg-papel px-3 py-2 font-mono text-[10px] uppercase tracking-[0.1em] text-anil">
                           {t.signature.registrationColumn}
                         </th>
-                        <th scope="col" className="border border-slate-300 bg-indigo-50 px-3 py-2 font-semibold text-indigo-900">
+                        <th scope="col" className="border border-anil bg-papel px-3 py-2 font-mono text-[10px] uppercase tracking-[0.1em] text-anil">
                           {t.signature.signatureColumn}
                         </th>
                       </tr>
                     </thead>
                     <tbody>
                       {result.numbers.map((delta) => (
-                        <tr key={delta.numberKind} className={delta.changed ? 'bg-amber-50' : undefined}>
-                          <th scope="row" className="border border-slate-300 px-3 py-2 text-left font-medium">
+                        <tr key={delta.numberKind} className={delta.changed ? 'bg-papel' : undefined}>
+                          <th scope="row" className="border border-anil px-3 py-2 text-left font-medium">
                             {t.numberLabels[delta.numberKind]?.title ?? delta.numberKind}
                             {delta.changed && (
-                              <span className="ml-2 rounded bg-amber-200 px-1.5 py-0.5 text-[11px] text-amber-900">
+                              <span className="ml-2 border border-latao px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.1em] text-latao">
                                 {t.signature.changedTag}
                               </span>
                             )}
                           </th>
-                          <td className="border border-slate-300 px-3 py-2 text-center font-bold">
+                          <td className="border border-anil px-3 py-2 text-center font-bold">
                             {delta.registration.finalValue.reduced}
                           </td>
-                          <td className={`border border-slate-300 px-3 py-2 text-center font-bold ${delta.changed ? 'text-amber-900' : ''}`}>
+                          <td className={`border border-anil px-3 py-2 text-center font-bold ${delta.changed ? 'text-latao' : ''}`}>
                             {delta.signature.finalValue.reduced}
                             {delta.changed && <span aria-hidden> ↔</span>}
                           </td>

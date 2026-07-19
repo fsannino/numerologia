@@ -69,50 +69,50 @@ export function CompanyCalculator() {
 
   const textField = (id: string, label: string, value: string, onChange: (value: string) => void) => (
     <div className="flex flex-col gap-1">
-      <label htmlFor={id} className="font-medium">{label}</label>
+      <label htmlFor={id} className="font-mono text-[10px] uppercase tracking-[0.14em] text-latao">{label}</label>
       <input
         id={id}
         type="text"
         value={value}
         onChange={(event) => onChange(event.target.value)}
         autoComplete="off"
-        className="rounded-lg border border-slate-300 px-3 py-2 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+        className="border border-anil bg-papel px-3 py-2 font-mono text-sm text-tinta focus:outline-none focus:border-latao"
       />
     </div>
   )
 
   return (
     <section className="flex flex-col gap-6">
-      <p className="text-sm text-slate-600">{t.company.intro}</p>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4 rounded-xl border border-slate-200 bg-white p-6 shadow-sm" aria-label={t.company.build}>
+      <p className="text-[15px] leading-relaxed text-anil">{t.company.intro}</p>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-5 border border-anil bg-giz p-6" aria-label={t.company.build}>
         {textField(legalId, t.company.legalNameLabel, legalName, setLegalName)}
         {textField(tradeId, t.company.tradeNameLabel, tradeName, setTradeName)}
         <div className="flex flex-col gap-1">
-          <label htmlFor={dateId} className="font-medium">
-            {t.company.incorporationLabel} <span className="font-normal text-slate-500">{t.form.optionalTag}</span>
+          <label htmlFor={dateId} className="font-mono text-[10px] uppercase tracking-[0.14em] text-latao">
+            {t.company.incorporationLabel} <span className="font-normal text-anil">{t.form.optionalTag}</span>
           </label>
-          <input id={dateId} type="date" value={incorporationDate} onChange={(event) => setIncorporationDate(event.target.value)} className="w-fit rounded-lg border border-slate-300 bg-white px-3 py-2" />
+          <input id={dateId} type="date" value={incorporationDate} onChange={(event) => setIncorporationDate(event.target.value)} className="w-fit border border-anil bg-papel px-3 py-2 font-mono text-sm text-tinta" />
         </div>
         {textField(founderId, `${t.company.founderLabel} ${t.form.optionalTag}`, founderName, setFounderName)}
 
         <fieldset className="flex flex-col gap-2">
-          <legend className="font-medium">{t.form.schoolsLabel}</legend>
+          <legend className="font-mono text-[10px] uppercase tracking-[0.14em] text-latao">{t.form.schoolsLabel}</legend>
           <div className="flex flex-wrap gap-3">
             {listModels().map((model) => (
-              <label key={model.id} className="flex cursor-pointer items-center gap-2 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50">
-                <input type="checkbox" checked={selectedModels.includes(model.id)} onChange={() => toggleModel(model.id)} className="accent-indigo-600" />
+              <label key={model.id} className="flex cursor-pointer items-center gap-2 border border-anil bg-papel px-3 py-1.5 text-sm text-tinta has-[:checked]:bg-latao has-[:checked]:text-giz">
+                <input type="checkbox" checked={selectedModels.includes(model.id)} onChange={() => toggleModel(model.id)} className="accent-latao" />
                 {localize(model.metadata.name, locale)}
               </label>
             ))}
           </div>
         </fieldset>
 
-        <button type="submit" className="rounded-lg bg-indigo-600 px-4 py-2 font-semibold text-white transition hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-300">
+        <button type="submit" className="w-fit bg-tinta px-6 py-2.5 font-mono text-[12px] uppercase tracking-[0.14em] text-giz transition hover:bg-anil">
           {t.company.build}
         </button>
 
         {error !== null && (
-          <p role="alert" className="rounded-lg bg-rose-50 px-4 py-3 text-sm text-rose-900">{error}</p>
+          <p role="alert" className="border-l-2 border-tinta bg-papel px-4 py-3 text-[15px] font-medium text-tinta">{error}</p>
         )}
       </form>
 
@@ -126,7 +126,7 @@ export function CompanyCalculator() {
             return (
               <section key={result.model} className="flex flex-col gap-4" aria-label={model ? localize(model.metadata.name, locale) : result.model}>
                 {chart.results.length > 1 && (
-                  <h3 className="text-lg font-semibold text-indigo-900">{model ? localize(model.metadata.name, locale) : result.model}</h3>
+                  <h3 className="font-display text-2xl text-tinta">{model ? localize(model.metadata.name, locale) : result.model}</h3>
                 )}
                 <div className="flex flex-col gap-2">
                   <h4 className="text-sm font-semibold">{t.company.harmonyTitle}</h4>
