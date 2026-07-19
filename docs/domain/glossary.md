@@ -119,4 +119,17 @@ O casamento reusa a sinastria (números da união do casal) + os números da dat
 
 Qualidades do planeta (§9): vocabulário de reflexão sobre o arquétipo, **nunca** veredito sobre a pessoa.
 
-O glossário cresce uma seção por escola a cada fase (caldaica, gematria, Lo Shu, védica...), com fonte histórica em `docs/domain/models-reference.md`.
+## Escola Cabalística (latina)
+
+| Termo | Definição |
+|---|---|
+| Numerologia Cabalística | Adaptação moderna de princípios da Cabala (22 letras hebraicas, Árvore da Vida) ao alfabeto latino. **Sem tabela única entre autores** — daí a Matriz de Leituras. |
+| `kabbalistic-name` | Número do Nome cabalístico. Não é UM número: é a Matriz de Leituras. Escalar do card = nº de leituras distintas. |
+| Matriz de Leituras | Tabela (`sequential-1-9` \| `chaldean-like-1-8`) × redução (`decimal` \| `modular-22`) = 4 leituras simultâneas, cada uma com sua origem. Passo de traço `reading-matrix`. |
+| Redução arcano | `((total − 1) mod 22) + 1` → 1–22 (os 22 caminhos). Única aritmética própria; exibida só como número, sem significado (§9, ADR-0011). `value-objects/arcano.ts`. |
+| Coincidência (provada) | Quando uma leitura decimal bate com o número real da pitagórica/caldaica, o traço etiqueta "≡ Pitagórica/Caldaica" — comparação dinâmica, não presunção. A diferença é de interpretação, não de cálculo. |
+| Delegação | A escola **importa** as tabelas pitagórica/caldaica (fonte única, R4) em vez de reescrevê-las — é o que torna a coincidência provável. |
+| Só o nome | A cabalística não usa data de nascimento (o nome é a expressão da alma) — `supportedNumbers` sem números de data. |
+| Fonte | Adaptação latina (Trevisani; C. Rosa); Sefer Yetzirah para os 22 caminhos. |
+
+O glossário cresce uma seção por escola a cada fase (caldaica, gematria, Lo Shu, védica, cabalística...), com fonte histórica em `docs/domain/models-reference.md`.

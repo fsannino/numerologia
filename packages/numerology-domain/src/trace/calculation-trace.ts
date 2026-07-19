@@ -38,6 +38,18 @@ export type TimelineSegment = {
   readonly isCurrent: boolean
 }
 
+/** Uma célula da Matriz de Leituras cabalística (tabela × redução). */
+export type KabbalisticReading = {
+  readonly table: 'sequential-1-9' | 'chaldean-like-1-8'
+  readonly reduction: 'decimal' | 'modular-22'
+  /** Total das letras antes de reduzir. */
+  readonly rawTotal: number
+  /** Resultado: 1–9 (ou mestre) na redução decimal; 1–22 no arcano. */
+  readonly value: number
+  /** Escola cuja aritmética coincide com esta leitura — proveniência provada, não presumida. */
+  readonly coincidesWith?: ModelId
+}
+
 /** União discriminada por `kind`: dá render type-safe sem casts na UI. */
 export type CalculationStep =
   | {
@@ -130,6 +142,18 @@ export type CalculationStep =
       readonly input: { readonly ageAtReference: number }
       readonly output: { readonly segments: ReadonlyArray<TimelineSegment> }
       readonly visual: 'timeline'
+    }
+  | {
+      readonly kind: 'reading-matrix'
+      readonly title: LocalizedText
+      readonly explanation: LocalizedText
+      readonly input: { readonly name: string }
+      readonly output: {
+        readonly readings: ReadonlyArray<KabbalisticReading>
+        /** Quantos valores distintos as leituras produzem (o escalar honesto do card). */
+        readonly distinctValues: number
+      }
+      readonly visual: 'reading-matrix'
     }
   | {
       readonly kind: 'planetary-ruler'

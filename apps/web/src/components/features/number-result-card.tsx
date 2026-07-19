@@ -4,6 +4,7 @@ import { localize } from '@numerus/shared-kernel'
 import { useLocale } from '@/i18n/locale-context'
 import { UI_MESSAGES } from '@/i18n/ui-messages'
 import { ReductionChain } from './reduction-chain'
+import { ReadingMatrix } from './reading-matrix'
 import { TraceSteps } from './trace-steps'
 
 /** Para números de grade, os dígitos destacados aparecem no próprio card. */
@@ -26,6 +27,8 @@ export function NumberResultCard({ trace }: { trace: CalculationTrace }) {
     resultId: trace.resultId,
     value: trace.finalValue,
   })
+  const matrixStep = trace.steps.find((step) => step.kind === 'reading-matrix')
+  const stepsForTrace = trace.steps.filter((step) => step.kind !== 'reading-matrix')
   return (
     <article className="rounded-xl border border-indigo-200 bg-white shadow-sm" aria-label={label.title}>
       <div className="flex items-center gap-4 p-4">
@@ -65,6 +68,16 @@ export function NumberResultCard({ trace }: { trace: CalculationTrace }) {
         </div>
       </div>
 
+      {matrixStep?.kind === 'reading-matrix' && (
+        <div className="mx-4 mb-3 flex flex-col gap-2">
+          <p className="text-sm font-semibold text-indigo-950">
+            {t.kabbalistic.headline(matrixStep.output.distinctValues)}
+          </p>
+          <p className="text-xs text-slate-500">{t.kabbalistic.subtitle}</p>
+          <ReadingMatrix readings={matrixStep.output.readings} />
+        </div>
+      )}
+
       {interpretation !== null && (
         <div className="mx-4 mb-3 rounded-lg bg-indigo-50/60 p-3">
           <p className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-indigo-700">
@@ -90,7 +103,7 @@ export function NumberResultCard({ trace }: { trace: CalculationTrace }) {
           {t.results.seeSteps}
         </summary>
         <div className="flex flex-col gap-4 px-4 pb-4">
-          <TraceSteps steps={trace.steps} />
+          <TraceSteps steps={stepsForTrace} />
           <div>
             <h4 className="mb-2 text-sm font-semibold">{t.results.rulesTitle}</h4>
             <ul className="flex flex-col gap-2">

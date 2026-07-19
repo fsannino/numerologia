@@ -16,6 +16,7 @@ export {
   sumDigits,
   reduceToValue,
 } from './value-objects/numerology-value'
+export { reduceToArcano } from './value-objects/arcano'
 
 export type {
   NameNormalizationError,
@@ -36,6 +37,7 @@ export type {
   CalculationTrace,
   DigitTallyEntry,
   DivergenceNote,
+  KabbalisticReading,
   LetterMappingEntry,
   LoShuArrow,
   RuleReference,

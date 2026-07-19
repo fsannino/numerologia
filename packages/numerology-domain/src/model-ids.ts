@@ -5,6 +5,7 @@ export type ModelId =
   | 'gates-231'
   | 'vedic'
   | 'lo-shu'
+  | 'kabbalistic'
 
 /** Posições do quadrado mágico Lo Shu (4-9-2 / 3-5-7 / 8-1-6). */
 export const LO_SHU_SQUARE: ReadonlyArray<ReadonlyArray<number>> = [
@@ -44,6 +45,7 @@ export type NumberKind =
   | 'gematria-value'
   | 'vedic-moolank'
   | 'vedic-bhagyank'
+  | 'kabbalistic-name'
 
 export type SubjectKind =
   | 'person'
