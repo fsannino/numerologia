@@ -243,7 +243,7 @@ export function ChartCalculator() {
                       </option>
                     ))}
                   </select>
-                  <p className="text-xs text-slate-500">
+                  <p className="text-xs text-anil">
                     {localize(
                       dimension.options.find(
                         (option) =>
