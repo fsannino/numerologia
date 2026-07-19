@@ -31,6 +31,8 @@ export type NumberKind =
   | 'union-key'
   | 'brand-harmony'
   | 'founder-affinity'
+  | 'marriage-governing'
+  | 'marriage-personal-year'
 
 export type SubjectKind =
   | 'person'

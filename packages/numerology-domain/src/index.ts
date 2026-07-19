@@ -95,3 +95,7 @@ export { UNION_SOURCE, calculateUnionNumber } from './synastry/union-numbers'
 
 export { combineReducedValues } from './derivations/combine-reduced-values'
 export { calculateBrandHarmony, calculateFounderAffinity } from './company/company-numbers'
+export {
+  calculateMarriageGoverning,
+  calculateMarriagePersonalYear,
+} from './marriage/marriage-numbers'
