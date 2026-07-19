@@ -23,4 +23,13 @@ describe('registry de modelos', () => {
       'vedic',
     ])
   })
+
+  it('toda escola declara canonicidade e padronização honestas (§9)', () => {
+    const canonicities = new Set(['documented-tradition', 'modern-systematization', 'contemporary-construction'])
+    const standardizations = new Set(['standardized', 'variant-dependent', 'unstandardized'])
+    for (const model of listModels()) {
+      expect(canonicities.has(model.metadata.canonicity)).toBe(true)
+      expect(standardizations.has(model.metadata.standardization)).toBe(true)
+    }
+  })
 })

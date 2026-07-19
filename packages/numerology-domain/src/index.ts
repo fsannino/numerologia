@@ -45,8 +45,10 @@ export type {
 export type {
   CalculationError,
   CalculationRequest,
+  Canonicity,
   ModelMetadata,
   NumerologyModel,
+  Standardization,
   VariantDimension,
   VariantOption,
 } from './ports/numerology-model'

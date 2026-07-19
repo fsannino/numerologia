@@ -124,6 +124,19 @@ export type UiMessages = {
   readonly vedic: {
     readonly qualitiesLabel: string
   }
+  readonly provenance: {
+    readonly title: string
+    readonly canonicity: {
+      readonly 'documented-tradition': string
+      readonly 'modern-systematization': string
+      readonly 'contemporary-construction': string
+    }
+    readonly standardization: {
+      readonly standardized: string
+      readonly 'variant-dependent': string
+      readonly unstandardized: string
+    }
+  }
   readonly numberLabels: Readonly<Record<string, NumberLabel>>
   readonly footer: string
 }
@@ -268,6 +281,19 @@ const PT: UiMessages = {
   },
   vedic: {
     qualitiesLabel: 'Qualidades',
+  },
+  provenance: {
+    title: 'Lastro histórico desta escola',
+    canonicity: {
+      'documented-tradition': 'tradição documentada',
+      'modern-systematization': 'sistematização moderna',
+      'contemporary-construction': 'construção contemporânea',
+    },
+    standardization: {
+      standardized: 'método padronizado',
+      'variant-dependent': 'depende de variante',
+      unstandardized: 'não padronizada',
+    },
   },
   loShu: {
     strengthArrow: 'seta de força',
@@ -428,6 +454,19 @@ const EN: UiMessages = {
   vedic: {
     qualitiesLabel: 'Qualities',
   },
+  provenance: {
+    title: 'Historical grounding of this school',
+    canonicity: {
+      'documented-tradition': 'documented tradition',
+      'modern-systematization': 'modern systematization',
+      'contemporary-construction': 'contemporary construction',
+    },
+    standardization: {
+      standardized: 'standardized method',
+      'variant-dependent': 'variant-dependent',
+      unstandardized: 'unstandardized',
+    },
+  },
   loShu: {
     strengthArrow: 'arrow of strength',
     absenceArrow: 'arrow of absence',
@@ -586,6 +625,19 @@ const ES: UiMessages = {
   },
   vedic: {
     qualitiesLabel: 'Cualidades',
+  },
+  provenance: {
+    title: 'Base histórica de esta escuela',
+    canonicity: {
+      'documented-tradition': 'tradición documentada',
+      'modern-systematization': 'sistematización moderna',
+      'contemporary-construction': 'construcción contemporánea',
+    },
+    standardization: {
+      standardized: 'método estandarizado',
+      'variant-dependent': 'depende de variante',
+      unstandardized: 'no estandarizada',
+    },
   },
   loShu: {
     strengthArrow: 'flecha de fuerza',
