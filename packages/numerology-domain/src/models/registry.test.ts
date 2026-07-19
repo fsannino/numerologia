@@ -8,6 +8,7 @@ describe('registry de modelos', () => {
     expect(getModel('lo-shu').ok).toBe(true)
     expect(getModel('gematria').ok).toBe(true)
     expect(getModel('vedic').ok).toBe(true)
+    expect(getModel('kabbalistic').ok).toBe(true)
   })
 
   it('retorna erro explícito para escola ainda não registrada', () => {
@@ -21,6 +22,7 @@ describe('registry de modelos', () => {
       'lo-shu',
       'gematria',
       'vedic',
+      'kabbalistic',
     ])
   })
 

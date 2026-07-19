@@ -124,6 +124,23 @@ export type UiMessages = {
   readonly vedic: {
     readonly qualitiesLabel: string
   }
+  readonly kabbalistic: {
+    readonly headline: (distinct: number) => string
+    readonly subtitle: string
+    readonly tableHeader: string
+    readonly tableLabel: {
+      readonly 'sequential-1-9': string
+      readonly 'chaldean-like-1-8': string
+    }
+    readonly reductionLabel: {
+      readonly decimal: string
+      readonly 'modular-22': string
+    }
+    readonly own: string
+    readonly coincides: { readonly pythagorean: string; readonly chaldean: string }
+    readonly total: (raw: number) => string
+    readonly whyMultiple: string
+  }
   readonly provenance: {
     readonly title: string
     readonly canonicity: {
@@ -278,9 +295,22 @@ const PT: UiMessages = {
     'gematria-value': { title: 'Valor Gematria', hint: 'transliteração padrão (há candidatas)' },
     'vedic-moolank': { title: 'Moolank (raiz)', hint: 'dia do nascimento · planeta regente' },
     'vedic-bhagyank': { title: 'Bhagyank (destino)', hint: 'data completa · planeta regente' },
+    'kabbalistic-name': { title: 'Número do Nome (cabalístico)', hint: 'nº de leituras distintas · veja a matriz' },
   },
   vedic: {
     qualitiesLabel: 'Qualidades',
+  },
+  kabbalistic: {
+    headline: (distinct) => `Este nome tem ${distinct} ${distinct === 1 ? 'leitura cabalística' : 'leituras cabalísticas distintas'} — veja de onde cada uma vem.`,
+    subtitle: 'A escola trabalha só o nome (a data não entra).',
+    tableHeader: 'Tabela de letras',
+    tableLabel: { 'sequential-1-9': 'Sequencial 1–9', 'chaldean-like-1-8': 'Caldaica 1–8' },
+    reductionLabel: { decimal: 'Redução decimal (1–9)', 'modular-22': 'Arcano (1–22)' },
+    own: 'próprio',
+    coincides: { pythagorean: '≡ Pitagórica', chaldean: '≡ Caldaica' },
+    total: (raw) => `total ${raw}`,
+    whyMultiple:
+      'A adaptação da Cabala ao alfabeto latino não tem tabela única entre autores. Em vez de escolher uma em silêncio, o Numerus mostra todas e diz a origem de cada número. Onde coincide com o Pitagórico ou o Caldeu, a diferença está na interpretação, não no cálculo.',
   },
   provenance: {
     title: 'Lastro histórico desta escola',
@@ -450,9 +480,22 @@ const EN: UiMessages = {
     'gematria-value': { title: 'Gematria value', hint: 'standard transliteration (candidates exist)' },
     'vedic-moolank': { title: 'Moolank (root)', hint: 'birth day · ruling planet' },
     'vedic-bhagyank': { title: 'Bhagyank (destiny)', hint: 'full date · ruling planet' },
+    'kabbalistic-name': { title: 'Name Number (Kabbalistic)', hint: 'nº of distinct readings · see the matrix' },
   },
   vedic: {
     qualitiesLabel: 'Qualities',
+  },
+  kabbalistic: {
+    headline: (distinct) => `This name has ${distinct} distinct Kabbalistic ${distinct === 1 ? 'reading' : 'readings'} — see where each comes from.`,
+    subtitle: 'The school works only with the name (the date does not enter).',
+    tableHeader: 'Letter table',
+    tableLabel: { 'sequential-1-9': 'Sequential 1–9', 'chaldean-like-1-8': 'Chaldean 1–8' },
+    reductionLabel: { decimal: 'Decimal reduction (1–9)', 'modular-22': 'Arcano (1–22)' },
+    own: 'own',
+    coincides: { pythagorean: '≡ Pythagorean', chaldean: '≡ Chaldean' },
+    total: (raw) => `total ${raw}`,
+    whyMultiple:
+      'Adapting the Kabbalah to the Latin alphabet has no single table across authors. Instead of silently picking one, Numerus shows all and states the origin of each number. Where it matches the Pythagorean or Chaldean reading, the difference is in interpretation, not arithmetic.',
   },
   provenance: {
     title: 'Historical grounding of this school',
@@ -622,9 +665,22 @@ const ES: UiMessages = {
     'gematria-value': { title: 'Valor Gematría', hint: 'transliteración estándar (hay candidatas)' },
     'vedic-moolank': { title: 'Moolank (raíz)', hint: 'día de nacimiento · planeta regente' },
     'vedic-bhagyank': { title: 'Bhagyank (destino)', hint: 'fecha completa · planeta regente' },
+    'kabbalistic-name': { title: 'Número del Nombre (cabalístico)', hint: 'nº de lecturas distintas · ve la matriz' },
   },
   vedic: {
     qualitiesLabel: 'Cualidades',
+  },
+  kabbalistic: {
+    headline: (distinct) => `Este nombre tiene ${distinct} ${distinct === 1 ? 'lectura cabalística' : 'lecturas cabalísticas distintas'} — mira de dónde viene cada una.`,
+    subtitle: 'La escuela trabaja solo el nombre (la fecha no entra).',
+    tableHeader: 'Tabla de letras',
+    tableLabel: { 'sequential-1-9': 'Secuencial 1–9', 'chaldean-like-1-8': 'Caldea 1–8' },
+    reductionLabel: { decimal: 'Reducción decimal (1–9)', 'modular-22': 'Arcano (1–22)' },
+    own: 'propio',
+    coincides: { pythagorean: '≡ Pitagórica', chaldean: '≡ Caldea' },
+    total: (raw) => `total ${raw}`,
+    whyMultiple:
+      'Adaptar la Cábala al alfabeto latino no tiene una tabla única entre autores. En vez de elegir una en silencio, Numerus muestra todas y dice el origen de cada número. Donde coincide con el Pitagórico o el Caldeo, la diferencia está en la interpretación, no en el cálculo.',
   },
   provenance: {
     title: 'Base histórica de esta escuela',

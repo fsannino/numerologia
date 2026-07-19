@@ -4,6 +4,7 @@ import { localize } from '@numerus/shared-kernel'
 import { useLocale } from '@/i18n/locale-context'
 import { UI_MESSAGES } from '@/i18n/ui-messages'
 import { ReductionChain } from './reduction-chain'
+import { ReadingMatrix } from './reading-matrix'
 
 function StepBody({ step }: { step: CalculationStep }) {
   const { locale } = useLocale()
@@ -184,6 +185,8 @@ function StepBody({ step }: { step: CalculationStep }) {
           })}
         </ul>
       )
+    case 'reading-matrix':
+      return <ReadingMatrix readings={step.output.readings} />
     case 'planetary-ruler':
       return (
         <div className="flex items-center gap-3 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2">
