@@ -37,6 +37,8 @@ export type {
   CalculationTrace,
   DigitTallyEntry,
   DivergenceNote,
+  Gate,
+  HebrewLetter,
   KabbalisticReading,
   LetterMappingEntry,
   LoShuArrow,
@@ -112,3 +114,4 @@ export {
   calculateMarriageGoverning,
   calculateMarriagePersonalYear,
 } from './marriage/marriage-numbers'
+export { calculateEventVibration, calculateEventPersonalYear } from './event/event-numbers'

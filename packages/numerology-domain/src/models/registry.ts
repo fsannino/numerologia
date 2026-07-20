@@ -8,6 +8,7 @@ import { loShuModel } from './lo-shu/lo-shu-model'
 import { gematriaModel } from './gematria/gematria-model'
 import { vedicModel } from './vedic/vedic-model'
 import { kabbalisticModel } from './kabbalistic/kabbalistic-model'
+import { gates231Model } from './gates-231/gates-model'
 
 export type UnknownModelError = { readonly code: 'unknown-model'; readonly model: string }
 
@@ -22,6 +23,7 @@ const MODELS: ReadonlyMap<ModelId, NumerologyModel> = new Map<ModelId, Numerolog
   [gematriaModel.id, gematriaModel],
   [vedicModel.id, vedicModel],
   [kabbalisticModel.id, kabbalisticModel],
+  [gates231Model.id, gates231Model],
 ])
 
 export function getModel(id: ModelId): Result<NumerologyModel, UnknownModelError> {

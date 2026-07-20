@@ -85,6 +85,16 @@ O casamento reusa a sinastria (números da união do casal) + os números da dat
 
 `combineReducedValues` é o primitivo de domínio compartilhado por sinastria e empresa (soma de valores reduzidos + redução preservando mestres).
 
+## Evento / data
+
+| Termo (código) | Definição |
+|---|---|
+| `event` (Evento) | Sujeito distinto: uma data específica, sem nome nem pessoa (§2.3). |
+| `event-vibration` / Vibração da Data | Caminho de Vida da data do evento — a mesma redução de dígitos de data, re-rotulada (R4, ADR-0005). |
+| `event-personal-year` / Ano Pessoal do Evento | Ano Pessoal tratando a data do evento como um "nascimento" — em que ponto do ciclo o evento está (ADR-0007). |
+
+O Evento reusa as funções de data existentes (não duplica a redução de datas), como o casamento — só a data entra, nada de nome.
+
 ## Escola Lo Shu (chinesa)
 
 | Termo | Definição |
@@ -132,4 +142,16 @@ Qualidades do planeta (§9): vocabulário de reflexão sobre o arquétipo, **nun
 | Só o nome | A cabalística não usa data de nascimento (o nome é a expressão da alma) — `supportedNumbers` sem números de data. |
 | Fonte | Adaptação latina (Trevisani; C. Rosa); Sefer Yetzirah para os 22 caminhos. |
 
-O glossário cresce uma seção por escola a cada fase (caldaica, gematria, Lo Shu, védica, cabalística...), com fonte histórica em `docs/domain/models-reference.md`.
+## Escola 231 Portões (Sefer Yetzirah)
+
+| Termo | Definição |
+|---|---|
+| 231 Portões | As combinações de pares das 22 letras hebraicas — C(22,2) = 231 (Sefer Yetzirah 2:4). Estrutura cosmogônica, não análise de nome. |
+| `Gate` | Um portão: par **não-ordenado** de duas letras **distintas** (`first.value < second.value` canoniza). |
+| `gates-231-structure` | Único resultado da escola: a estrutura. Escalar do card = nº de portões ativados (0–231). Passo de traço `gate-structure`. |
+| Modo de ativação | Como o nome "ativa" portões — **construção contemporânea** (sem fonte canônica): `distinct-letter-pairs` (todos os pares das letras distintas) \| `adjacent-pairs` (pares vizinhos). Rotulado como não-canônico. |
+| Derivado, não hardcoded | Os 231 portões são gerados de `HEBREW_ALPHABET` por combinação; um teste afirma 231. |
+| Sem leitura por portão | Não há fonte para significado de cada portão — exibe-se estrutura, valores e a referência; nada de doutrina inventada (§9, ADR-0012). |
+| Fonte | Sefer Yetzirah 2:4 (estrutura); a aplicação ao nome é contemporânea. |
+
+O glossário cresce uma seção por escola a cada fase (caldaica, gematria, Lo Shu, védica, cabalística, 231 Portões...), com fonte histórica em `docs/domain/models-reference.md`.

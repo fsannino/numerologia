@@ -29,7 +29,8 @@ describe('calculateChart', () => {
   it('propaga erro de modelo desconhecido', () => {
     const result = calculateChart({
       subject: { kind: 'person', fullName: 'Maria Silva' },
-      models: ['gates-231'],
+      // Todas as escolas do union já estão registradas; um id inválido força o erro.
+      models: ['tibetan'] as unknown as Parameters<typeof calculateChart>[0]['models'],
       numbers: ['expression'],
     })
     expect(result).toMatchObject({ ok: false, error: { code: 'unknown-model' } })

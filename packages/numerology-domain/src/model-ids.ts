@@ -46,6 +46,9 @@ export type NumberKind =
   | 'vedic-moolank'
   | 'vedic-bhagyank'
   | 'kabbalistic-name'
+  | 'gates-231-structure'
+  | 'event-vibration'
+  | 'event-personal-year'
 
 export type SubjectKind =
   | 'person'

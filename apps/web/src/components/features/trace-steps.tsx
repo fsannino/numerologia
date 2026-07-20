@@ -185,6 +185,40 @@ function StepBody({ step }: { step: CalculationStep }) {
           })}
         </ul>
       )
+    case 'gate-structure':
+      return (
+        <div className="flex flex-col gap-3">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="font-display text-2xl text-latao">{step.output.activated.length}</span>
+            <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-anil">
+              {t.gates.activated(step.output.activated.length, step.output.totalGates)}
+            </span>
+            <span className="border border-latao px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.1em] text-latao">
+              {t.gates.nonCanonical}
+            </span>
+          </div>
+          <div className="flex flex-wrap items-center gap-2 font-mono text-[11px] text-anil">
+            <span>{t.gates.standardLabel}:</span>
+            <span dir="rtl" className="font-serif text-lg text-tinta">{step.output.standardHebrew}</span>
+            <span>· {t.gates.modeLabel}: {step.output.mode}</span>
+          </div>
+          <div>
+            <p className="mb-1 font-mono text-[10px] uppercase tracking-[0.1em] text-anil">{t.gates.gatesTitle}</p>
+            <ul className="flex flex-wrap gap-1.5">
+              {step.output.activated.map((gate, index) => (
+                <li key={index} className="flex items-center gap-1.5 border border-anil bg-giz px-2 py-1" dir="rtl">
+                  <span className="font-serif text-base text-tinta">{gate.first.hebrew}</span>
+                  <span className="font-serif text-base text-tinta">{gate.second.hebrew}</span>
+                  <span dir="ltr" className="font-mono text-[10px] text-anil">
+                    {gate.first.value}·{gate.second.value}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <p className="font-mono text-[10px] uppercase tracking-[0.1em] text-anil">{t.gates.reference}</p>
+        </div>
+      )
     case 'reading-matrix':
       return <ReadingMatrix readings={step.output.readings} />
     case 'planetary-ruler':

@@ -86,7 +86,13 @@ export type UiMessages = {
     readonly divergenceCause: string
     readonly convergenceNote: string
   }
-  readonly modes: { readonly chart: string; readonly signature: string; readonly synastry: string; readonly company: string; readonly marriage: string }
+  readonly modes: { readonly chart: string; readonly signature: string; readonly synastry: string; readonly company: string; readonly marriage: string; readonly event: string }
+  readonly event: {
+    readonly intro: string
+    readonly dateLabel: string
+    readonly referenceTag: string
+    readonly build: string
+  }
   readonly signature: {
     readonly intro: string
     readonly registrationLabel: string
@@ -160,6 +166,14 @@ export type UiMessages = {
     readonly total: (raw: number) => string
     readonly whyMultiple: string
   }
+  readonly gates: {
+    readonly activated: (count: number, total: number) => string
+    readonly nonCanonical: string
+    readonly modeLabel: string
+    readonly standardLabel: string
+    readonly reference: string
+    readonly gatesTitle: string
+  }
   readonly provenance: {
     readonly title: string
     readonly canonicity: {
@@ -194,7 +208,7 @@ const PT: UiMessages = {
     sumLabel: 'soma',
     emptyHint: 'o cálculo aparece aqui enquanto você digita',
     cta: 'abrir o mapa completo',
-    schoolsTitle: 'seis escolas, cada uma com sua origem',
+    schoolsTitle: 'as escolas, cada uma com sua origem',
     manifestoKicker: 'o traço é o produto',
     manifestoText:
       'Nenhum número aparece sem a conta que o produziu. Cada resultado se abre em tabela, soma, redução e a regra da escola — o modo "por quê?" está sempre a um clique.',
@@ -266,7 +280,13 @@ const PT: UiMessages = {
     divergenceCause: 'Onde os valores divergem, a causa é a tabela de letras: 1–9 pela posição alfabética (pitagórica) × 1–8 por afinidade fonética, sem o 9 (caldaica) — e a caldaica não preserva números mestres na redução.',
     convergenceNote: 'Quando escolas independentes apontam o mesmo número, isso é convergência de método — não evidência.',
   },
-  modes: { chart: 'Mapa completo', signature: 'Assinatura / delta', synastry: 'Casal / sinastria', company: 'Empresa', marriage: 'Casamento' },
+  modes: { chart: 'Mapa completo', signature: 'Assinatura / delta', synastry: 'Casal / sinastria', company: 'Empresa', marriage: 'Casamento', event: 'Evento / data' },
+  event: {
+    intro: 'A vibração de uma data específica — um evento. Só a data entra; nenhum nome, nada sai do dispositivo.',
+    dateLabel: 'Data do evento',
+    referenceTag: '(para o Ano Pessoal do evento)',
+    build: 'Calcular vibração da data',
+  },
   signature: {
     intro: 'Compare o nome de registro com o nome que você usa no dia a dia e veja o que muda quando você assina de outra forma.',
     registrationLabel: 'Nome de registro',
@@ -338,9 +358,20 @@ const PT: UiMessages = {
     'vedic-moolank': { title: 'Moolank (raiz)', hint: 'dia do nascimento · planeta regente' },
     'vedic-bhagyank': { title: 'Bhagyank (destino)', hint: 'data completa · planeta regente' },
     'kabbalistic-name': { title: 'Número do Nome (cabalístico)', hint: 'nº de leituras distintas · veja a matriz' },
+    'gates-231-structure': { title: '231 Portões', hint: 'nº de portões ativados (estrutura, não veredito)' },
+    'event-vibration': { title: 'Vibração da Data', hint: 'Caminho de Vida da data do evento' },
+    'event-personal-year': { title: 'Ano Pessoal do Evento', hint: 'ciclo atual do evento' },
   },
   vedic: {
     qualitiesLabel: 'Qualidades',
+  },
+  gates: {
+    activated: (count, total) => `${count} de ${total} portões ativados`,
+    nonCanonical: 'construção contemporânea',
+    modeLabel: 'modo',
+    standardLabel: 'transliteração padrão',
+    reference: 'Sefer Yetzirah 2:4',
+    gatesTitle: 'Portões ativados',
   },
   kabbalistic: {
     headline: (distinct) => `Este nome tem ${distinct} ${distinct === 1 ? 'leitura cabalística' : 'leituras cabalísticas distintas'} — veja de onde cada uma vem.`,
@@ -402,7 +433,7 @@ const EN: UiMessages = {
     sumLabel: 'sum',
     emptyHint: 'the calculation appears here as you type',
     cta: 'open the full chart',
-    schoolsTitle: 'six schools, each with its own origin',
+    schoolsTitle: 'the schools, each with its own origin',
     manifestoKicker: 'the trace is the product',
     manifestoText:
       'No number appears without the arithmetic that produced it. Every result opens into table, sum, reduction and the school rule — the "why?" mode is always one click away.',
@@ -474,7 +505,13 @@ const EN: UiMessages = {
     divergenceCause: 'Where values diverge, the cause is the letter table: 1–9 by alphabetical position (Pythagorean) × 1–8 by phonetic affinity, without 9 (Chaldean) — and the Chaldean school does not preserve master numbers when reducing.',
     convergenceNote: 'When independent schools point to the same number, that is convergence of method — not evidence.',
   },
-  modes: { chart: 'Full chart', signature: 'Signature / delta', synastry: 'Couple / synastry', company: 'Company', marriage: 'Marriage' },
+  modes: { chart: 'Full chart', signature: 'Signature / delta', synastry: 'Couple / synastry', company: 'Company', marriage: 'Marriage', event: 'Event / date' },
+  event: {
+    intro: "The vibration of a specific date — an event. Only the date is used; no name, nothing leaves the device.",
+    dateLabel: 'Event date',
+    referenceTag: '(for the event Personal Year)',
+    build: 'Calculate the date vibration',
+  },
   signature: {
     intro: 'Compare your registration name with the name you use day to day and see what changes when you sign differently.',
     registrationLabel: 'Registration name',
@@ -546,9 +583,20 @@ const EN: UiMessages = {
     'vedic-moolank': { title: 'Moolank (root)', hint: 'birth day · ruling planet' },
     'vedic-bhagyank': { title: 'Bhagyank (destiny)', hint: 'full date · ruling planet' },
     'kabbalistic-name': { title: 'Name Number (Kabbalistic)', hint: 'nº of distinct readings · see the matrix' },
+    'gates-231-structure': { title: '231 Gates', hint: 'nº of activated gates (structure, not verdict)' },
+    'event-vibration': { title: 'Date Vibration', hint: 'Life Path of the event date' },
+    'event-personal-year': { title: 'Event Personal Year', hint: "the event's current cycle" },
   },
   vedic: {
     qualitiesLabel: 'Qualities',
+  },
+  gates: {
+    activated: (count, total) => `${count} of ${total} gates activated`,
+    nonCanonical: 'contemporary construction',
+    modeLabel: 'mode',
+    standardLabel: 'standard transliteration',
+    reference: 'Sefer Yetzirah 2:4',
+    gatesTitle: 'Activated gates',
   },
   kabbalistic: {
     headline: (distinct) => `This name has ${distinct} distinct Kabbalistic ${distinct === 1 ? 'reading' : 'readings'} — see where each comes from.`,
@@ -610,7 +658,7 @@ const ES: UiMessages = {
     sumLabel: 'suma',
     emptyHint: 'el cálculo aparece aquí mientras escribes',
     cta: 'abrir el mapa completo',
-    schoolsTitle: 'seis escuelas, cada una con su origen',
+    schoolsTitle: 'las escuelas, cada una con su origen',
     manifestoKicker: 'el trazo es el producto',
     manifestoText:
       'Ningún número aparece sin la cuenta que lo produjo. Cada resultado se abre en tabla, suma, reducción y la regla de la escuela — el modo "¿por qué?" está siempre a un clic.',
@@ -682,7 +730,13 @@ const ES: UiMessages = {
     divergenceCause: 'Donde los valores divergen, la causa es la tabla de letras: 1–9 por posición alfabética (pitagórica) × 1–8 por afinidad fonética, sin el 9 (caldea) — y la escuela caldea no preserva números maestros al reducir.',
     convergenceNote: 'Cuando escuelas independientes señalan el mismo número, eso es convergencia de método — no evidencia.',
   },
-  modes: { chart: 'Carta completa', signature: 'Firma / delta', synastry: 'Pareja / sinastría', company: 'Empresa', marriage: 'Matrimonio' },
+  modes: { chart: 'Carta completa', signature: 'Firma / delta', synastry: 'Pareja / sinastría', company: 'Empresa', marriage: 'Matrimonio', event: 'Evento / fecha' },
+  event: {
+    intro: 'La vibración de una fecha específica — un evento. Solo entra la fecha; ningún nombre, nada sale del dispositivo.',
+    dateLabel: 'Fecha del evento',
+    referenceTag: '(para el Año Personal del evento)',
+    build: 'Calcular la vibración de la fecha',
+  },
   signature: {
     intro: 'Compara tu nombre de registro con el nombre que usas a diario y ve qué cambia cuando firmas de otra forma.',
     registrationLabel: 'Nombre de registro',
@@ -754,9 +808,20 @@ const ES: UiMessages = {
     'vedic-moolank': { title: 'Moolank (raíz)', hint: 'día de nacimiento · planeta regente' },
     'vedic-bhagyank': { title: 'Bhagyank (destino)', hint: 'fecha completa · planeta regente' },
     'kabbalistic-name': { title: 'Número del Nombre (cabalístico)', hint: 'nº de lecturas distintas · ve la matriz' },
+    'gates-231-structure': { title: '231 Puertas', hint: 'nº de puertas activadas (estructura, no veredicto)' },
+    'event-vibration': { title: 'Vibración de la Fecha', hint: 'Camino de Vida de la fecha del evento' },
+    'event-personal-year': { title: 'Año Personal del Evento', hint: 'ciclo actual del evento' },
   },
   vedic: {
     qualitiesLabel: 'Cualidades',
+  },
+  gates: {
+    activated: (count, total) => `${count} de ${total} puertas activadas`,
+    nonCanonical: 'construcción contemporánea',
+    modeLabel: 'modo',
+    standardLabel: 'transliteración estándar',
+    reference: 'Sefer Yetzirah 2:4',
+    gatesTitle: 'Puertas activadas',
   },
   kabbalistic: {
     headline: (distinct) => `Este nombre tiene ${distinct} ${distinct === 1 ? 'lectura cabalística' : 'lecturas cabalísticas distintas'} — mira de dónde viene cada una.`,

@@ -11,10 +11,11 @@ import { SignatureComparator } from '@/components/features/signature-comparator'
 import { SynastryCalculator } from '@/components/features/synastry-calculator'
 import { CompanyCalculator } from '@/components/features/company-calculator'
 import { MarriageCalculator } from '@/components/features/marriage-calculator'
+import { EventCalculator } from '@/components/features/event-calculator'
 
 const LOCALE_SHORT_NAMES: Readonly<Record<Locale, string>> = { 'pt-BR': 'PT', en: 'EN', es: 'ES' }
 
-type Mode = 'chart' | 'signature' | 'synastry' | 'company' | 'marriage'
+type Mode = 'chart' | 'signature' | 'synastry' | 'company' | 'marriage' | 'event'
 
 function Shell() {
   const { locale, setLocale } = useLocale()
@@ -55,7 +56,7 @@ function Shell() {
       </header>
 
       <nav aria-label={t.modes.chart} className="flex flex-wrap gap-x-1 gap-y-2 border-b border-anil">
-        {(['chart', 'signature', 'synastry', 'company', 'marriage'] as const).map((option) => (
+        {(['chart', 'signature', 'synastry', 'company', 'marriage', 'event'] as const).map((option) => (
           <button
             key={option}
             type="button"
@@ -77,6 +78,7 @@ function Shell() {
       {mode === 'synastry' && <SynastryCalculator />}
       {mode === 'company' && <CompanyCalculator />}
       {mode === 'marriage' && <MarriageCalculator />}
+      {mode === 'event' && <EventCalculator />}
 
       <footer className="border-t border-anil pt-5 font-mono text-[11px] leading-relaxed tracking-wide text-anil">
         <p>{t.footer}</p>
