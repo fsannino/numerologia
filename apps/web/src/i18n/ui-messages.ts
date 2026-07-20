@@ -10,14 +10,22 @@ export type NumberLabel = { readonly title: string; readonly hint: string }
 export type UiMessages = {
   readonly header: { readonly title: string; readonly tagline: string; readonly deviceBadge: string }
   readonly home: {
+    readonly topBanner: string
     readonly heroKicker: string
     readonly heroTitle: string
+    readonly heroSubhead: string
+    readonly heroTagline: string
     readonly heroLede: string
     readonly liveLabel: string
     readonly liveCaption: string
     readonly sumLabel: string
     readonly emptyHint: string
     readonly cta: string
+    readonly proofKicker: string
+    readonly proofTitle: string
+    readonly proofLede: string
+    readonly proofExamplePrefix: string
+    readonly proofCaption: string
     readonly schoolsTitle: string
     readonly manifestoKicker: string
     readonly manifestoText: string
@@ -25,6 +33,16 @@ export type UiMessages = {
     readonly divergenceKicker: string
     readonly divergenceTitle: string
     readonly divergenceNote: string
+    readonly tracksKicker: string
+    readonly tracksTitle: string
+    readonly trackPersonalTitle: string
+    readonly trackPersonalText: string
+    readonly trackPersonalMeta: string
+    readonly trackPersonalCta: string
+    readonly trackProTitle: string
+    readonly trackProText: string
+    readonly trackProMeta: string
+    readonly trackProCta: string
     readonly deviceTitle: string
     readonly deviceText: string
   }
@@ -199,8 +217,11 @@ const PT: UiMessages = {
     deviceBadge: 'O cálculo roda 100% neste dispositivo — seu nome não é enviado a nenhum servidor.',
   },
   home: {
+    topBanner: 'gratuito no lançamento · 3 leituras',
     heroKicker: 'isto não é um oráculo · é um instrumento',
-    heroTitle: 'todo número, com a conta à mostra.',
+    heroTitle: 'Seu mapa numerológico — e a conta que o produziu.',
+    heroSubhead: 'Sete escolas, lado a lado. Nenhum veredito sem a demonstração.',
+    heroTagline: 'todo número, com a conta à mostra',
     heroLede:
       'Escolha uma ou mais escolas, compare os resultados lado a lado e abra qualquer número para ver a tabela, a soma, a redução e a regra que o justificou — inclusive onde as tradições discordam.',
     liveLabel: 'digite um nome — o cálculo aparece abaixo',
@@ -208,6 +229,12 @@ const PT: UiMessages = {
     sumLabel: 'soma',
     emptyHint: 'o cálculo aparece aqui enquanto você digita',
     cta: 'abrir o mapa completo',
+    proofKicker: 'prova imediata',
+    proofTitle: 'um mesmo perfil, sete escolas, sete números.',
+    proofLede:
+      'Cada escola lê um nome (ou uma data) com sua própria conta — por isso chegam a números diferentes. Não há um "certo": há métodos distintos, cada um com sua origem.',
+    proofExamplePrefix: 'exemplo',
+    proofCaption: 'abra o mapa e refaça com o seu nome — cada número traz a conta junto.',
     schoolsTitle: 'as escolas, cada uma com sua origem',
     manifestoKicker: 'o traço é o produto',
     manifestoText:
@@ -217,6 +244,18 @@ const PT: UiMessages = {
     divergenceTitle: 'porque cada escola usa uma conta diferente — e o Numerus mostra todas.',
     divergenceNote:
       'Um mesmo nome pode ter várias leituras cabalísticas: tabela sequencial ou caldaica, redução decimal ou arcano. Em vez de escolher uma em silêncio, expomos o leque e a origem de cada número.',
+    tracksKicker: 'duas trilhas',
+    tracksTitle: 'para você e para quem atende.',
+    trackPersonalTitle: 'Quero meu mapa',
+    trackPersonalText:
+      'Sua leitura pessoal, com a conta à mostra e tudo rodando no seu aparelho. Nome e data nunca saem daqui.',
+    trackPersonalMeta: 'grátis no lançamento · 3 leituras',
+    trackPersonalCta: 'abrir o mapa',
+    trackProTitle: 'Atendo clientes',
+    trackProText:
+      'Para numerólogos: exporte o mapa em PDF com seu logo e mantenha um histórico dos atendimentos. Mesmas contas, apresentação de consultório.',
+    trackProMeta: 'PDF com seu logo · histórico · em breve',
+    trackProCta: 'quero ser avisado',
     deviceTitle: 'seus dados não saem daqui',
     deviceText:
       'Na leitura pessoal, o cálculo roda inteiro no seu aparelho. Nome e data de nascimento nunca vão a servidor, log ou banco.',
@@ -424,8 +463,11 @@ const EN: UiMessages = {
     deviceBadge: 'Everything is computed on this device — your name is never sent to any server.',
   },
   home: {
+    topBanner: 'free at launch · 3 readings',
     heroKicker: 'this is not an oracle · it is an instrument',
-    heroTitle: 'every number, with the arithmetic in plain sight.',
+    heroTitle: 'Your numerology chart — and the arithmetic that produced it.',
+    heroSubhead: 'Seven schools, side by side. No verdict without the demonstration.',
+    heroTagline: 'every number, with the arithmetic in plain sight',
     heroLede:
       'Pick one or more schools, compare the results side by side, and open any number to see the table, the sum, the reduction and the rule behind it — including where the traditions disagree.',
     liveLabel: 'type a name — the calculation appears below',
@@ -433,6 +475,12 @@ const EN: UiMessages = {
     sumLabel: 'sum',
     emptyHint: 'the calculation appears here as you type',
     cta: 'open the full chart',
+    proofKicker: 'immediate proof',
+    proofTitle: 'one profile, seven schools, seven numbers.',
+    proofLede:
+      'Each school reads a name (or a date) with its own arithmetic — which is why they land on different numbers. There is no single "right" one: there are distinct methods, each with its own origin.',
+    proofExamplePrefix: 'example',
+    proofCaption: 'open the chart and redo it with your own name — every number comes with its arithmetic.',
     schoolsTitle: 'the schools, each with its own origin',
     manifestoKicker: 'the trace is the product',
     manifestoText:
@@ -442,6 +490,18 @@ const EN: UiMessages = {
     divergenceTitle: 'because each school uses a different arithmetic — and Numerus shows them all.',
     divergenceNote:
       'The same name can have several Kabbalistic readings: sequential or Chaldean table, decimal or arcano reduction. Instead of silently picking one, we expose the spread and the origin of each number.',
+    tracksKicker: 'two tracks',
+    tracksTitle: 'for you, and for those who read others.',
+    trackPersonalTitle: 'I want my chart',
+    trackPersonalText:
+      'Your personal reading, arithmetic in plain sight and everything running on your device. Name and date never leave here.',
+    trackPersonalMeta: 'free at launch · 3 readings',
+    trackPersonalCta: 'open the chart',
+    trackProTitle: 'I read for clients',
+    trackProText:
+      'For numerologists: export the chart as a PDF with your logo and keep a history of your sessions. Same arithmetic, consulting-room presentation.',
+    trackProMeta: 'PDF with your logo · history · soon',
+    trackProCta: 'notify me',
     deviceTitle: 'your data never leaves here',
     deviceText:
       'In the personal reading the calculation runs entirely on your device. Name and birth date never reach a server, log or database.',
@@ -649,8 +709,11 @@ const ES: UiMessages = {
     deviceBadge: 'Todo se calcula en este dispositivo — tu nombre nunca se envía a ningún servidor.',
   },
   home: {
+    topBanner: 'gratis en el lanzamiento · 3 lecturas',
     heroKicker: 'esto no es un oráculo · es un instrumento',
-    heroTitle: 'todo número, con la cuenta a la vista.',
+    heroTitle: 'Tu mapa numerológico — y la cuenta que lo produjo.',
+    heroSubhead: 'Siete escuelas, lado a lado. Ningún veredicto sin la demostración.',
+    heroTagline: 'todo número, con la cuenta a la vista',
     heroLede:
       'Elige una o más escuelas, compara los resultados lado a lado y abre cualquier número para ver la tabla, la suma, la reducción y la regla que lo justificó — incluso donde las tradiciones discrepan.',
     liveLabel: 'escribe un nombre — el cálculo aparece abajo',
@@ -658,6 +721,12 @@ const ES: UiMessages = {
     sumLabel: 'suma',
     emptyHint: 'el cálculo aparece aquí mientras escribes',
     cta: 'abrir el mapa completo',
+    proofKicker: 'prueba inmediata',
+    proofTitle: 'un mismo perfil, siete escuelas, siete números.',
+    proofLede:
+      'Cada escuela lee un nombre (o una fecha) con su propia cuenta — por eso llegan a números diferentes. No hay un "correcto": hay métodos distintos, cada uno con su origen.',
+    proofExamplePrefix: 'ejemplo',
+    proofCaption: 'abre el mapa y rehazlo con tu propio nombre — cada número trae su cuenta.',
     schoolsTitle: 'las escuelas, cada una con su origen',
     manifestoKicker: 'el trazo es el producto',
     manifestoText:
@@ -667,6 +736,18 @@ const ES: UiMessages = {
     divergenceTitle: 'porque cada escuela usa una cuenta diferente — y Numerus las muestra todas.',
     divergenceNote:
       'Un mismo nombre puede tener varias lecturas cabalísticas: tabla secuencial o caldea, reducción decimal o arcano. En vez de elegir una en silencio, exponemos el abanico y el origen de cada número.',
+    tracksKicker: 'dos vías',
+    tracksTitle: 'para ti, y para quien atiende a otros.',
+    trackPersonalTitle: 'Quiero mi mapa',
+    trackPersonalText:
+      'Tu lectura personal, con la cuenta a la vista y todo corriendo en tu dispositivo. Nombre y fecha nunca salen de aquí.',
+    trackPersonalMeta: 'gratis en el lanzamiento · 3 lecturas',
+    trackPersonalCta: 'abrir el mapa',
+    trackProTitle: 'Atiendo clientes',
+    trackProText:
+      'Para numerólogos: exporta el mapa en PDF con tu logo y mantén un historial de las consultas. Mismas cuentas, presentación de consultorio.',
+    trackProMeta: 'PDF con tu logo · historial · pronto',
+    trackProCta: 'quiero que me avisen',
     deviceTitle: 'tus datos no salen de aquí',
     deviceText:
       'En la lectura personal el cálculo corre entero en tu dispositivo. Nombre y fecha de nacimiento nunca llegan a un servidor, log o base de datos.',
