@@ -84,7 +84,7 @@ export function SynastryCalculator() {
       >
         <div className="grid gap-4 sm:grid-cols-2">
           <fieldset className="flex flex-col gap-2">
-            <legend className="font-mono text-[10px] uppercase tracking-[0.14em] text-latao">{t.synastry.personALabel}</legend>
+            <legend className="font-mono text-[10px] uppercase tracking-[0.14em] text-anil">{t.synastry.personALabel}</legend>
             <label htmlFor={nameAId} className="sr-only">{t.form.nameLabel}</label>
             <input
               id={nameAId}
@@ -99,7 +99,7 @@ export function SynastryCalculator() {
             <input id={dateAId} type="date" value={dateA} onChange={(event) => setDateA(event.target.value)} className="border border-anil bg-papel px-3 py-2 font-mono text-sm text-tinta" />
           </fieldset>
           <fieldset className="flex flex-col gap-2">
-            <legend className="font-mono text-[10px] uppercase tracking-[0.14em] text-latao">{t.synastry.personBLabel}</legend>
+            <legend className="font-mono text-[10px] uppercase tracking-[0.14em] text-anil">{t.synastry.personBLabel}</legend>
             <label htmlFor={nameBId} className="sr-only">{t.form.nameLabel}</label>
             <input
               id={nameBId}
@@ -117,10 +117,10 @@ export function SynastryCalculator() {
         <p className="text-xs text-anil">{t.form.birthHint}</p>
 
         <fieldset className="flex flex-col gap-2">
-          <legend className="font-mono text-[10px] uppercase tracking-[0.14em] text-latao">{t.form.schoolsLabel}</legend>
+          <legend className="font-mono text-[10px] uppercase tracking-[0.14em] text-anil">{t.form.schoolsLabel}</legend>
           <div className="flex flex-wrap gap-3">
             {listModels().map((model) => (
-              <label key={model.id} className="flex cursor-pointer items-center gap-2 border border-anil bg-papel px-3 py-1.5 text-sm text-tinta has-[:checked]:bg-latao has-[:checked]:text-giz">
+              <label key={model.id} className="flex cursor-pointer items-center gap-2 border border-anil bg-papel px-3 py-1.5 text-sm text-tinta has-[:checked]:bg-latao has-[:checked]:text-papel">
                 <input type="checkbox" checked={selectedModels.includes(model.id)} onChange={() => toggleModel(model.id)} className="accent-latao" />
                 {localize(model.metadata.name, locale)}
               </label>
@@ -130,7 +130,7 @@ export function SynastryCalculator() {
 
         <button
           type="submit"
-          className="w-fit bg-tinta px-6 py-2.5 font-mono text-[12px] uppercase tracking-[0.14em] text-giz transition hover:bg-anil"
+          className="w-fit bg-latao px-6 py-2.5 font-mono text-[12px] uppercase tracking-[0.14em] text-papel transition hover:opacity-90"
         >
           {t.synastry.build}
         </button>
@@ -178,7 +178,7 @@ export function SynastryCalculator() {
                         { name: synastry.personBName, trace: result.personalYear.personB },
                       ].map((entry, index) => (
                         <div key={index} className="flex items-center gap-3  border border-anil bg-papel px-4 py-2">
-                          <span className="flex h-10 w-10 items-center justify-center bg-tinta font-display text-2xl text-giz">
+                          <span className="flex h-10 w-10 items-center justify-center bg-giz font-display text-2xl text-tinta">
                             {entry.trace.finalValue.reduced}
                           </span>
                           <span className="text-sm font-medium">{entry.name}</span>

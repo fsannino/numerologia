@@ -12,8 +12,8 @@ import { UI_MESSAGES } from '@/i18n/ui-messages'
 export function ReductionChain({ value, onDark = false }: { value: NumerologyValue; onDark?: boolean }) {
   const { locale } = useLocale()
   const t = UI_MESSAGES[locale]
-  const intermediate = onDark ? 'text-giz/70' : 'text-anil'
-  const arrow = onDark ? 'text-giz/50' : 'text-anil'
+  const intermediate = onDark ? 'text-tinta/70' : 'text-anil'
+  const arrow = onDark ? 'text-tinta/50' : 'text-anil'
   return (
     <div>
       <p className="sr-only">{t.results.chainSr(value.chain.join(' → '))}</p>
@@ -43,7 +43,7 @@ export function ReductionChain({ value, onDark = false }: { value: NumerologyVal
           )
         })}
         {value.isMaster && (
-          <li className="ml-1 self-center font-mono text-[10px] uppercase tracking-[0.14em] text-latao">
+          <li className="ml-1 self-center font-mono text-[10px] uppercase tracking-[0.14em] text-anil">
             {t.results.masterShort}
           </li>
         )}

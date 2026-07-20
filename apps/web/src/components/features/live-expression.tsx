@@ -30,7 +30,7 @@ export function LiveExpression() {
     : []
 
   return (
-    <div className="flex flex-col gap-5 bg-tinta p-6 sm:p-8">
+    <div className="flex flex-col gap-5 bg-giz p-6 sm:p-8">
       <label htmlFor="live-name" className="font-mono text-[10px] uppercase tracking-[0.16em] text-latao">
         {t.liveLabel}
       </label>
@@ -42,13 +42,13 @@ export function LiveExpression() {
         placeholder="Maria da Silva"
         spellCheck={false}
         autoComplete="off"
-        className="border-0 border-b border-anil bg-transparent px-1 pb-3 pt-1 font-mono text-xl tracking-wide text-giz placeholder:text-giz/30 focus:border-latao focus:outline-none"
+        className="border-0 border-b border-anil bg-transparent px-1 pb-3 pt-1 font-mono text-xl tracking-wide text-tinta placeholder:text-tinta/30 focus:border-latao focus:outline-none"
       />
 
       <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-anil">{t.liveCaption}</p>
 
       {trace === null ? (
-        <p className="font-mono text-[13px] text-giz/40">{t.emptyHint}</p>
+        <p className="font-mono text-[13px] text-tinta/40">{t.emptyHint}</p>
       ) : (
         <div className="flex flex-col gap-5">
           <ul className="flex flex-wrap gap-1.5" aria-hidden>
@@ -60,19 +60,19 @@ export function LiveExpression() {
                 className="flex flex-col items-center border border-anil px-2 py-1"
               >
                 <span className="font-mono text-[11px] text-latao">{chip.letter}</span>
-                <span className="font-mono text-lg text-giz">{chip.value}</span>
+                <span className="font-mono text-lg text-tinta">{chip.value}</span>
               </li>
             ))}
           </ul>
 
           <div className="flex items-baseline gap-3">
             <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-anil">{t.sumLabel}</span>
-            <span className="font-display text-3xl text-giz">{trace.finalValue.raw}</span>
+            <span className="font-display text-3xl text-tinta">{trace.finalValue.raw}</span>
           </div>
 
           <ReductionChain value={trace.finalValue} onDark />
           {trace.finalValue.karmicDebt !== undefined && (
-            <span className="w-fit border border-giz/40 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.1em] text-giz/70">
+            <span className="w-fit border border-giz/40 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.1em] text-tinta/70">
               {UI_MESSAGES[locale].results.debtBadge(trace.finalValue.karmicDebt)}
             </span>
           )}

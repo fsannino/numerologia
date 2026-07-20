@@ -95,7 +95,7 @@ export function NumberResultCard({ trace }: { trace: CalculationTrace }) {
       )}
 
       <details className="border-t border-anil">
-        <summary className="cursor-pointer px-4 py-2.5 font-mono text-[11px] uppercase tracking-[0.12em] text-latao">
+        <summary className="cursor-pointer px-4 py-2.5 font-mono text-[11px] uppercase tracking-[0.12em] text-azul">
           {t.results.seeSteps}
         </summary>
         <div className="flex flex-col gap-4 border-t border-anil px-4 py-4">

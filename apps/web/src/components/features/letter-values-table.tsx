@@ -40,7 +40,7 @@ export function LetterValuesTable({
                 {lettersFor(column).map((letter) => (
                   <span
                     key={letter}
-                    className={highlight.has(letter) ? 'bg-latao font-semibold text-giz' : 'text-anil'}
+                    className={highlight.has(letter) ? 'bg-latao font-semibold text-papel' : 'text-anil'}
                   >
                     {letter}
                   </span>
