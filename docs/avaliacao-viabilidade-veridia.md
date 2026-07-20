@@ -95,14 +95,19 @@ Ordenado por peso (nada disso existe hoje):
 4. **IA/RAG por último** dentro da Fase 1 do PRD — onde mais coisa pode dar
    errado; melhor com auth/observabilidade de pé.
 
-## 7. O que depende de você
+## 7. Decisões do dono (2026-07-20)
 
-- **É absorção ou reescrita?** A Veridia adota o Numerus como módulo
-  (recomendado), ou é projeto novo que só se inspira nele?
-- **Resolução do conflito device-first** (ADR-0013: cifrado no cliente? opt-in?
-  só na trilha profissional? só-local como Fase 1?).
-- **IA: self-host (Ollama) ou API?** — muda custo, privacidade e infra.
-- **Time e horizonte** — define se faseamos em meses ou trimestres.
+- **Absorção, não reescrita** ✅ — a Veridia adota o Numerus como módulo de
+  Numerologia; núcleo e invariantes preservados e estendidos.
+- **Conflito device-first: bifurcação de persona, variante "só-local" na Fase 1**
+  ✅ — histórico pessoal no aparelho, sem sync por enquanto (ADR-0013 aceita).
+- **IA por API gerenciada, não self-host (Ollama)** ✅ — provedor via API quando
+  o módulo de IA/RAG chegar.
+- **Time e horizonte** — ainda em aberto; define se faseamos em meses ou
+  trimestres.
+
+Próximo passo aprovado: **ADR de Auth/RBAC** (ver ADR-0014) — fundação que
+destrava login, perfis, histórico e a trilha profissional.
 
 ## 8. Limites desta avaliação
 
