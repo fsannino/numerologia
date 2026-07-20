@@ -45,7 +45,7 @@ export function EventCalculator() {
       <p className="text-[15px] leading-relaxed text-anil">{t.event.intro}</p>
       <form onSubmit={handleSubmit} className="flex flex-col gap-5 border border-anil bg-giz p-6" aria-label={t.event.build}>
         <div className="flex flex-col gap-1.5">
-          <label htmlFor={eventId} className="font-mono text-[10px] uppercase tracking-[0.14em] text-latao">
+          <label htmlFor={eventId} className="font-mono text-[10px] uppercase tracking-[0.14em] text-anil">
             {t.event.dateLabel}
           </label>
           <input
@@ -58,7 +58,7 @@ export function EventCalculator() {
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <label htmlFor={referenceId} className="font-mono text-[10px] uppercase tracking-[0.14em] text-latao">
+          <label htmlFor={referenceId} className="font-mono text-[10px] uppercase tracking-[0.14em] text-anil">
             {t.form.referenceLabel} <span className="text-anil">{t.event.referenceTag}</span>
           </label>
           <input
@@ -72,7 +72,7 @@ export function EventCalculator() {
 
         <button
           type="submit"
-          className="w-fit bg-tinta px-6 py-2.5 font-mono text-[12px] uppercase tracking-[0.14em] text-giz transition hover:bg-anil"
+          className="w-fit bg-latao px-6 py-2.5 font-mono text-[12px] uppercase tracking-[0.14em] text-papel transition hover:opacity-90"
         >
           {t.event.build}
         </button>

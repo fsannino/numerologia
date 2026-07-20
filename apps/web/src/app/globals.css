@@ -1,13 +1,20 @@
 @import 'tailwindcss';
 
-/* Sistema visual "instrumento, não oráculo" (docs/design/design.md). */
+/*
+ * Sistema visual v2 "manuscrito noturno" (docs/design/design.md).
+ * Chão escuro com viés violeta; ouro reservado aos NÚMEROS (e ao CTA); azul
+ * frio para o modo "por quê?"; terracota exclusiva do alerta epistêmico
+ * (divergência / "não padronizada"). Os nomes dos tokens são preservados; só
+ * os valores viraram noturnos.
+ */
 @theme {
-  --color-tinta: #15181f;
-  --color-papel: #e9ebe6;
-  --color-giz: #f6f7f3;
-  --color-latao: #a8853e;
-  --color-anil: #2c4668;
-  --color-vermelhao: #b0402a;
+  --color-tinta: #ede9e0; /* texto — branco-pergaminho (a "tinta" que se lê) */
+  --color-papel: #12111a; /* fundo — base quase preta, viés violeta */
+  --color-giz: #1c1a26; /* superfície — cards e painéis de cálculo */
+  --color-latao: #c9a227; /* ouro fosco — números, resultados, CTA */
+  --color-anil: #9a93a8; /* secundário — metadados, rótulos, réguas */
+  --color-vermelhao: #b0603a; /* terracota — alerta epistêmico (divergência / não padronizada) */
+  --color-azul: #5b8aa6; /* azul frio — links e o modo "por quê?" */
 
   --font-display: var(--font-instrument), Georgia, 'Times New Roman', serif;
   --font-body: var(--font-literata), Georgia, serif;
@@ -35,7 +42,7 @@
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
   }
-  /* Foco de teclado sempre visível, em latão (design.md §4). */
+  /* Foco de teclado sempre visível, em ouro (design.md §4). */
   :focus-visible {
     outline: 2px solid var(--color-latao);
     outline-offset: 2px;

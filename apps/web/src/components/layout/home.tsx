@@ -53,7 +53,7 @@ export function Home() {
               onClick={() => setLocale(option)}
               aria-pressed={locale === option}
               className={`px-2.5 py-1 font-mono text-xs tracking-wide transition ${
-                locale === option ? 'bg-latao text-giz' : 'bg-giz text-anil hover:bg-papel'
+                locale === option ? 'bg-latao text-papel' : 'bg-giz text-anil hover:bg-papel'
               }`}
             >
               {LOCALE_SHORT_NAMES[option]}
@@ -73,7 +73,7 @@ export function Home() {
           </p>
           <Link
             href="/mapa"
-            className="w-fit bg-tinta px-6 py-3 font-mono text-[12px] uppercase tracking-[0.16em] text-giz transition hover:bg-anil"
+            className="w-fit bg-latao px-6 py-3 font-mono text-[12px] uppercase tracking-[0.16em] text-papel transition hover:opacity-90"
           >
             {h.cta} →
           </Link>
@@ -100,13 +100,13 @@ export function Home() {
 
       {/* Manifesto */}
       <section className="grid gap-px border-b border-anil bg-anil sm:grid-cols-[0.4fr_0.6fr]">
-        <div className="flex items-center justify-center bg-tinta px-5 py-14">
+        <div className="flex items-center justify-center bg-giz px-5 py-14">
           <span className="font-display text-8xl text-latao sm:text-9xl">8</span>
         </div>
-        <div className="flex flex-col justify-center gap-4 bg-tinta px-5 py-14 sm:px-8">
+        <div className="flex flex-col justify-center gap-4 bg-giz px-5 py-14 sm:px-8">
           <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-latao">{h.manifestoKicker}</span>
-          <p className="max-w-[48ch] font-display text-2xl leading-snug text-giz sm:text-3xl">{h.manifestoText}</p>
-          <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-giz/60">{h.manifestoCaveat}</p>
+          <p className="max-w-[48ch] font-display text-2xl leading-snug text-tinta sm:text-3xl">{h.manifestoText}</p>
+          <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-tinta/60">{h.manifestoCaveat}</p>
         </div>
       </section>
 
@@ -137,12 +137,12 @@ export function Home() {
       </section>
 
       {/* Device-first + CTA */}
-      <section className="flex flex-col items-start gap-5 bg-tinta px-5 py-14 sm:px-8">
+      <section className="flex flex-col items-start gap-5 bg-giz px-5 py-14 sm:px-8">
         <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-latao">{h.deviceTitle}</span>
-        <p className="max-w-[52ch] font-display text-2xl leading-snug text-giz">{h.deviceText}</p>
+        <p className="max-w-[52ch] font-display text-2xl leading-snug text-tinta">{h.deviceText}</p>
         <Link
           href="/mapa"
-          className="w-fit border border-latao px-6 py-3 font-mono text-[12px] uppercase tracking-[0.16em] text-latao transition hover:bg-latao hover:text-tinta"
+          className="w-fit border border-latao px-6 py-3 font-mono text-[12px] uppercase tracking-[0.16em] text-latao transition hover:bg-latao hover:text-papel"
         >
           {h.cta} →
         </Link>

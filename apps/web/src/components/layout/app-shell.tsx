@@ -41,7 +41,7 @@ function Shell() {
                 onClick={() => setLocale(option)}
                 aria-pressed={locale === option}
                 className={`px-2.5 py-1 font-mono text-xs tracking-wide transition ${
-                  locale === option ? 'bg-latao text-giz' : 'bg-giz text-anil hover:bg-papel'
+                  locale === option ? 'bg-latao text-papel' : 'bg-giz text-anil hover:bg-papel'
                 }`}
               >
                 {LOCALE_SHORT_NAMES[option]}

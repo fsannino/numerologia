@@ -66,7 +66,7 @@ export function SignatureComparator() {
         aria-label={t.signature.compare}
       >
         <div className="flex flex-col gap-1">
-          <label htmlFor={registrationId} className="font-mono text-[10px] uppercase tracking-[0.14em] text-latao">
+          <label htmlFor={registrationId} className="font-mono text-[10px] uppercase tracking-[0.14em] text-anil">
             {t.signature.registrationLabel}
           </label>
           <input
@@ -80,7 +80,7 @@ export function SignatureComparator() {
           />
         </div>
         <div className="flex flex-col gap-1">
-          <label htmlFor={signatureId} className="font-mono text-[10px] uppercase tracking-[0.14em] text-latao">
+          <label htmlFor={signatureId} className="font-mono text-[10px] uppercase tracking-[0.14em] text-anil">
             {t.signature.signatureLabel}
           </label>
           <input
@@ -95,10 +95,10 @@ export function SignatureComparator() {
         </div>
 
         <fieldset className="flex flex-col gap-2">
-          <legend className="font-mono text-[10px] uppercase tracking-[0.14em] text-latao">{t.form.schoolsLabel}</legend>
+          <legend className="font-mono text-[10px] uppercase tracking-[0.14em] text-anil">{t.form.schoolsLabel}</legend>
           <div className="flex flex-wrap gap-3">
             {listModels().map((model) => (
-              <label key={model.id} className="flex cursor-pointer items-center gap-2 border border-anil bg-papel px-3 py-1.5 text-sm text-tinta has-[:checked]:bg-latao has-[:checked]:text-giz">
+              <label key={model.id} className="flex cursor-pointer items-center gap-2 border border-anil bg-papel px-3 py-1.5 text-sm text-tinta has-[:checked]:bg-latao has-[:checked]:text-papel">
                 <input
                   type="checkbox"
                   checked={selectedModels.includes(model.id)}
@@ -113,7 +113,7 @@ export function SignatureComparator() {
 
         <button
           type="submit"
-          className="w-fit bg-tinta px-6 py-2.5 font-mono text-[12px] uppercase tracking-[0.14em] text-giz transition hover:bg-anil"
+          className="w-fit bg-latao px-6 py-2.5 font-mono text-[12px] uppercase tracking-[0.14em] text-papel transition hover:opacity-90"
         >
           {t.signature.compare}
         </button>

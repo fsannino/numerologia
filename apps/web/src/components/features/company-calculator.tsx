@@ -69,7 +69,7 @@ export function CompanyCalculator() {
 
   const textField = (id: string, label: string, value: string, onChange: (value: string) => void) => (
     <div className="flex flex-col gap-1">
-      <label htmlFor={id} className="font-mono text-[10px] uppercase tracking-[0.14em] text-latao">{label}</label>
+      <label htmlFor={id} className="font-mono text-[10px] uppercase tracking-[0.14em] text-anil">{label}</label>
       <input
         id={id}
         type="text"
@@ -88,7 +88,7 @@ export function CompanyCalculator() {
         {textField(legalId, t.company.legalNameLabel, legalName, setLegalName)}
         {textField(tradeId, t.company.tradeNameLabel, tradeName, setTradeName)}
         <div className="flex flex-col gap-1">
-          <label htmlFor={dateId} className="font-mono text-[10px] uppercase tracking-[0.14em] text-latao">
+          <label htmlFor={dateId} className="font-mono text-[10px] uppercase tracking-[0.14em] text-anil">
             {t.company.incorporationLabel} <span className="font-normal text-anil">{t.form.optionalTag}</span>
           </label>
           <input id={dateId} type="date" value={incorporationDate} onChange={(event) => setIncorporationDate(event.target.value)} className="w-fit border border-anil bg-papel px-3 py-2 font-mono text-sm text-tinta" />
@@ -96,10 +96,10 @@ export function CompanyCalculator() {
         {textField(founderId, `${t.company.founderLabel} ${t.form.optionalTag}`, founderName, setFounderName)}
 
         <fieldset className="flex flex-col gap-2">
-          <legend className="font-mono text-[10px] uppercase tracking-[0.14em] text-latao">{t.form.schoolsLabel}</legend>
+          <legend className="font-mono text-[10px] uppercase tracking-[0.14em] text-anil">{t.form.schoolsLabel}</legend>
           <div className="flex flex-wrap gap-3">
             {listModels().map((model) => (
-              <label key={model.id} className="flex cursor-pointer items-center gap-2 border border-anil bg-papel px-3 py-1.5 text-sm text-tinta has-[:checked]:bg-latao has-[:checked]:text-giz">
+              <label key={model.id} className="flex cursor-pointer items-center gap-2 border border-anil bg-papel px-3 py-1.5 text-sm text-tinta has-[:checked]:bg-latao has-[:checked]:text-papel">
                 <input type="checkbox" checked={selectedModels.includes(model.id)} onChange={() => toggleModel(model.id)} className="accent-latao" />
                 {localize(model.metadata.name, locale)}
               </label>
@@ -107,7 +107,7 @@ export function CompanyCalculator() {
           </div>
         </fieldset>
 
-        <button type="submit" className="w-fit bg-tinta px-6 py-2.5 font-mono text-[12px] uppercase tracking-[0.14em] text-giz transition hover:bg-anil">
+        <button type="submit" className="w-fit bg-latao px-6 py-2.5 font-mono text-[12px] uppercase tracking-[0.14em] text-papel transition hover:opacity-90">
           {t.company.build}
         </button>
 

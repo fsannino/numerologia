@@ -51,7 +51,7 @@ function StepBody({ step }: { step: CalculationStep }) {
             >
               <span
                 className={`flex h-8 w-8 shrink-0 items-center justify-center font-bold ${
-                  segment.isCurrent ? 'bg-latao text-giz' : 'bg-papel text-anil'
+                  segment.isCurrent ? 'bg-latao text-papel' : 'bg-papel text-anil'
                 }`}
               >
                 {segment.value.reduced}
@@ -268,7 +268,7 @@ export function TraceSteps({ steps }: { steps: ReadonlyArray<CalculationStep> })
         <li key={index}>
           <details className="bg-giz open:bg-papel" open={index === 0}>
             <summary className="flex cursor-pointer items-center gap-3 px-4 py-2.5">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center bg-tinta font-mono text-[11px] text-giz tabular-nums">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center bg-latao font-mono text-[11px] text-papel tabular-nums">
                 {index + 1}
               </span>
               <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-tinta">{localize(step.title, locale)}</span>

@@ -81,14 +81,14 @@ export function MarriageCalculator() {
       <form onSubmit={handleSubmit} className="flex flex-col gap-5 border border-anil bg-giz p-6" aria-label={t.marriage.build}>
         <div className="grid gap-4 sm:grid-cols-2">
           <fieldset className="flex flex-col gap-2">
-            <legend className="font-mono text-[10px] uppercase tracking-[0.14em] text-latao">{t.synastry.personALabel}</legend>
+            <legend className="font-mono text-[10px] uppercase tracking-[0.14em] text-anil">{t.synastry.personALabel}</legend>
             <label htmlFor={nameAId} className="sr-only">{t.form.nameLabel}</label>
             <input id={nameAId} type="text" value={nameA} onChange={(event) => setNameA(event.target.value)} placeholder={t.form.nameLabel} autoComplete="off" className="border border-anil bg-papel px-3 py-2 font-mono text-sm text-tinta" />
             <label htmlFor={dateAId} className="sr-only">{t.form.birthLabel}</label>
             <input id={dateAId} type="date" value={dateA} onChange={(event) => setDateA(event.target.value)} className="border border-anil bg-papel px-3 py-2 font-mono text-sm text-tinta" />
           </fieldset>
           <fieldset className="flex flex-col gap-2">
-            <legend className="font-mono text-[10px] uppercase tracking-[0.14em] text-latao">{t.synastry.personBLabel}</legend>
+            <legend className="font-mono text-[10px] uppercase tracking-[0.14em] text-anil">{t.synastry.personBLabel}</legend>
             <label htmlFor={nameBId} className="sr-only">{t.form.nameLabel}</label>
             <input id={nameBId} type="text" value={nameB} onChange={(event) => setNameB(event.target.value)} placeholder={t.form.nameLabel} autoComplete="off" className="border border-anil bg-papel px-3 py-2 font-mono text-sm text-tinta" />
             <label htmlFor={dateBId} className="sr-only">{t.form.birthLabel}</label>
@@ -97,15 +97,15 @@ export function MarriageCalculator() {
         </div>
 
         <div className="flex flex-col gap-1">
-          <label htmlFor={weddingId} className="font-mono text-[10px] uppercase tracking-[0.14em] text-latao">{t.marriage.weddingDateLabel}</label>
+          <label htmlFor={weddingId} className="font-mono text-[10px] uppercase tracking-[0.14em] text-anil">{t.marriage.weddingDateLabel}</label>
           <input id={weddingId} type="date" value={weddingDate} onChange={(event) => setWeddingDate(event.target.value)} className="w-fit border border-anil bg-papel px-3 py-2 font-mono text-sm text-tinta" />
         </div>
 
         <fieldset className="flex flex-col gap-2">
-          <legend className="font-mono text-[10px] uppercase tracking-[0.14em] text-latao">{t.form.schoolsLabel}</legend>
+          <legend className="font-mono text-[10px] uppercase tracking-[0.14em] text-anil">{t.form.schoolsLabel}</legend>
           <div className="flex flex-wrap gap-3">
             {listModels().map((model) => (
-              <label key={model.id} className="flex cursor-pointer items-center gap-2 border border-anil bg-papel px-3 py-1.5 text-sm text-tinta has-[:checked]:bg-latao has-[:checked]:text-giz">
+              <label key={model.id} className="flex cursor-pointer items-center gap-2 border border-anil bg-papel px-3 py-1.5 text-sm text-tinta has-[:checked]:bg-latao has-[:checked]:text-papel">
                 <input type="checkbox" checked={selectedModels.includes(model.id)} onChange={() => toggleModel(model.id)} className="accent-latao" />
                 {localize(model.metadata.name, locale)}
               </label>
@@ -113,7 +113,7 @@ export function MarriageCalculator() {
           </div>
         </fieldset>
 
-        <button type="submit" className="w-fit bg-tinta px-6 py-2.5 font-mono text-[12px] uppercase tracking-[0.14em] text-giz transition hover:bg-anil">
+        <button type="submit" className="w-fit bg-latao px-6 py-2.5 font-mono text-[12px] uppercase tracking-[0.14em] text-papel transition hover:opacity-90">
           {t.marriage.build}
         </button>
 
