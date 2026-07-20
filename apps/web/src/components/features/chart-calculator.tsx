@@ -14,6 +14,7 @@ import { ComparisonMatrix } from './comparison-matrix'
 import { LetterValuesTable } from './letter-values-table'
 import { NumberResultCard } from './number-result-card'
 import { SchoolProvenanceBadge } from './school-provenance-badge'
+import { SCHOOL_BORDER_TOP, SCHOOL_TEXT } from './school-color'
 
 const NAME_NUMBERS: ReadonlyArray<NumberKind> = [
   'expression',
@@ -286,10 +287,14 @@ export function ChartCalculator() {
           {results.filter((result) => result.traces.length > 0).map((result) => {
             const model = listModels().find((entry) => entry.id === result.model)
             return (
-              <section key={result.model} className="flex flex-col gap-3" aria-label={model ? localize(model.metadata.name, locale) : result.model}>
+              <section
+                key={result.model}
+                className={`flex flex-col gap-3 ${results.length > 1 ? `border-t-2 border-t-transparent ${SCHOOL_BORDER_TOP[result.model]} pt-3` : ''}`}
+                aria-label={model ? localize(model.metadata.name, locale) : result.model}
+              >
                 <div className="flex flex-wrap items-center gap-3">
                   {results.length > 1 && (
-                    <h3 className="font-display text-2xl text-tinta">
+                    <h3 className={`font-display text-2xl ${SCHOOL_TEXT[result.model]}`}>
                       {model ? localize(model.metadata.name, locale) : result.model}
                     </h3>
                   )}

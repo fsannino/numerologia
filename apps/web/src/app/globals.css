@@ -16,6 +16,19 @@
   --color-vermelhao: #b0603a; /* terracota — alerta epistêmico (divergência / não padronizada) */
   --color-azul: #5b8aa6; /* azul frio — links e o modo "por quê?" */
 
+  /*
+   * Cor-identidade de cada escola (design.md §9): só em símbolo, cabeçalho de
+   * coluna e filete de seção — NUNCA no numeral do resultado, que é sempre ouro.
+   * É diferenciação, não semântica de canonicidade (essa vive no selo terracota).
+   */
+  --color-escola-pitagorico: #c9a227; /* ouro — a escola de referência */
+  --color-escola-caldeu: #be9a5e; /* bronze */
+  --color-escola-loshu: #5fa88c; /* jade */
+  --color-escola-gematria: #6e7bc4; /* índigo (frio, não é o roxo místico do §1) */
+  --color-escola-vedica: #d98a3d; /* açafrão */
+  --color-escola-cabalistica: #3f9aa6; /* petróleo */
+  --color-escola-portoes: #9aa05e; /* oliva — o explorador estrutural */
+
   --font-display: var(--font-instrument), Georgia, 'Times New Roman', serif;
   --font-body: var(--font-literata), Georgia, serif;
   --font-mono: var(--font-plex), ui-monospace, 'SFMono-Regular', monospace;

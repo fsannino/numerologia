@@ -67,7 +67,19 @@ Tokens em `apps/web/src/app/globals.css` (`@theme` do Tailwind v4 + custom prope
 
 ## §9 — Cor por escola (identidade de cada tradição)
 
-Além do ouro do resultado, cada escola tem uma cor de identidade para os elementos que a representam (símbolo no card, cabeçalho da coluna na matriz comparativa) — **nunca** aplicada ao numeral do resultado (que é sempre ouro). A definir na fatia da matriz comparativa: pitagórico ouro, caldeu bronze, lo shu jade, gematria índigo, védica açafrão, cabalística, 231 portões. É diferenciação, não semântica de canonicidade (essa continua no selo terracota).
+Além do ouro do resultado, cada escola tem uma cor de identidade, aplicada **só** aos elementos que a representam — símbolo no card, nome/cabeçalho de coluna na matriz, filete-acento no topo da seção/card. **Nunca** entra no numeral do resultado (que é sempre ouro) nem carrega semântica de canonicidade (essa vive no selo terracota). É pura diferenciação.
+
+| Escola | Token (`--color-escola-…`) | Hex |
+|---|---|---|
+| Pitagórico | `pitagorico` | `#C9A227` (ouro — a escola de referência) |
+| Caldeu | `caldeu` | `#BE9A5E` (bronze) |
+| Lo Shu | `loshu` | `#5FA88C` (jade) |
+| Gematria | `gematria` | `#6E7BC4` (índigo frio — não é o roxo místico do §1) |
+| Védica | `vedica` | `#D98A3D` (açafrão) |
+| Cabalística | `cabalistica` | `#3F9AA6` (petróleo) |
+| 231 Portões | `portoes` | `#9AA05E` (oliva — o explorador estrutural) |
+
+Cabalística e 231 Portões não vinham fixadas no brief; foram escolhidas para completar o leque sem cair no roxo (§1) nem colidir com ouro/azul/terracota. As classes utilitárias (`text-escola-*`, `border-t-escola-*`) são mapeadas em `apps/web/src/components/features/school-color.ts` como **strings literais** — o JIT do Tailwind não veria nomes montados dinamicamente.
 
 ## §10 — Sinais comerciais (honestos)
 

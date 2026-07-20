@@ -4,6 +4,7 @@ import type { ChartModelResult } from '@numerus/numerology-application'
 import { localize } from '@numerus/shared-kernel'
 import { useLocale } from '@/i18n/locale-context'
 import { UI_MESSAGES } from '@/i18n/ui-messages'
+import { SCHOOL_BORDER_TOP, SCHOOL_TEXT } from './school-color'
 
 function tracesByNumber(results: ReadonlyArray<ChartModelResult>): ReadonlyArray<{
   readonly number: NumberKind
@@ -44,14 +45,18 @@ export function ComparisonMatrix({ results }: { results: ReadonlyArray<ChartMode
               <th scope="col" className="border border-anil bg-papel px-3 py-2 text-left font-mono text-[10px] uppercase tracking-[0.1em] text-anil">
                 {t.matrix.numberColumn}
               </th>
-              {results.map((result) => {
-                const model = getModel(result.model)
-                return (
-                  <th key={result.model} scope="col" className="border border-anil bg-papel px-3 py-2 font-mono text-[10px] uppercase tracking-[0.1em] text-anil">
-                    {model.ok ? localize(model.value.metadata.name, locale) : result.model}
-                  </th>
-                )
-              })}
+              {results.map((result) => (
+                <th
+                  key={result.model}
+                  scope="col"
+                  className={`border border-t-2 border-anil ${SCHOOL_BORDER_TOP[result.model]} bg-papel px-3 py-2 font-mono text-[10px] uppercase tracking-[0.1em] ${SCHOOL_TEXT[result.model]}`}
+                >
+                  {(() => {
+                    const model = getModel(result.model)
+                    return model.ok ? localize(model.value.metadata.name, locale) : result.model
+                  })()}
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
