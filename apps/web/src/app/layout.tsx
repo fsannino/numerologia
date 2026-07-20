@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
+import { LocaleProvider } from '@/i18n/locale-context'
 import { bodyFont, displayFont, monoFont } from './fonts'
 import './globals.css'
 
@@ -16,7 +17,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pt-BR" className={`${displayFont.variable} ${bodyFont.variable} ${monoFont.variable}`}>
-      <body className="min-h-screen bg-papel text-tinta antialiased">{children}</body>
+      <body className="min-h-screen bg-papel text-tinta antialiased">
+        <LocaleProvider>{children}</LocaleProvider>
+      </body>
     </html>
   )
 }
