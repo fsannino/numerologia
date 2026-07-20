@@ -7,6 +7,7 @@ import { localize } from '@numerus/shared-kernel'
 import { useLocale } from '@/i18n/locale-context'
 import { UI_MESSAGES } from '@/i18n/ui-messages'
 import { SchoolProvenanceBadge } from './school-provenance-badge'
+import { SCHOOL_BORDER_TOP, SCHOOL_TEXT } from './school-color'
 
 /**
  * Prova imediata: um mesmo perfil de exemplo, lido pelas sete escolas — sete
@@ -70,7 +71,10 @@ export function ProofOfDivergence() {
             const meta = models.find((entry) => entry.id === model)?.metadata
             const label = t.numberLabels[trace.resultId]?.title ?? trace.resultId
             return (
-              <li key={model} className="flex flex-col gap-3 border-r border-b border-anil bg-giz p-5">
+              <li
+                key={model}
+                className={`flex flex-col gap-3 border-r border-b border-t-2 border-anil ${SCHOOL_BORDER_TOP[model]} bg-giz p-5`}
+              >
                 <div className="flex items-baseline justify-between gap-2">
                   <span className="font-display text-6xl leading-none text-latao tabular-nums">
                     {trace.finalValue.reduced}
@@ -78,7 +82,7 @@ export function ProofOfDivergence() {
                   {meta && <SchoolProvenanceBadge metadata={meta} />}
                 </div>
                 <div className="flex flex-col gap-0.5">
-                  <span className="font-display text-xl text-tinta">
+                  <span className={`font-display text-xl ${SCHOOL_TEXT[model]}`}>
                     {meta ? localize(meta.name, locale) : model}
                   </span>
                   <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-anil">{label}</span>

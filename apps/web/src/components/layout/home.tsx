@@ -11,6 +11,7 @@ import { UI_MESSAGES } from '@/i18n/ui-messages'
 import { LiveExpression } from '@/components/features/live-expression'
 import { ProofOfDivergence } from '@/components/features/proof-of-divergence'
 import { SchoolProvenanceBadge } from '@/components/features/school-provenance-badge'
+import { SCHOOL_BORDER_TOP, SCHOOL_TEXT } from '@/components/features/school-color'
 
 const LOCALE_SHORT_NAMES: Readonly<Record<Locale, string>> = { 'pt-BR': 'PT', en: 'EN', es: 'ES' }
 const SCHOOL_SYMBOL: Readonly<Record<ModelId, string>> = {
@@ -123,9 +124,12 @@ export function Home() {
         <h2 className="mb-8 font-display text-4xl text-tinta">{h.schoolsTitle}</h2>
         <div className="grid border-l border-t border-anil sm:grid-cols-2 lg:grid-cols-3">
           {listModels().map((model) => (
-            <article key={model.id} className="flex flex-col gap-3 border-r border-b border-anil bg-giz p-5">
+            <article
+              key={model.id}
+              className={`flex flex-col gap-3 border-r border-b border-t-2 border-anil ${SCHOOL_BORDER_TOP[model.id]} bg-giz p-5`}
+            >
               <div className="flex items-baseline justify-between gap-2">
-                <span className="font-display text-3xl text-latao">{SCHOOL_SYMBOL[model.id]}</span>
+                <span className={`font-display text-3xl ${SCHOOL_TEXT[model.id]}`}>{SCHOOL_SYMBOL[model.id]}</span>
                 <SchoolProvenanceBadge metadata={model.metadata} />
               </div>
               <h3 className="font-display text-2xl text-tinta">{localize(model.metadata.name, locale)}</h3>
