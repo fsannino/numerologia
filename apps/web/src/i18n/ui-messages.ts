@@ -206,6 +206,12 @@ export type UiMessages = {
     }
   }
   readonly numberLabels: Readonly<Record<string, NumberLabel>>
+  readonly upsell: {
+    readonly proTitle: string
+    readonly proText: string
+    readonly proCta: string
+    readonly proTag: string
+  }
   readonly footer: string
 }
 
@@ -450,6 +456,13 @@ const PT: UiMessages = {
     combinationsLabel: (count) => `${count} combinações possíveis`,
     candidatesTitle: 'Candidatas por letra (a transliteração é uma reconstrução)',
     ambiguous: 'ambígua',
+  },
+  upsell: {
+    proTitle: 'Atende clientes?',
+    proText:
+      'Exporte este mapa em PDF com o seu logo e mantenha um histórico dos atendimentos — mesmas contas, apresentação de consultório.',
+    proCta: 'versão profissional',
+    proTag: 'em breve',
   },
   footer:
     'O Numerus é uma ferramenta de estudo, autoconhecimento e entretenimento cultural. Não substitui aconselhamento médico, psicológico, jurídico ou financeiro. O sistema de conversão de nomes praticado hoje foi estruturado no fim do séc. XIX / início do XX (L. Dow Balliett, Juno Jordan), reivindicando a herança pitagórica — cada escola exibe sua origem histórica real.',
@@ -697,6 +710,13 @@ const EN: UiMessages = {
     candidatesTitle: 'Candidates per letter (transliteration is a reconstruction)',
     ambiguous: 'ambiguous',
   },
+  upsell: {
+    proTitle: 'Do you read for clients?',
+    proText:
+      'Export this chart as a PDF with your own logo and keep a history of your sessions — same arithmetic, consulting-room presentation.',
+    proCta: 'professional version',
+    proTag: 'soon',
+  },
   footer:
     'Numerus is a tool for study, self-knowledge and cultural entertainment. It does not replace medical, psychological, legal or financial advice. The name-conversion system as practiced today was structured in the late 19th / early 20th century (L. Dow Balliett, Juno Jordan), claiming the Pythagorean heritage — each school displays its real historical origin.',
 }
@@ -942,6 +962,13 @@ const ES: UiMessages = {
     combinationsLabel: (count) => `${count} combinaciones posibles`,
     candidatesTitle: 'Candidatas por letra (la transliteración es una reconstrucción)',
     ambiguous: 'ambigua',
+  },
+  upsell: {
+    proTitle: '¿Atiendes clientes?',
+    proText:
+      'Exporta este mapa en PDF con tu propio logo y mantén un historial de las consultas — mismas cuentas, presentación de consultorio.',
+    proCta: 'versión profesional',
+    proTag: 'pronto',
   },
   footer:
     'Numerus es una herramienta de estudio, autoconocimiento y entretenimiento cultural. No sustituye el consejo médico, psicológico, jurídico ni financiero. El sistema de conversión de nombres tal como se practica hoy fue estructurado a finales del s. XIX / inicios del XX (L. Dow Balliett, Juno Jordan), reivindicando la herencia pitagórica — cada escuela muestra su origen histórico real.',
