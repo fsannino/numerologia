@@ -25,6 +25,7 @@ const NAME_NUMBERS: ReadonlyArray<NumberKind> = [
   'subconscious',
   'gematria-value',
   'kabbalistic-name',
+  'gates-231-structure',
 ]
 const DATE_NUMBERS: ReadonlyArray<NumberKind> = [
   'life-path',

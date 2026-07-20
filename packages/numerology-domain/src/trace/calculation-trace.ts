@@ -50,6 +50,19 @@ export type KabbalisticReading = {
   readonly coincidesWith?: ModelId
 }
 
+/** Uma letra hebraica (mispar hechrachi): grafema, valor e nome. */
+export type HebrewLetter = {
+  readonly hebrew: string
+  readonly value: number
+  readonly name: string
+}
+
+/** Um "portão" do Sefer Yetzirah: par não-ordenado de duas letras distintas. */
+export type Gate = {
+  readonly first: HebrewLetter
+  readonly second: HebrewLetter
+}
+
 /** União discriminada por `kind`: dá render type-safe sem casts na UI. */
 export type CalculationStep =
   | {
@@ -142,6 +155,23 @@ export type CalculationStep =
       readonly input: { readonly ageAtReference: number }
       readonly output: { readonly segments: ReadonlyArray<TimelineSegment> }
       readonly visual: 'timeline'
+    }
+  | {
+      readonly kind: 'gate-structure'
+      readonly title: LocalizedText
+      readonly explanation: LocalizedText
+      readonly input: { readonly name: string }
+      readonly output: {
+        /** Sempre 231 = C(22,2) — derivado, nunca hardcoded. */
+        readonly totalGates: number
+        /** Portões que as letras do nome ativam (par não-ordenado de letras distintas). */
+        readonly activated: ReadonlyArray<Gate>
+        /** Transliteração padrão do nome (reconstrução, ADR-0008). */
+        readonly standardHebrew: string
+        /** Modo de ativação — construção contemporânea, não canônica. */
+        readonly mode: string
+      }
+      readonly visual: 'gates-231'
     }
   | {
       readonly kind: 'reading-matrix'

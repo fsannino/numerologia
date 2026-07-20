@@ -160,6 +160,14 @@ export type UiMessages = {
     readonly total: (raw: number) => string
     readonly whyMultiple: string
   }
+  readonly gates: {
+    readonly activated: (count: number, total: number) => string
+    readonly nonCanonical: string
+    readonly modeLabel: string
+    readonly standardLabel: string
+    readonly reference: string
+    readonly gatesTitle: string
+  }
   readonly provenance: {
     readonly title: string
     readonly canonicity: {
@@ -194,7 +202,7 @@ const PT: UiMessages = {
     sumLabel: 'soma',
     emptyHint: 'o cálculo aparece aqui enquanto você digita',
     cta: 'abrir o mapa completo',
-    schoolsTitle: 'seis escolas, cada uma com sua origem',
+    schoolsTitle: 'as escolas, cada uma com sua origem',
     manifestoKicker: 'o traço é o produto',
     manifestoText:
       'Nenhum número aparece sem a conta que o produziu. Cada resultado se abre em tabela, soma, redução e a regra da escola — o modo "por quê?" está sempre a um clique.',
@@ -338,9 +346,18 @@ const PT: UiMessages = {
     'vedic-moolank': { title: 'Moolank (raiz)', hint: 'dia do nascimento · planeta regente' },
     'vedic-bhagyank': { title: 'Bhagyank (destino)', hint: 'data completa · planeta regente' },
     'kabbalistic-name': { title: 'Número do Nome (cabalístico)', hint: 'nº de leituras distintas · veja a matriz' },
+    'gates-231-structure': { title: '231 Portões', hint: 'nº de portões ativados (estrutura, não veredito)' },
   },
   vedic: {
     qualitiesLabel: 'Qualidades',
+  },
+  gates: {
+    activated: (count, total) => `${count} de ${total} portões ativados`,
+    nonCanonical: 'construção contemporânea',
+    modeLabel: 'modo',
+    standardLabel: 'transliteração padrão',
+    reference: 'Sefer Yetzirah 2:4',
+    gatesTitle: 'Portões ativados',
   },
   kabbalistic: {
     headline: (distinct) => `Este nome tem ${distinct} ${distinct === 1 ? 'leitura cabalística' : 'leituras cabalísticas distintas'} — veja de onde cada uma vem.`,
@@ -402,7 +419,7 @@ const EN: UiMessages = {
     sumLabel: 'sum',
     emptyHint: 'the calculation appears here as you type',
     cta: 'open the full chart',
-    schoolsTitle: 'six schools, each with its own origin',
+    schoolsTitle: 'the schools, each with its own origin',
     manifestoKicker: 'the trace is the product',
     manifestoText:
       'No number appears without the arithmetic that produced it. Every result opens into table, sum, reduction and the school rule — the "why?" mode is always one click away.',
@@ -546,9 +563,18 @@ const EN: UiMessages = {
     'vedic-moolank': { title: 'Moolank (root)', hint: 'birth day · ruling planet' },
     'vedic-bhagyank': { title: 'Bhagyank (destiny)', hint: 'full date · ruling planet' },
     'kabbalistic-name': { title: 'Name Number (Kabbalistic)', hint: 'nº of distinct readings · see the matrix' },
+    'gates-231-structure': { title: '231 Gates', hint: 'nº of activated gates (structure, not verdict)' },
   },
   vedic: {
     qualitiesLabel: 'Qualities',
+  },
+  gates: {
+    activated: (count, total) => `${count} of ${total} gates activated`,
+    nonCanonical: 'contemporary construction',
+    modeLabel: 'mode',
+    standardLabel: 'standard transliteration',
+    reference: 'Sefer Yetzirah 2:4',
+    gatesTitle: 'Activated gates',
   },
   kabbalistic: {
     headline: (distinct) => `This name has ${distinct} distinct Kabbalistic ${distinct === 1 ? 'reading' : 'readings'} — see where each comes from.`,
@@ -610,7 +636,7 @@ const ES: UiMessages = {
     sumLabel: 'suma',
     emptyHint: 'el cálculo aparece aquí mientras escribes',
     cta: 'abrir el mapa completo',
-    schoolsTitle: 'seis escuelas, cada una con su origen',
+    schoolsTitle: 'las escuelas, cada una con su origen',
     manifestoKicker: 'el trazo es el producto',
     manifestoText:
       'Ningún número aparece sin la cuenta que lo produjo. Cada resultado se abre en tabla, suma, reducción y la regla de la escuela — el modo "¿por qué?" está siempre a un clic.',
@@ -754,9 +780,18 @@ const ES: UiMessages = {
     'vedic-moolank': { title: 'Moolank (raíz)', hint: 'día de nacimiento · planeta regente' },
     'vedic-bhagyank': { title: 'Bhagyank (destino)', hint: 'fecha completa · planeta regente' },
     'kabbalistic-name': { title: 'Número del Nombre (cabalístico)', hint: 'nº de lecturas distintas · ve la matriz' },
+    'gates-231-structure': { title: '231 Puertas', hint: 'nº de puertas activadas (estructura, no veredicto)' },
   },
   vedic: {
     qualitiesLabel: 'Cualidades',
+  },
+  gates: {
+    activated: (count, total) => `${count} de ${total} puertas activadas`,
+    nonCanonical: 'construcción contemporánea',
+    modeLabel: 'modo',
+    standardLabel: 'transliteración estándar',
+    reference: 'Sefer Yetzirah 2:4',
+    gatesTitle: 'Puertas activadas',
   },
   kabbalistic: {
     headline: (distinct) => `Este nombre tiene ${distinct} ${distinct === 1 ? 'lectura cabalística' : 'lecturas cabalísticas distintas'} — mira de dónde viene cada una.`,

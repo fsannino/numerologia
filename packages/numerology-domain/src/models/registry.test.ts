@@ -9,10 +9,12 @@ describe('registry de modelos', () => {
     expect(getModel('gematria').ok).toBe(true)
     expect(getModel('vedic').ok).toBe(true)
     expect(getModel('kabbalistic').ok).toBe(true)
+    expect(getModel('gates-231').ok).toBe(true)
   })
 
   it('retorna erro explícito para escola ainda não registrada', () => {
-    expect(getModel('gates-231')).toMatchObject({ ok: false, error: { code: 'unknown-model', model: 'gates-231' } })
+    const unknownId = 'tibetan' as unknown as Parameters<typeof getModel>[0]
+    expect(getModel(unknownId)).toMatchObject({ ok: false, error: { code: 'unknown-model', model: 'tibetan' } })
   })
 
   it('lista os modelos registrados', () => {
@@ -23,6 +25,7 @@ describe('registry de modelos', () => {
       'gematria',
       'vedic',
       'kabbalistic',
+      'gates-231',
     ])
   })
 

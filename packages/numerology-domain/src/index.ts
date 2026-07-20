@@ -37,6 +37,8 @@ export type {
   CalculationTrace,
   DigitTallyEntry,
   DivergenceNote,
+  Gate,
+  HebrewLetter,
   KabbalisticReading,
   LetterMappingEntry,
   LoShuArrow,
