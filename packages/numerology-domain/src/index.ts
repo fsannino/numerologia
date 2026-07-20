@@ -114,3 +114,4 @@ export {
   calculateMarriageGoverning,
   calculateMarriagePersonalYear,
 } from './marriage/marriage-numbers'
+export { calculateEventVibration, calculateEventPersonalYear } from './event/event-numbers'

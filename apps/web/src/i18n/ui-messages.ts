@@ -86,7 +86,13 @@ export type UiMessages = {
     readonly divergenceCause: string
     readonly convergenceNote: string
   }
-  readonly modes: { readonly chart: string; readonly signature: string; readonly synastry: string; readonly company: string; readonly marriage: string }
+  readonly modes: { readonly chart: string; readonly signature: string; readonly synastry: string; readonly company: string; readonly marriage: string; readonly event: string }
+  readonly event: {
+    readonly intro: string
+    readonly dateLabel: string
+    readonly referenceTag: string
+    readonly build: string
+  }
   readonly signature: {
     readonly intro: string
     readonly registrationLabel: string
@@ -274,7 +280,13 @@ const PT: UiMessages = {
     divergenceCause: 'Onde os valores divergem, a causa é a tabela de letras: 1–9 pela posição alfabética (pitagórica) × 1–8 por afinidade fonética, sem o 9 (caldaica) — e a caldaica não preserva números mestres na redução.',
     convergenceNote: 'Quando escolas independentes apontam o mesmo número, isso é convergência de método — não evidência.',
   },
-  modes: { chart: 'Mapa completo', signature: 'Assinatura / delta', synastry: 'Casal / sinastria', company: 'Empresa', marriage: 'Casamento' },
+  modes: { chart: 'Mapa completo', signature: 'Assinatura / delta', synastry: 'Casal / sinastria', company: 'Empresa', marriage: 'Casamento', event: 'Evento / data' },
+  event: {
+    intro: 'A vibração de uma data específica — um evento. Só a data entra; nenhum nome, nada sai do dispositivo.',
+    dateLabel: 'Data do evento',
+    referenceTag: '(para o Ano Pessoal do evento)',
+    build: 'Calcular vibração da data',
+  },
   signature: {
     intro: 'Compare o nome de registro com o nome que você usa no dia a dia e veja o que muda quando você assina de outra forma.',
     registrationLabel: 'Nome de registro',
@@ -347,6 +359,8 @@ const PT: UiMessages = {
     'vedic-bhagyank': { title: 'Bhagyank (destino)', hint: 'data completa · planeta regente' },
     'kabbalistic-name': { title: 'Número do Nome (cabalístico)', hint: 'nº de leituras distintas · veja a matriz' },
     'gates-231-structure': { title: '231 Portões', hint: 'nº de portões ativados (estrutura, não veredito)' },
+    'event-vibration': { title: 'Vibração da Data', hint: 'Caminho de Vida da data do evento' },
+    'event-personal-year': { title: 'Ano Pessoal do Evento', hint: 'ciclo atual do evento' },
   },
   vedic: {
     qualitiesLabel: 'Qualidades',
@@ -491,7 +505,13 @@ const EN: UiMessages = {
     divergenceCause: 'Where values diverge, the cause is the letter table: 1–9 by alphabetical position (Pythagorean) × 1–8 by phonetic affinity, without 9 (Chaldean) — and the Chaldean school does not preserve master numbers when reducing.',
     convergenceNote: 'When independent schools point to the same number, that is convergence of method — not evidence.',
   },
-  modes: { chart: 'Full chart', signature: 'Signature / delta', synastry: 'Couple / synastry', company: 'Company', marriage: 'Marriage' },
+  modes: { chart: 'Full chart', signature: 'Signature / delta', synastry: 'Couple / synastry', company: 'Company', marriage: 'Marriage', event: 'Event / date' },
+  event: {
+    intro: "The vibration of a specific date — an event. Only the date is used; no name, nothing leaves the device.",
+    dateLabel: 'Event date',
+    referenceTag: '(for the event Personal Year)',
+    build: 'Calculate the date vibration',
+  },
   signature: {
     intro: 'Compare your registration name with the name you use day to day and see what changes when you sign differently.',
     registrationLabel: 'Registration name',
@@ -564,6 +584,8 @@ const EN: UiMessages = {
     'vedic-bhagyank': { title: 'Bhagyank (destiny)', hint: 'full date · ruling planet' },
     'kabbalistic-name': { title: 'Name Number (Kabbalistic)', hint: 'nº of distinct readings · see the matrix' },
     'gates-231-structure': { title: '231 Gates', hint: 'nº of activated gates (structure, not verdict)' },
+    'event-vibration': { title: 'Date Vibration', hint: 'Life Path of the event date' },
+    'event-personal-year': { title: 'Event Personal Year', hint: "the event's current cycle" },
   },
   vedic: {
     qualitiesLabel: 'Qualities',
@@ -708,7 +730,13 @@ const ES: UiMessages = {
     divergenceCause: 'Donde los valores divergen, la causa es la tabla de letras: 1–9 por posición alfabética (pitagórica) × 1–8 por afinidad fonética, sin el 9 (caldea) — y la escuela caldea no preserva números maestros al reducir.',
     convergenceNote: 'Cuando escuelas independientes señalan el mismo número, eso es convergencia de método — no evidencia.',
   },
-  modes: { chart: 'Carta completa', signature: 'Firma / delta', synastry: 'Pareja / sinastría', company: 'Empresa', marriage: 'Matrimonio' },
+  modes: { chart: 'Carta completa', signature: 'Firma / delta', synastry: 'Pareja / sinastría', company: 'Empresa', marriage: 'Matrimonio', event: 'Evento / fecha' },
+  event: {
+    intro: 'La vibración de una fecha específica — un evento. Solo entra la fecha; ningún nombre, nada sale del dispositivo.',
+    dateLabel: 'Fecha del evento',
+    referenceTag: '(para el Año Personal del evento)',
+    build: 'Calcular la vibración de la fecha',
+  },
   signature: {
     intro: 'Compara tu nombre de registro con el nombre que usas a diario y ve qué cambia cuando firmas de otra forma.',
     registrationLabel: 'Nombre de registro',
@@ -781,6 +809,8 @@ const ES: UiMessages = {
     'vedic-bhagyank': { title: 'Bhagyank (destino)', hint: 'fecha completa · planeta regente' },
     'kabbalistic-name': { title: 'Número del Nombre (cabalístico)', hint: 'nº de lecturas distintas · ve la matriz' },
     'gates-231-structure': { title: '231 Puertas', hint: 'nº de puertas activadas (estructura, no veredicto)' },
+    'event-vibration': { title: 'Vibración de la Fecha', hint: 'Camino de Vida de la fecha del evento' },
+    'event-personal-year': { title: 'Año Personal del Evento', hint: 'ciclo actual del evento' },
   },
   vedic: {
     qualitiesLabel: 'Cualidades',

@@ -38,3 +38,10 @@ export type {
   MarriageChart,
 } from './use-cases/calculate-marriage-chart/calculate-marriage-chart.handler'
 export { calculateMarriageChart } from './use-cases/calculate-marriage-chart/calculate-marriage-chart.handler'
+
+export type { CalculateEventChartCommand } from './use-cases/calculate-event-chart/calculate-event-chart.command'
+export type {
+  CalculateEventChartError,
+  EventChart,
+} from './use-cases/calculate-event-chart/calculate-event-chart.handler'
+export { calculateEventChart } from './use-cases/calculate-event-chart/calculate-event-chart.handler'

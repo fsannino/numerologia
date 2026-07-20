@@ -85,6 +85,16 @@ O casamento reusa a sinastria (números da união do casal) + os números da dat
 
 `combineReducedValues` é o primitivo de domínio compartilhado por sinastria e empresa (soma de valores reduzidos + redução preservando mestres).
 
+## Evento / data
+
+| Termo (código) | Definição |
+|---|---|
+| `event` (Evento) | Sujeito distinto: uma data específica, sem nome nem pessoa (§2.3). |
+| `event-vibration` / Vibração da Data | Caminho de Vida da data do evento — a mesma redução de dígitos de data, re-rotulada (R4, ADR-0005). |
+| `event-personal-year` / Ano Pessoal do Evento | Ano Pessoal tratando a data do evento como um "nascimento" — em que ponto do ciclo o evento está (ADR-0007). |
+
+O Evento reusa as funções de data existentes (não duplica a redução de datas), como o casamento — só a data entra, nada de nome.
+
 ## Escola Lo Shu (chinesa)
 
 | Termo | Definição |
