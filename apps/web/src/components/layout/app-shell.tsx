@@ -12,6 +12,7 @@ import { SynastryCalculator } from '@/components/features/synastry-calculator'
 import { CompanyCalculator } from '@/components/features/company-calculator'
 import { MarriageCalculator } from '@/components/features/marriage-calculator'
 import { EventCalculator } from '@/components/features/event-calculator'
+import { ProfessionalUpsell } from '@/components/features/professional-upsell'
 
 const LOCALE_SHORT_NAMES: Readonly<Record<Locale, string>> = { 'pt-BR': 'PT', en: 'EN', es: 'ES' }
 
@@ -79,6 +80,8 @@ function Shell() {
       {mode === 'company' && <CompanyCalculator />}
       {mode === 'marriage' && <MarriageCalculator />}
       {mode === 'event' && <EventCalculator />}
+
+      <ProfessionalUpsell />
 
       <footer className="border-t border-anil pt-5 font-mono text-[11px] leading-relaxed tracking-wide text-anil">
         <p>{t.footer}</p>
