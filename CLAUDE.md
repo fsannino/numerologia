@@ -4,7 +4,7 @@ Aplique o playbook `collabz-craftsmanship` (R1–R16) em qualquer mudança. Regr
 
 1. **Traço obrigatório**: nenhum caminho de código pode produzir um número final sem produzir `CalculationTrace` (§3.1 da spec em `docs/`). O traço é valor de retorno do domínio, não log.
 2. **`packages/numerology-domain` é TypeScript puro**: proibido importar framework, DOM ou API de Node. É isso que garante "regra escrita uma vez" para web, mobile e worker.
-3. **Device-first**: na persona pessoal, nome/data de nascimento jamais entram em handler HTTP, log, cache persistente ou banco. Não crie endpoint que receba esses campos.
+3. **Device-first (persona pessoal)**: na persona pessoal, nome/data de nascimento jamais entram em handler HTTP, log, cache persistente ou banco do servidor — cálculo e histórico rodam no aparelho (histórico em armazenamento local do navegador, sem sincronização na Fase 1). Não crie endpoint que receba esses campos na persona pessoal. A persona **profissional** (atende clientes) é a única exceção: persiste PII de terceiros no servidor sob LGPD (controladoria do numerólogo), conforme ADR-0013. Sincronização cifrada do histórico pessoal, se um dia existir, é opt-in e cega no servidor (fora da Fase 1).
 4. **Nova escola numerológica** = diretório novo em `src/models/` + entrada no registry. Se precisar tocar em qualquer outro arquivo do núcleo, o design está errado — pare e revise.
 5. **Variantes de método são explícitas** (`variantSelections`), nunca `if` escondido; o traço registra a variante usada (ADR-0003).
 6. **Ambiguidade nunca vira chute**: retorno múltiplo ou erro tipado (`Result<T,E>`). Nunca descarte silencioso de caracteres de nome (ADR-0002).

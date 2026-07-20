@@ -1,10 +1,11 @@
 # ADR-0013 — Device-first × contas de usuário (perfil, histórico, servidor)
 
-**Status:** proposta · **Data:** 2026-07-20
+**Status:** aceita · **Data:** 2026-07-20 · **Ratificação:** 2026-07-20 (dono do produto)
 
-> Este ADR existe para ser **ratificado ou ajustado** antes de qualquer
-> persistência server-side de dados de leitura. Enquanto estiver em *proposta*,
-> a regra do CLAUDE.md §3 permanece em vigor sem exceção.
+> **Variante escolhida para a Fase 1: "só-local"** (regra 2 sem a regra 3): o
+> histórico pessoal fica no aparelho, sem sincronização entre dispositivos por
+> enquanto. A sincronização cifrada (regra 3) fica para uma fase futura, quando
+> houver demanda — é aditiva e não exige retrabalho.
 
 ## Contexto
 
@@ -94,10 +95,22 @@ explícito.**
   Fase 1 (regra 2 sem a 3); a regra 3 pode ficar para depois. Compatível com esta
   decisão — é um subconjunto dela.
 
-## Decisões que dependem de você
+## Decisões ratificadas (2026-07-20)
 
-- Ratificar a bifurcação (ou escolher a variante "só local, sem sync" como
-  primeiro passo).
-- Confirmar que a persona profissional pode persistir PII de terceiros sob
-  controladoria do numerólogo (base legal LGPD).
-- Aprovar a reescrita do CLAUDE.md §3 correspondente.
+- **Bifurcação aprovada, na variante "só-local" para a Fase 1**: histórico
+  pessoal no aparelho, sem sincronização entre dispositivos por enquanto. A
+  sincronização cifrada (regra 3) fica documentada como evolução futura.
+- **Persona profissional pode persistir PII de terceiros** sob controladoria
+  LGPD do numerólogo (aprovado).
+- **CLAUDE.md §3 reescrito** para refletir a bifurcação (persona pessoal
+  device-first inviolável, incluindo o histórico local; persona profissional
+  como exceção server-side sob LGPD).
+
+## Decisões correlatas (mesmo dia, registradas aqui por dependência)
+
+- **Absorção, não reescrita**: a Veridia adota o Numerus como seu módulo de
+  Numerologia; o núcleo e os invariantes atuais são preservados e estendidos.
+- **IA por API gerenciada, não self-host** (Ollama descartado): quando o módulo
+  de IA/RAG chegar, usará provedor via API. Impacto para este ADR: reforça a
+  necessidade de minimização de dados — conteúdo pessoal não trafega a LLM
+  externo sem base legal e consentimento (a detalhar no ADR de IA).
