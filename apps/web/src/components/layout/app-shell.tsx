@@ -1,9 +1,10 @@
 'use client'
 
+import Link from 'next/link'
 import { useState } from 'react'
 import type { Locale } from '@numerus/shared-kernel'
 import { SUPPORTED_LOCALES } from '@numerus/shared-kernel'
-import { LocaleProvider, useLocale } from '@/i18n/locale-context'
+import { useLocale } from '@/i18n/locale-context'
 import { UI_MESSAGES } from '@/i18n/ui-messages'
 import { ChartCalculator } from '@/components/features/chart-calculator'
 import { SignatureComparator } from '@/components/features/signature-comparator'
@@ -24,7 +25,9 @@ function Shell() {
       <header className="flex flex-col gap-4 border-b border-anil pb-6">
         <div className="flex items-start justify-between gap-4">
           <div className="flex flex-col gap-1.5">
-            <h1 className="font-display text-5xl leading-none tracking-tight text-tinta">{t.header.title}</h1>
+            <Link href="/" className="font-display text-5xl leading-none tracking-tight text-tinta">
+              {t.header.title}
+            </Link>
             <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-anil">
               a numerologia com a conta à mostra
             </span>
@@ -83,9 +86,5 @@ function Shell() {
 }
 
 export function AppShell() {
-  return (
-    <LocaleProvider>
-      <Shell />
-    </LocaleProvider>
-  )
+  return <Shell />
 }

@@ -9,9 +9,11 @@ import { UI_MESSAGES } from '@/i18n/ui-messages'
  * (11/22/33) recebem a marca — não se dissolvem. Acessível: descrição textual
  * para leitores de tela.
  */
-export function ReductionChain({ value }: { value: NumerologyValue }) {
+export function ReductionChain({ value, onDark = false }: { value: NumerologyValue; onDark?: boolean }) {
   const { locale } = useLocale()
   const t = UI_MESSAGES[locale]
+  const intermediate = onDark ? 'text-giz/70' : 'text-anil'
+  const arrow = onDark ? 'text-giz/50' : 'text-anil'
   return (
     <div>
       <p className="sr-only">{t.results.chainSr(value.chain.join(' → '))}</p>
@@ -20,11 +22,15 @@ export function ReductionChain({ value }: { value: NumerologyValue }) {
           const isLast = index === value.chain.length - 1
           return (
             <li key={`${stage}-${index}`} className="flex items-baseline gap-2.5">
-              {index > 0 && <span className="font-mono text-sm text-anil">→</span>}
+              {index > 0 && <span className={`font-mono text-sm ${arrow}`}>→</span>}
               <span
                 data-anim
                 style={{ animation: 'stepIn 0.45s both', animationDelay: `${index * 0.12}s` }}
-                className={isLast ? 'text-4xl leading-none text-latao' : 'text-2xl leading-none text-anil'}
+                className={
+                  isLast
+                    ? `leading-none text-latao ${onDark ? 'text-6xl' : 'text-4xl'}`
+                    : `text-2xl leading-none ${intermediate}`
+                }
               >
                 {stage}
               </span>

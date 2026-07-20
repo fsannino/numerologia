@@ -9,6 +9,25 @@ export type NumberLabel = { readonly title: string; readonly hint: string }
 
 export type UiMessages = {
   readonly header: { readonly title: string; readonly tagline: string; readonly deviceBadge: string }
+  readonly home: {
+    readonly heroKicker: string
+    readonly heroTitle: string
+    readonly heroLede: string
+    readonly liveLabel: string
+    readonly liveCaption: string
+    readonly sumLabel: string
+    readonly emptyHint: string
+    readonly cta: string
+    readonly schoolsTitle: string
+    readonly manifestoKicker: string
+    readonly manifestoText: string
+    readonly manifestoCaveat: string
+    readonly divergenceKicker: string
+    readonly divergenceTitle: string
+    readonly divergenceNote: string
+    readonly deviceTitle: string
+    readonly deviceText: string
+  }
   readonly form: {
     readonly nameLabel: string
     readonly namePlaceholder: string
@@ -164,6 +183,29 @@ const PT: UiMessages = {
     tagline:
       'Numerologia multi-modelo, interativa e educacional. Todo número pode ser aberto: você vê a tabela usada, a soma, a redução e a regra que justificou cada passo.',
     deviceBadge: 'O cálculo roda 100% neste dispositivo — seu nome não é enviado a nenhum servidor.',
+  },
+  home: {
+    heroKicker: 'isto não é um oráculo · é um instrumento',
+    heroTitle: 'todo número, com a conta à mostra.',
+    heroLede:
+      'Escolha uma ou mais escolas, compare os resultados lado a lado e abra qualquer número para ver a tabela, a soma, a redução e a regra que o justificou — inclusive onde as tradições discordam.',
+    liveLabel: 'digite um nome — o cálculo aparece abaixo',
+    liveCaption: 'expressão · pitagórico',
+    sumLabel: 'soma',
+    emptyHint: 'o cálculo aparece aqui enquanto você digita',
+    cta: 'abrir o mapa completo',
+    schoolsTitle: 'seis escolas, cada uma com sua origem',
+    manifestoKicker: 'o traço é o produto',
+    manifestoText:
+      'Nenhum número aparece sem a conta que o produziu. Cada resultado se abre em tabela, soma, redução e a regra da escola — o modo "por quê?" está sempre a um clique.',
+    manifestoCaveat: 'vocabulário para reflexão, nunca veredito.',
+    divergenceKicker: 'por que dois sites dão números diferentes?',
+    divergenceTitle: 'porque cada escola usa uma conta diferente — e o Numerus mostra todas.',
+    divergenceNote:
+      'Um mesmo nome pode ter várias leituras cabalísticas: tabela sequencial ou caldaica, redução decimal ou arcano. Em vez de escolher uma em silêncio, expomos o leque e a origem de cada número.',
+    deviceTitle: 'seus dados não saem daqui',
+    deviceText:
+      'Na leitura pessoal, o cálculo roda inteiro no seu aparelho. Nome e data de nascimento nunca vão a servidor, log ou banco.',
   },
   form: {
     nameLabel: 'Nome completo de nascimento',
@@ -350,6 +392,29 @@ const EN: UiMessages = {
       'Multi-model, interactive, educational numerology. Every number can be opened: you see the table used, the sum, the reduction and the rule behind each step.',
     deviceBadge: 'Everything is computed on this device — your name is never sent to any server.',
   },
+  home: {
+    heroKicker: 'this is not an oracle · it is an instrument',
+    heroTitle: 'every number, with the arithmetic in plain sight.',
+    heroLede:
+      'Pick one or more schools, compare the results side by side, and open any number to see the table, the sum, the reduction and the rule behind it — including where the traditions disagree.',
+    liveLabel: 'type a name — the calculation appears below',
+    liveCaption: 'expression · pythagorean',
+    sumLabel: 'sum',
+    emptyHint: 'the calculation appears here as you type',
+    cta: 'open the full chart',
+    schoolsTitle: 'six schools, each with its own origin',
+    manifestoKicker: 'the trace is the product',
+    manifestoText:
+      'No number appears without the arithmetic that produced it. Every result opens into table, sum, reduction and the school rule — the "why?" mode is always one click away.',
+    manifestoCaveat: 'vocabulary for reflection, never a verdict.',
+    divergenceKicker: 'why do two sites give different numbers?',
+    divergenceTitle: 'because each school uses a different arithmetic — and Numerus shows them all.',
+    divergenceNote:
+      'The same name can have several Kabbalistic readings: sequential or Chaldean table, decimal or arcano reduction. Instead of silently picking one, we expose the spread and the origin of each number.',
+    deviceTitle: 'your data never leaves here',
+    deviceText:
+      'In the personal reading the calculation runs entirely on your device. Name and birth date never reach a server, log or database.',
+  },
   form: {
     nameLabel: 'Full birth name',
     namePlaceholder: 'E.g.: Mary Smith',
@@ -534,6 +599,29 @@ const ES: UiMessages = {
     tagline:
       'Numerología multi-modelo, interactiva y educativa. Todo número puede abrirse: ves la tabla usada, la suma, la reducción y la regla que justificó cada paso.',
     deviceBadge: 'Todo se calcula en este dispositivo — tu nombre nunca se envía a ningún servidor.',
+  },
+  home: {
+    heroKicker: 'esto no es un oráculo · es un instrumento',
+    heroTitle: 'todo número, con la cuenta a la vista.',
+    heroLede:
+      'Elige una o más escuelas, compara los resultados lado a lado y abre cualquier número para ver la tabla, la suma, la reducción y la regla que lo justificó — incluso donde las tradiciones discrepan.',
+    liveLabel: 'escribe un nombre — el cálculo aparece abajo',
+    liveCaption: 'expresión · pitagórico',
+    sumLabel: 'suma',
+    emptyHint: 'el cálculo aparece aquí mientras escribes',
+    cta: 'abrir el mapa completo',
+    schoolsTitle: 'seis escuelas, cada una con su origen',
+    manifestoKicker: 'el trazo es el producto',
+    manifestoText:
+      'Ningún número aparece sin la cuenta que lo produjo. Cada resultado se abre en tabla, suma, reducción y la regla de la escuela — el modo "¿por qué?" está siempre a un clic.',
+    manifestoCaveat: 'vocabulario para la reflexión, nunca un veredicto.',
+    divergenceKicker: '¿por qué dos sitios dan números diferentes?',
+    divergenceTitle: 'porque cada escuela usa una cuenta diferente — y Numerus las muestra todas.',
+    divergenceNote:
+      'Un mismo nombre puede tener varias lecturas cabalísticas: tabla secuencial o caldea, reducción decimal o arcano. En vez de elegir una en silencio, exponemos el abanico y el origen de cada número.',
+    deviceTitle: 'tus datos no salen de aquí',
+    deviceText:
+      'En la lectura personal el cálculo corre entero en tu dispositivo. Nombre y fecha de nacimiento nunca llegan a un servidor, log o base de datos.',
   },
   form: {
     nameLabel: 'Nombre completo de nacimiento',
